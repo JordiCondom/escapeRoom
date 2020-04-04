@@ -19,11 +19,11 @@ class MainWindow(QDialog):
     def InitWindow(self):
         self.setWindowTitle(self.title)#inicialitzem la finestra amb el seu titol
         self.setGeometry(self.left, self.top, self.width, self.height)#seleccionem la geometria de la finestra
-        self.vbox = QVBoxLayout() #alineació dels objectes 
-        self.labelImage = QLabel(self)
-        self.pixmap = QPixmap("protofy.png")
-        self.labelImage.setPixmap(pixmap)
-        self.vbox.addWidget(labelImage)
+        vbox = QVBoxLayout() #alineació dels objectes 
+        labelImage = QLabel(self)
+        pixmap = QPixmap("protofy.png")
+        labelImage.setPixmap(pixmap)
+        vbox.addWidget(labelImage)
         self.setLayout(vbox)
 
         self.button = QPushButton('Botó',self)
