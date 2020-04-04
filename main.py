@@ -7,7 +7,7 @@ from windowsFolder.nom import Nom
 if __name__ == '__main__':
     app = QApplication(sys.argv)
 
-    mainWindow = Nom()
+    mainWindow = MainWindow()
     mainWindow.show()
 
     sys.exit(app.exec_())

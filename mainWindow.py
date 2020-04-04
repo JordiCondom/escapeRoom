@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
-from windows import *
+from windowsFolder.entrada import *
 
 # Abraçades!
 
@@ -18,9 +18,9 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Escape Room")
         self.setFixedSize(w,h)
 
-        mario = Mario()
+        entrada = Entrada()
 
-        mainLayout.addWidget(mario)
+        mainLayout.addWidget(entrada)
 
         mainWidget = QWidget()
         mainWidget.setLayout(mainLayout)

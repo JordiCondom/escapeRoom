@@ -17,3 +17,7 @@ class Entrada(QWidget):
         textLabel.setWordWrap(True)
         textLabel.move(0.4*w, h/3)
         textLabel.setAlignment(Qt.AlignCenter)
+
+        backgroundImage = QLabel(self)
+        pixmap = QPixmap("./images/entradafme.jpg").scaled(w,h)
+        backgroundImage.setPixmap(pixmap)
