@@ -8,12 +8,16 @@ h = 600
 
 class Bar(QWidget):
     def __init__(self):
-        super().__init__()
+        super(Bar, self).__init__()
 
         self.setGeometry(0,0,w,h)
+        self.initWindow()
 
+    def initWindow(self):
         textLabel = QLabel(self)
         textLabel.setText("Bar")
         textLabel.setWordWrap(True)
         textLabel.move(0.4*w, h/3)
         textLabel.setAlignment(Qt.AlignCenter)
+
+        self.show()
