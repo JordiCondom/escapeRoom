@@ -44,9 +44,5 @@ class Entrada(QWidget):
             self.enigmaSolved()
 
     def enigmaSolved(self):
-        bar = Bar()
-        #bar.show()
-        alert = QMessageBox()
-        alert.setText("abrasadas")
-        alert.exec_()
+        self.bar = Bar()
         self.close()

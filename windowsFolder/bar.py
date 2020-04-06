@@ -20,4 +20,8 @@ class Bar(QWidget):
         textLabel.move(0.4*w, h/3)
         textLabel.setAlignment(Qt.AlignCenter)
 
+        backgroundImage = QLabel(self)
+        pixmap = QPixmap("./images/LuisDelBar.jpg").scaled(w,h)
+        backgroundImage.setPixmap(pixmap)
+
         self.show()
