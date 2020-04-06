@@ -19,5 +19,3 @@ class Bar(QWidget):
         textLabel.setWordWrap(True)
         textLabel.move(0.4*w, h/3)
         textLabel.setAlignment(Qt.AlignCenter)
-
-        self.show()

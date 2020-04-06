@@ -23,13 +23,15 @@ class Entrada(QWidget):
         textLabel.setAlignment(Qt.AlignCenter)
 
         backgroundImage = QLabel(self)
-        pixmap = QPixmap("./images/entradafme.jpg").scaled(w,h)
+        pixmap = QPixmap("./images/entradafme2.jpg").scaled(w,h)
         backgroundImage.setPixmap(pixmap)
 
-        button = QPushButton('continua',self)
+        button = QPushButton(self)
         button.move(w/3,h/3)
+        button.setIcon(QIcon('./images/icon.svg'))
+        button.setStyleSheet("QPushButton{background: transparent;}")
         button.clicked.connect(self.checkAnswer)
-
+        
         self.passwordField = QTextEdit(self)
         self.passwordField.setPlaceholderText("Introduce la respuesta")
         self.passwordField.setGeometry(0,0.9*h,w,0.1*h)
@@ -44,9 +46,9 @@ class Entrada(QWidget):
             self.enigmaSolved()
 
     def enigmaSolved(self):
-        bar = Bar()
-        #bar.show()
-        alert = QMessageBox()
-        alert.setText("abrasadas")
-        alert.exec_()
+        self.bar = Bar()
+        self.bar.show()
+        # alert = QMessageBox()
+        # alert.setText("abrasadas")
+        # alert.exec_()
         self.close()
