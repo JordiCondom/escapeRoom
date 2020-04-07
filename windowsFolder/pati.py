@@ -11,13 +11,13 @@ class Pati(QWidget):
         super().__init__()
 
         self.setGeometry(0,0,w,h)
+        self.initWindow()
 
+        self.show()
+
+    def initWindow(self):
         self.backgroundImage = QLabel(self)
         pixmap = QPixmap("./images/pati1.jpeg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        textLabel = QLabel(self)
-        textLabel.setText("Pati")
-        textLabel.setWordWrap(True)
-        textLabel.move(0.4*w, h/3)
-        textLabel.setAlignment(Qt.AlignCenter)
+        

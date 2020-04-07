@@ -1,4 +1,5 @@
 import sys
+from PyQt5 import QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -85,6 +86,6 @@ class Bar(QWidget):
         self.nextButton.clicked.connect(self.pati)
 
     def pati(self):
-        pati = Pati()
+        self.pati = Pati()
         self.close()
 

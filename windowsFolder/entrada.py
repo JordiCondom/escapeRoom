@@ -24,9 +24,6 @@ class Entrada(QWidget):
         self.show()
 
     def initWindow(self):
-        #palette = self.palette()
-        #palette.setColor(self.backgroundRole(), Qt.black)
-        #self.setPalette(palette)
         pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
@@ -78,15 +75,11 @@ class Entrada(QWidget):
         
         self.checkButton.show()
         self.checkButton.move(0.7*w, 0.83*h)
-        print("1")
         self.checkButton.clicked.connect(self.checkAnswer)
-
-        print("2")
 
         self.clockField.show()
 
     def checkAnswer(self):
-        print("3")
         num1 = self.clockField.slot1.toPlainText()
         num2 = self.clockField.slot2.toPlainText()
         num3 = self.clockField.slot3.toPlainText()
@@ -95,7 +88,7 @@ class Entrada(QWidget):
             self.clockEnigmaSolved()
 
     def clockEnigmaSolved(self):
-        pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
+        pixmap = QPixmap("./images/entrada/entradafme2.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.checkButton.hide()
@@ -112,8 +105,6 @@ class Entrada(QWidget):
     def enigma(self):
         pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
-
-        print("enigma")
 
         self.textField.setText("segon enigma uuuuuuu")
         self.nextButton.hide()
@@ -157,5 +148,6 @@ class TextWithMaxSize1(QTextEdit):
         self.textChanged.connect(self.limit)
 
     def limit(self):
-        if len(self.toPlainText()) > 1:
-            self.setPlainText("")
+        s = self.toPlainText()
+        if len(s) > 1:
+            self.setPlainText(s[0])
