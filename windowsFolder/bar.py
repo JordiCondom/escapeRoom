@@ -19,12 +19,9 @@ class Bar(QWidget):
         textLabel.setWordWrap(True)
         textLabel.move(0.4*w, h/3)
         textLabel.setAlignment(Qt.AlignCenter)
-<<<<<<< HEAD
-=======
 
         backgroundImage = QLabel(self)
         pixmap = QPixmap("./images/LuisDelBar.jpg").scaled(w,h)
         backgroundImage.setPixmap(pixmap)
 
         self.show()
->>>>>>> 3a7a098e330f77296a4b685757a1659696891ac1

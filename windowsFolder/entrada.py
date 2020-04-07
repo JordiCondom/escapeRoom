@@ -5,7 +5,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from windowsFolder.bar import Bar
 
-w = 1000
+w = 900
 h = 600
 
 class Entrada(QWidget):
@@ -13,45 +13,79 @@ class Entrada(QWidget):
         super(Entrada, self).__init__()
 
         self.setGeometry(0,0,w,h)
+        self.backgroundImage = QLabel(self)
+        self.textBubble = QLabel(self)
+        self.nextButton = QPushButton(self)
+        self.textField = QLabel(self)
         self.initWindow()
 
     def initWindow(self):
-        textLabel = QLabel(self)
-        textLabel.setText("Entrada")
-        textLabel.setWordWrap(True)
-        textLabel.move(0.4*w, h/3)
-        textLabel.setAlignment(Qt.AlignCenter)
+        #palette = self.palette()
+        #palette.setColor(self.backgroundRole(), Qt.black)
+        #self.setPalette(palette)
+        pixmap = QPixmap("./images/black.png").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
 
-        backgroundImage = QLabel(self)
-        pixmap = QPixmap("./images/entradafme2.jpg").scaled(w,h)
-        backgroundImage.setPixmap(pixmap)
+        bubblePM = QPixmap("./images/textBubble.png")
+        self.textBubble.setPixmap(bubblePM)
+        self.textBubble.move(0.1*w, 0.75*h)
 
-        button = QPushButton(self)
-        button.move(w/3,h/3)
-        button.setIcon(QIcon('./images/icon.svg'))
-        button.setStyleSheet("QPushButton{background: transparent;}")
-        button.clicked.connect(self.checkAnswer)
-        
-        self.passwordField = QTextEdit(self)
-        self.passwordField.setPlaceholderText("Introduce la respuesta")
-        self.passwordField.setGeometry(0,0.9*h,w,0.1*h)
+        self.textField.setText("hola aquesta és la primera pestanya")
+        self.textField.adjustSize()
+        self.textField.move(0.15*w, 0.8*h)
+
+        self.nextButton.move(0.85*w,0.85*h)
+        self.nextButton.setIcon(QIcon('./images/next.png'))
+        self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
+        self.nextButton.clicked.connect(self.arribadaFme)
 
         self.show()
 
+    def arribadaFme(self):
+        pixmap = QPixmap("./images/entradafme3.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+        
+        self.textField.setText("hola aquesta és la segona")
+        self.textField.adjustSize()
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.entradaFme)
+
+        self.show()
+
+    def entradaFme(self):
+        pixmap = QPixmap("./images/entradafme2.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.textField.setText("i aquesta és la tercera, que més tard es separarà en dues diferents")
+        self.textField.adjustSize()
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.rellotge)
+
+    def rellotge(self):
+        pixmap = QPixmap("./images/hora.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.textBubble.hide()
+        self.textField.hide()
+        #self.nextButton.hide()
+
+        self.passwordField = QTextEdit(self)
+        self.passwordField.setPlaceholderText("Introduce la respuesta")
+        self.passwordField.setGeometry(0.1*w,0.75*h,0.8*w,0.2*h)
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.checkAnswer)
+
+
     def checkAnswer(self):
         password = "guapo"
-        print(password)
+        #print(password)
         answer = self.passwordField.toPlainText()
         if answer == password:
             self.enigmaSolved()
 
     def enigmaSolved(self):
         self.bar = Bar()
-<<<<<<< HEAD
-        self.bar.show()
-        # alert = QMessageBox()
-        # alert.setText("abrasadas")
-        # alert.exec_()
-=======
->>>>>>> 3a7a098e330f77296a4b685757a1659696891ac1
         self.close()
