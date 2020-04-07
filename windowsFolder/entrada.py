@@ -17,16 +17,17 @@ class Entrada(QWidget):
         self.textBubble = QLabel(self)
         self.nextButton = QPushButton(self)
         self.textField = QLabel(self)
+        self.passwordField = InputHora()
         self.initWindow()
 
     def initWindow(self):
         #palette = self.palette()
         #palette.setColor(self.backgroundRole(), Qt.black)
         #self.setPalette(palette)
-        pixmap = QPixmap("./images/black.png").scaled(w,h)
+        pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        bubblePM = QPixmap("./images/textBubble.png")
+        bubblePM = QPixmap("./images/icons/textBubble.png")
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
@@ -34,15 +35,20 @@ class Entrada(QWidget):
         self.textField.adjustSize()
         self.textField.move(0.15*w, 0.8*h)
 
-        self.nextButton.move(0.85*w,0.85*h)
-        self.nextButton.setIcon(QIcon('./images/next.png'))
+        self.nextButton.move(0.85*w,0.83*h)
+        self.nextButton.setIcon(QIcon('./images/icons/next.png'))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
         self.nextButton.clicked.connect(self.arribadaFme)
+
+        self.passwordField.setParent(self)
+        #self.passwordField.setPlaceholderText("Introduce la respuesta")
+        self.passwordField.setGeometry(0.3*w,0.774*h,0.4*w,0.15*h)
+        self.passwordField.hide()
 
         self.show()
 
     def arribadaFme(self):
-        pixmap = QPixmap("./images/entradafme3.jpg").scaled(w,h)
+        pixmap = QPixmap("./images/entrada/entradafme3.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
         
         self.textField.setText("hola aquesta és la segona")
@@ -51,10 +57,8 @@ class Entrada(QWidget):
         self.nextButton.clicked.disconnect()
         self.nextButton.clicked.connect(self.entradaFme)
 
-        self.show()
-
     def entradaFme(self):
-        pixmap = QPixmap("./images/entradafme2.jpg").scaled(w,h)
+        pixmap = QPixmap("./images/entrada/entradafme2.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText("i aquesta és la tercera, que més tard es separarà en dues diferents")
@@ -64,28 +68,61 @@ class Entrada(QWidget):
         self.nextButton.clicked.connect(self.rellotge)
 
     def rellotge(self):
-        pixmap = QPixmap("./images/hora.jpg").scaled(w,h)
+        pixmap = QPixmap("./images/entrada/hora.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textBubble.hide()
         self.textField.hide()
-        #self.nextButton.hide()
+        self.nextButton.move(0.7*w,0.83*h)
 
-        self.passwordField = QTextEdit(self)
-        self.passwordField.setPlaceholderText("Introduce la respuesta")
-        self.passwordField.setGeometry(0.1*w,0.75*h,0.8*w,0.2*h)
+        self.passwordField.show()
 
         self.nextButton.clicked.disconnect()
         self.nextButton.clicked.connect(self.checkAnswer)
 
 
     def checkAnswer(self):
-        password = "guapo"
-        #print(password)
-        answer = self.passwordField.toPlainText()
-        if answer == password:
+        num1 = self.passwordField.slot1.toPlainText()
+        num2 = self.passwordField.slot2.toPlainText()
+        num3 = self.passwordField.slot3.toPlainText()
+        num4 = self.passwordField.slot4.toPlainText()
+        if num1 == '0' and num2 == '7' and num3 == '1' and num4 == '5':
             self.enigmaSolved()
 
     def enigmaSolved(self):
         self.bar = Bar()
         self.close()
+
+class InputHora(QLabel):
+    def __init__(self):
+        super(InputHora, self).__init__()
+        hora = QWidget()
+        layout = QHBoxLayout()
+
+        self.slot1 = TextWithMaxSize1()
+        self.slot2 = TextWithMaxSize1()
+        self.slot3 = TextWithMaxSize1()
+        self.slot4 = TextWithMaxSize1()
+        points = QLabel()
+        pm = QPixmap(".images/icons/colon.png")
+        points.setPixmap(pm)
+
+        layout.addWidget(self.slot1)
+        layout.addWidget(self.slot2)
+        layout.addWidget(points)
+        layout.addWidget(self.slot3)
+        layout.addWidget(self.slot4)
+
+        self.setLayout(layout)
+
+class TextWithMaxSize1(QTextEdit):
+    def __init__(self):
+        super().__init__()
+        self.textChanged.connect(self.limit)
+        #self.setAlignment(Qt.AlignCenter)
+        #self.setFontPointSize(50)
+
+    def limit(self):
+        if len(self.toPlainText()) > 1:
+            self.setPlainText("")
+        
+

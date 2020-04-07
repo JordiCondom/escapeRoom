@@ -21,7 +21,7 @@ class Bar(QWidget):
         textLabel.setAlignment(Qt.AlignCenter)
 
         backgroundImage = QLabel(self)
-        pixmap = QPixmap("./images/LuisDelBar.jpg").scaled(w,h)
+        pixmap = QPixmap("./images/bar/LuisDelBar.jpg").scaled(w,h)
         backgroundImage.setPixmap(pixmap)
 
         self.show()
