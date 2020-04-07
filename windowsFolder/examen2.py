@@ -3,7 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
-w = 1000
+w = 900
 h = 600
 
 class Examen2(QWidget):

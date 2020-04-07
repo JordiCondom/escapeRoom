@@ -17,8 +17,11 @@ class Entrada(QWidget):
         self.textBubble = QLabel(self)
         self.nextButton = QPushButton(self)
         self.textField = QLabel(self)
-        self.passwordField = InputHora()
+        self.clockField = InputHora()
+        self.checkButton = QPushButton('Comprova', self)
         self.initWindow()
+
+        self.show()
 
     def initWindow(self):
         #palette = self.palette()
@@ -40,12 +43,11 @@ class Entrada(QWidget):
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
         self.nextButton.clicked.connect(self.arribadaFme)
 
-        self.passwordField.setParent(self)
-        #self.passwordField.setPlaceholderText("Introduce la respuesta")
-        self.passwordField.setGeometry(0.3*w,0.774*h,0.4*w,0.15*h)
-        self.passwordField.hide()
+        self.checkButton.hide()
 
-        self.show()
+        self.clockField.setParent(self)
+        self.clockField.setGeometry(0.3*w,0.775*h,0.4*w,0.15*h)
+        self.clockField.hide()
 
     def arribadaFme(self):
         pixmap = QPixmap("./images/entrada/entradafme3.jpg").scaled(w,h)
@@ -65,36 +67,70 @@ class Entrada(QWidget):
         self.textField.adjustSize()
 
         self.nextButton.clicked.disconnect()
-        self.nextButton.clicked.connect(self.rellotge)
+        self.nextButton.clicked.connect(self.clock)
 
-    def rellotge(self):
+    def clock(self):
         pixmap = QPixmap("./images/entrada/hora.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.hide()
-        self.nextButton.move(0.7*w,0.83*h)
+        self.nextButton.hide()
+        
+        self.checkButton.show()
+        self.checkButton.move(0.7*w, 0.83*h)
+        print("1")
+        self.checkButton.clicked.connect(self.checkAnswer)
 
-        self.passwordField.show()
+        print("2")
 
-        self.nextButton.clicked.disconnect()
-        self.nextButton.clicked.connect(self.checkAnswer)
-
+        self.clockField.show()
 
     def checkAnswer(self):
-        num1 = self.passwordField.slot1.toPlainText()
-        num2 = self.passwordField.slot2.toPlainText()
-        num3 = self.passwordField.slot3.toPlainText()
-        num4 = self.passwordField.slot4.toPlainText()
+        print("3")
+        num1 = self.clockField.slot1.toPlainText()
+        num2 = self.clockField.slot2.toPlainText()
+        num3 = self.clockField.slot3.toPlainText()
+        num4 = self.clockField.slot4.toPlainText()
         if num1 == '0' and num2 == '7' and num3 == '1' and num4 == '5':
-            self.enigmaSolved()
+            self.clockEnigmaSolved()
 
-    def enigmaSolved(self):
+    def clockEnigmaSolved(self):
+        pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.checkButton.hide()
+        self.clockField.hide()
+
+        self.textField.show()
+        self.nextButton.show()
+
+        self.textField.setText("Enhorabona has resolt l'enigma!")
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.enigma)
+
+    def enigma(self):
+        pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        print("enigma")
+
+        self.textField.setText("segon enigma uuuuuuu")
+        self.nextButton.hide()
+
+        self.checkButton.show()
+        self.checkButton.clicked.disconnect()
+        self.checkButton.clicked.connect(self.bar)
+
+    def bar(self):
         self.bar = Bar()
         self.close()
+
 
 class InputHora(QLabel):
     def __init__(self):
         super(InputHora, self).__init__()
+        self.setFont(QFont("Times",52))
         hora = QWidget()
         layout = QHBoxLayout()
 
@@ -103,8 +139,9 @@ class InputHora(QLabel):
         self.slot3 = TextWithMaxSize1()
         self.slot4 = TextWithMaxSize1()
         points = QLabel()
-        pm = QPixmap(".images/icons/colon.png")
-        points.setPixmap(pm)
+        points.setFont(QFont("Times",30))
+        points.setText(":")
+        points.setScaledContents(True)
 
         layout.addWidget(self.slot1)
         layout.addWidget(self.slot2)
@@ -118,11 +155,7 @@ class TextWithMaxSize1(QTextEdit):
     def __init__(self):
         super().__init__()
         self.textChanged.connect(self.limit)
-        #self.setAlignment(Qt.AlignCenter)
-        #self.setFontPointSize(50)
 
     def limit(self):
         if len(self.toPlainText()) > 1:
             self.setPlainText("")
-        
-
