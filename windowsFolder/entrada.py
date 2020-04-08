@@ -15,15 +15,16 @@ class Entrada(QWidget):
         self.setGeometry(0,0,w,h)
         self.backgroundImage = QLabel(self)
         self.textBubble = QLabel(self)
+        self.previousButton = QPushButton(self)
         self.nextButton = QPushButton(self)
         self.textField = QLabel(self)
         self.clockField = InputHora()
         self.checkButton = QPushButton('Comprova', self)
-        self.initWindow()
+        self.initWindowFirst()
 
         self.show()
 
-    def initWindow(self):
+    def initWindowFirst(self):
         pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
@@ -31,37 +32,96 @@ class Entrada(QWidget):
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
-        self.textField.setText("hola aquesta és la primera pestanya")
-        self.textField.adjustSize()
-        self.textField.move(0.15*w, 0.8*h)
+        self.textField.setText('''<p>Mínims quadrats, P*A=L*U, error absolut, error relatiu,... va, no et preocupis, has estudiat molt per aquest examen, has anat cada dilluns i cada divendres a classe en comptes  d'anar a la bolera com els  irresponsables dels teus companys, és impossible que suspenguis.</p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+        self.textField.move(0.167*w, 0.8*h)
 
         self.nextButton.move(0.85*w,0.83*h)
         self.nextButton.setIcon(QIcon('./images/icons/next.png'))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
-        self.nextButton.clicked.connect(self.arribadaFme)
+        try:
+            self.nextButton.clicked.disconnect()
+        except:
+            pass
+        self.nextButton.clicked.connect(self.initWindowSecond)
 
         self.checkButton.hide()
+        self.previousButton.hide()
 
         self.clockField.setParent(self)
         self.clockField.setGeometry(0.3*w,0.775*h,0.4*w,0.15*h)
         self.clockField.hide()
 
+    def initWindowSecond(self):
+        pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.textField.setText('''<p> I el més important de tot, ja és l'últim, un cop acabat ja podràs començar a pensar en tot el que disfrutaràs i suaràs (literalment) les recus. A més, has vingut aviat per a poder prendre el cafè tranquil·lament i fer l'última repassadeta de Doolittle i de la descomposició SVD. N*mèr**a és apassionant.</p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.arribadaFme)
+
+        self.previousButton.move(0.12*w, 0.83*h)
+        self.previousButton.setIcon(QIcon('./images/icons/previous.png'))
+        self.previousButton.setStyleSheet("QPushButton{background: transparent;}")
+        self.previousButton.clicked.connect(self.initWindowFirst)
+        self.previousButton.show()
+
     def arribadaFme(self):
         pixmap = QPixmap("./images/entrada/entradafme3.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
         
-        self.textField.setText("hola aquesta és la segona")
-        self.textField.adjustSize()
+        self.textField.setText('''<p> Mira, ja es veu l'entrada. Quina sensació més estranya però, quanta tranquil·litat. M'atreviria a dir que sembla com si la FME estigués tancada. T'imagines? Per una pandèmia mundial o algo així, segur que en sortirien bons memes.</p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.initWindowSecond)
 
         self.nextButton.clicked.disconnect()
-        self.nextButton.clicked.connect(self.entradaFme)
+        self.nextButton.clicked.connect(self.entradaFmeFirst)
 
-    def entradaFme(self):
+    def entradaFmeFirst(self):
         pixmap = QPixmap("./images/entrada/entradafme2.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText("i aquesta és la tercera, que més tard es separarà en dues diferents")
-        self.textField.adjustSize()
+        self.textField.setText('''<p><b>Veu en off:</b> et sorprens, a davant de l'FME hi ha una persona estirada mig inconscient, només mou el peu dret. Et pica la curiositat. Després de donar-hi moltes voltes, arribes a l'única conclusió possible, ha anat a Apolo. Decideixes ajudar ja que com bé diu la frase, <i>"Simio ayuda a simio"</i>.</p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.arribadaFme)
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.entradaFmeSecond)
+
+    def entradaFmeSecond(self):
+        self.textField.setText('''<p>Es confirma la teoria, ve d'Apolo. Ara bé, no es tracta d'una persona qualsevol, és el segurata de la FME. Pel que es veu li va semblar bona idea sortir a Apolo quan l'endemà tenia responsabilitats. Com era d'esperar, la FME seguia tancada, ningú l'havia obert."</p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.entradaFmeFirst)
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.entradaFmeTercer)
+
+    def entradaFmeTercer(self):
+        self.textField.setText('''<p>El segurata s'explica: si t'haig de ser sincer, ho vaig petar bastant. Va sonar <i>Yo Perreo Sola</i> 10 cops i 10 van ser els cops que el meu cul va fregar el terra d'Apolo. Ara bé, tota acció té les seves conseqüències, el "perreo" va ser tan intens que vaig trencar el rellotge. Ara no sé quina hora és i no sé si haig d'obrir la FME o no, em podries ajudar? </p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.entradaFmeSecond)
 
         self.nextButton.clicked.disconnect()
         self.nextButton.clicked.connect(self.clock)
@@ -72,6 +132,7 @@ class Entrada(QWidget):
 
         self.textField.hide()
         self.nextButton.hide()
+        self.previousButton.hide()
         
         self.checkButton.show()
         self.checkButton.move(0.7*w, 0.83*h)
@@ -87,12 +148,18 @@ class Entrada(QWidget):
         if num1 == '0' and num2 == '7' and num3 == '1' and num4 == '5':
             self.clockEnigmaSolved()
 
+
     def clockEnigmaSolved(self):
-        pixmap = QPixmap("./images/entrada/entradafme2.jpg").scaled(w,h)
-        self.backgroundImage.setPixmap(pixmap)
 
         self.checkButton.hide()
         self.clockField.hide()
+        self.backgroundImage.clear()
+
+        self.hide()
+        self.show()
+        
+        pixmap = QPixmap("./images/entrada/entradafme2.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
 
         self.textField.show()
         self.nextButton.show()
