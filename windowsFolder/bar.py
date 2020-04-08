@@ -29,7 +29,7 @@ class Bar(QWidget):
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
-        self.textField.setText("mmmmm crec que em demanaré un café amb llet i un croissant salat, que em sembla que fan oferta")
+        self.textField.setText("AQUÍ HI HAURÀ LA FOTO DELS PREUS. - mmmmm crec que em demanaré un café amb llet i un croissant salat, que em sembla que fan oferta")
         self.textField.adjustSize()
         self.textField.move(0.15*w, 0.8*h)
 
@@ -56,11 +56,24 @@ class Bar(QWidget):
         self.nextButton.clicked.connect(self.enigma)
 
     def enigma(self):
-        pixmap = QPixmap("./images/bar/bandera.png").scaled(w,h)
+        pixmap = QPixmap("./images/bar/enigmaBar.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText("aquí hi haurà l'enigma suposadament")
+        self.textField.hide()
+        self.textBubble.hide()
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.resposta)
+
+    def resposta(self):
+        pixmap = QPixmap("./images/bar/piratas.JPG").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.textField.setText("A sobre ens ha portat un bitllet de 100 amb el pergamino, i vol el canvi abans d'aquesta tarda. Ens pots dir quant li hem de tornar al pringat aquest? Vull dir al pirata aquest?")
         self.textField.adjustSize()
+
+        self.textField.show()
+        self.textBubble.show()
 
         self.nextButton.clicked.disconnect()
         self.nextButton.clicked.connect(self.luis)
