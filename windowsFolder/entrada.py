@@ -237,7 +237,7 @@ class Entrada(QWidget):
             self.heEntrat()
 
     def heEntrat(self):
-        pixmap = QPixmap("./images/entrada.jpg").scaled(w,h)
+        pixmap = QPixmap("./images/entrada/entrada.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.hide()
@@ -248,14 +248,14 @@ class Entrada(QWidget):
         self.previousButton.hide()
 
         self.textField.show()
-        self.textField.setText("Genial, hem entrat! I ara on vaig?")
+        self.textField.setText("Genial, moltes gràcies! Quina casualitat que cada dia és la mateixa contrasenya! I tu ara on vas?")
 
         self.boto1 = QPushButton('Al bar per dintre', self)
-        self.boto1.move(0.4*w, 0.79*h)
+        self.boto1.move(0.34*w, 0.85*h)
         self.boto1.clicked.connect(self.bar)
 
         self.boto2 = QPushButton('Al bar per fora', self)
-        self.boto2.move(0.4*w, 0.85*h)
+        self.boto2.move(0.54*w, 0.85*h)
         self.boto2.clicked.connect(self.bar)
         
         self.boto1.show()
