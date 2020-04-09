@@ -115,6 +115,15 @@ class Entrada(QWidget):
         self.nextButton.clicked.connect(self.entradaFmeTercer)
 
     def entradaFmeTercer(self):
+        pixmap = QPixmap("./images/entrada/entradafme2.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.checkButton.hide()
+        self.clockField.hide()
+
+        self.textField.show()
+        self.nextButton.show()
+
         self.textField.setText('''<p>El segurata s'explica: si t'haig de ser sincer, ho vaig petar bastant. Va sonar <i>Yo Perreo Sola</i> 10 cops i 10 van ser els cops que el meu cul va fregar el terra d'Apolo. Ara bé, tota acció té les seves conseqüències, el "perreo" va ser tan intens que vaig trencar el rellotge. Ara no sé quina hora és i no sé si haig d'obrir la FME o no, em podries ajudar? </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
@@ -132,8 +141,10 @@ class Entrada(QWidget):
 
         self.textField.hide()
         self.nextButton.hide()
-        self.previousButton.hide()
-        
+
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.entradaFmeTercer)
+
         self.checkButton.show()
         self.checkButton.move(0.7*w, 0.83*h)
         self.checkButton.clicked.connect(self.checkAnswer)
@@ -146,13 +157,13 @@ class Entrada(QWidget):
         num3 = self.clockField.slot3.toPlainText()
         num4 = self.clockField.slot4.toPlainText()
         if num1 == '0' and num2 == '7' and num3 == '1' and num4 == '5':
-            self.clockEnigmaSolved()
+            self.clockEnigmaSolvedFirst()
 
 
-    def clockEnigmaSolved(self):
-
+    def clockEnigmaSolvedFirst(self):
         self.checkButton.hide()
         self.clockField.hide()
+        self.previousButton.hide()
         self.backgroundImage.clear()
 
         self.hide()
@@ -164,7 +175,28 @@ class Entrada(QWidget):
         self.textField.show()
         self.nextButton.show()
 
-        self.textField.setText("Enhorabona has resolt l'enigma!")
+        self.textField.setText('''<p>Verge Santa dels set dolors! Són les 07:15! Ja hauria d'haver obert la FME fa quinze minuts! Moltes gràcies, has sigut de gran ajuda. Ara només queda obrir la FME... Oh no!  Durant el "perreo" intens no només se m'ha trencat el rellotge, també se m'ha trencat el regle i ara no puc obrir la FME!</p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.clockEnigmaSolvedSecond)
+
+    def clockEnigmaSolvedSecond(self):
+        pixmap = QPixmap("./images/entrada/entradafme2.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.checkButton.hide()
+
+        self.textField.setText('''<p>I ara et preguntaràs, per a què carai necessita el segurata de la FME un regle per obrir-la? Doncs la resposta és molt senzilla, veus aquest dibuix de la porta? La contrasenya per entrar a la FME correspon a la <i>x</i> en mil·límetres. Normalment puc mesurar-ho amb el regle, però avui ho veig complicat, per un tema. Tu que en saps tant de números, no em donaries un cop de mà?</p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+
+        self.previousButton.show()
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.clockEnigmaSolvedFirst)
 
         self.nextButton.clicked.disconnect()
         self.nextButton.clicked.connect(self.enigma)
@@ -176,9 +208,16 @@ class Entrada(QWidget):
         self.textField.setText("segon enigma uuuuuuu")
         self.nextButton.hide()
 
+
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.clockEnigmaSolvedSecond)
+
         self.checkButton.show()
         self.checkButton.clicked.disconnect()
-        self.checkButton.clicked.connect(self.bar)
+        self.checkButton.clicked.connect(self.checkSecondAnswer)
+
+    def checkSecondAnswer(self):
+        self.bar()
 
     def bar(self):
         self.bar = Bar()
