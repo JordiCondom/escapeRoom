@@ -20,6 +20,7 @@ class Entrada(QWidget):
         self.textField = QLabel(self)
         self.clockField = InputHora()
         self.checkButton = QPushButton('Comprova', self)
+        self.inputLength = TextWithMaxSize2()
         self.initWindowFirst()
 
         self.show()
@@ -53,6 +54,10 @@ class Entrada(QWidget):
         self.clockField.setParent(self)
         self.clockField.setGeometry(0.3*w,0.775*h,0.4*w,0.15*h)
         self.clockField.hide()
+
+        self.inputLength.setParent(self)
+        self.inputLength.setGeometry(0.48*w,0.79*h,0.08*w,0.12*h)
+        self.inputLength.hide()
 
     def initWindowSecond(self):
         pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
@@ -202,12 +207,13 @@ class Entrada(QWidget):
         self.nextButton.clicked.connect(self.enigma)
 
     def enigma(self):
-        pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
+        pixmap = QPixmap("./images/entrada/enigma.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText("segon enigma uuuuuuu")
+        self.textField.hide()
         self.nextButton.hide()
 
+        self.inputLength.show()
 
         self.previousButton.clicked.disconnect()
         self.previousButton.clicked.connect(self.clockEnigmaSolvedSecond)
@@ -217,7 +223,17 @@ class Entrada(QWidget):
         self.checkButton.clicked.connect(self.checkSecondAnswer)
 
     def checkSecondAnswer(self):
-        self.bar()
+        if self.inputLength.toPlainText() == "69":
+            self.heEntrat()
+
+    def heEntrat(self):
+        
+        self.textField.show()
+        self.textField.setText("Genial, hem entrat! I ara on vaig?")
+
+        self.boto1("al bar per dintre", self)
+        self.boto2("al bar per fora", self)
+
 
     def bar(self):
         self.bar = Bar()
@@ -257,3 +273,14 @@ class TextWithMaxSize1(QTextEdit):
         s = self.toPlainText()
         if len(s) > 1:
             self.setPlainText(s[0])
+
+class TextWithMaxSize2(QTextEdit):
+    def __init__(self):
+        super().__init__()
+        self.textChanged.connect(self.limit)
+        self.setFont(QFont("Times",52))
+
+    def limit(self):
+        s = self.toPlainText()
+        if len(s) > 2:
+            self.setPlainText("")
