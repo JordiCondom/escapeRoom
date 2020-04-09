@@ -108,6 +108,9 @@ class Entrada(QWidget):
         self.nextButton.clicked.connect(self.entradaFmeSecond)
 
     def entradaFmeSecond(self):
+        pixmap = QPixmap("./images/entrada/segurata_dormido.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
         self.textField.setText('''<p>Es confirma la teoria, ve d'Apolo. Ara bé, no es tracta d'una persona qualsevol, és el segurata de la FME. Pel que es veu li va semblar bona idea sortir a Apolo quan l'endemà tenia responsabilitats. Com era d'esperar, la FME seguia tancada, ningú l'havia obert."</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
