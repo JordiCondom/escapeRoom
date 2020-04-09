@@ -189,15 +189,20 @@ class Entrada(QWidget):
         self.nextButton.clicked.connect(self.clockEnigmaSolvedSecond)
 
     def clockEnigmaSolvedSecond(self):
+        self.inputLength.hide()
+        self.textField.show()
+        self.nextButton.show()
+
         pixmap = QPixmap("./images/entrada/entradafme2.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.checkButton.hide()
 
-        self.textField.setText('''<p>I ara et preguntaràs, per a què carai necessita el segurata de la FME un regle per obrir-la? Doncs la resposta és molt senzilla, veus aquest dibuix de la porta? La contrasenya per entrar a la FME correspon a la <i>x</i> en mil·límetres. Normalment puc mesurar-ho amb el regle, però avui ho veig complicat, per un tema. Tu que en saps tant de números, no em donaries un cop de mà?</p>''')
+        self.textField.setText('''<p>I ara et preguntaràs, per a què carai necessita el segurata de la FME un regle per obrir-la? Doncs la resposta és molt senzilla, veus aquest dibuix de la porta? La contrasenya per entrar a la FME correspon a la <i>segment blau</i> en mil·límetres. Normalment puc mesurar-ho amb el regle, però avui ho veig complicat, per un tema. Tu que en saps tant de números, no em donaries un cop de mà? Jo no en sé gaire d'aquestes coses, només et puc dir que l'àrea d'un cercle és 1587*pi.</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
+        self.textField.move(0.167*w, 0.78*h)
 
         self.previousButton.show()
         self.previousButton.clicked.disconnect()
@@ -210,6 +215,8 @@ class Entrada(QWidget):
         pixmap = QPixmap("./images/entrada/enigma.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
+
+        self.textField.move(0.167*w, 0.8*h)
         self.textField.hide()
         self.nextButton.hide()
 
@@ -227,13 +234,30 @@ class Entrada(QWidget):
             self.heEntrat()
 
     def heEntrat(self):
-        
+        pixmap = QPixmap("./images/entrada.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.hide()
+        self.show()
+
+        self.checkButton.hide()
+        self.inputLength.hide()
+        self.previousButton.hide()
+
+
         self.textField.show()
         self.textField.setText("Genial, hem entrat! I ara on vaig?")
 
-        self.boto1("al bar per dintre", self)
-        self.boto2("al bar per fora", self)
+        self.boto1 = QPushButton('Al bar per dintre', self)
+        self.boto1.move(0.4*w, 0.79*h)
+        self.boto1.clicked.connect(self.bar)
 
+        self.boto2 = QPushButton('Al bar per fora', self)
+        self.boto2.move(0.4*w, 0.85*h)
+        self.boto2.clicked.connect(self.bar)
+        
+        self.boto1.show()
+        self.boto2.show()
 
     def bar(self):
         self.bar = Bar()
