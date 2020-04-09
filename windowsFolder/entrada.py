@@ -93,7 +93,7 @@ class Entrada(QWidget):
         self.nextButton.clicked.connect(self.entradaFmeFirst)
 
     def entradaFmeFirst(self):
-        pixmap = QPixmap("./images/entrada/entradafme2.jpg").scaled(w,h)
+        pixmap = QPixmap("./images/entrada/segurata_dormido.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p><b>Veu en off:</b> et sorprens, a davant de l'FME hi ha una persona estirada mig inconscient, només mou el peu dret. Et pica la curiositat. Després de donar-hi moltes voltes, arribes a l'única conclusió possible, ha anat a Apolo. Decideixes ajudar ja que com bé diu la frase, <i>"Simio ayuda a simio"</i>.</p>''')
@@ -120,7 +120,7 @@ class Entrada(QWidget):
         self.nextButton.clicked.connect(self.entradaFmeTercer)
 
     def entradaFmeTercer(self):
-        pixmap = QPixmap("./images/entrada/entradafme2.jpg").scaled(w,h)
+        pixmap = QPixmap("./images/entrada/segurata.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.checkButton.hide()
@@ -174,7 +174,7 @@ class Entrada(QWidget):
         self.hide()
         self.show()
         
-        pixmap = QPixmap("./images/entrada/entradafme2.jpg").scaled(w,h)
+        pixmap = QPixmap("./images/entrada/segurata.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.show()
@@ -193,7 +193,7 @@ class Entrada(QWidget):
         self.textField.show()
         self.nextButton.show()
 
-        pixmap = QPixmap("./images/entrada/entradafme2.jpg").scaled(w,h)
+        pixmap = QPixmap("./images/entrada/segurata.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.checkButton.hide()
@@ -243,7 +243,6 @@ class Entrada(QWidget):
         self.checkButton.hide()
         self.inputLength.hide()
         self.previousButton.hide()
-
 
         self.textField.show()
         self.textField.setText("Genial, hem entrat! I ara on vaig?")
