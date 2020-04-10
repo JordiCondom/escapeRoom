@@ -21,6 +21,7 @@ class Entrada(QWidget):
         self.clockField = InputHora()
         self.checkButton = QPushButton('Comprova', self)
         self.inputLength = TextWithMaxSize2()
+        self.hintButton = QPushButton(self)
         self.initWindowFirst()
 
         self.show()
@@ -59,7 +60,15 @@ class Entrada(QWidget):
         self.inputLength.setGeometry(0.48*w,0.79*h,0.08*w,0.12*h)
         self.inputLength.hide()
 
+        self.hintButton.setIcon(QIcon('./images/icons/idea.png'))
+        self.hintButton.setStyleSheet("QPushButton{background: transparent;}")
+        self.hintButton.move(0.9*w, 0.05*h)
+        self.hintButton.setIconSize(QSize(50,50))
+        self.hintButton.clicked.connect(self.hint)
+        self.hintButton.hide()
+
     def initWindowSecond(self):
+        print("hola")
         pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
@@ -200,8 +209,9 @@ class Entrada(QWidget):
         self.backgroundImage.setPixmap(pixmap)
 
         self.checkButton.hide()
+        self.hintButton.hide()
 
-        self.textField.setText('''<p>I ara et preguntaràs, per a què carai necessita el segurata de la FME un regle per obrir-la? Doncs la resposta és molt senzilla, veus aquest dibuix de la porta? La contrasenya per entrar a la FME correspon a la <i>segment blau</i> en mil·límetres. Normalment puc mesurar-ho amb el regle, però avui ho veig complicat, per un tema. Tu que en saps tant de números, no em donaries un cop de mà? Jo no en sé gaire d'aquestes coses, només et puc dir que l'àrea d'un cercle és 1587*pi.</p>''')
+        self.textField.setText('''<p>I ara et preguntaràs, per a què carai necessita el segurata de la FME un regle per obrir-la? Doncs la resposta és molt senzilla, veus aquest dibuix de la porta? La contrasenya per entrar a la FME correspon a la longitud del <i>segment blau</i> en mil·límetres. Normalment puc mesurar-ho amb el regle, però avui ho veig complicat, per un tema. Tu que en saps tant de números, no em donaries un cop de mà? Jo no en sé gaire d'aquestes coses, només et puc dir que l'àrea d'un cercle és 1587*pi.</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -228,9 +238,17 @@ class Entrada(QWidget):
         self.previousButton.clicked.disconnect()
         self.previousButton.clicked.connect(self.clockEnigmaSolvedSecond)
 
+        self.hintButton.show()
+
         self.checkButton.show()
         self.checkButton.clicked.disconnect()
         self.checkButton.clicked.connect(self.checkSecondAnswer)
+
+    def hint(self):
+        pixmap = QPixmap("./images/entrada/enigmaHint.png").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.hintButton.hide()
 
     def checkSecondAnswer(self):
         if self.inputLength.toPlainText() == "69":
@@ -243,6 +261,7 @@ class Entrada(QWidget):
         self.hide()
         self.show()
 
+        self.hintButton.hide()
         self.checkButton.hide()
         self.inputLength.hide()
         self.previousButton.hide()
