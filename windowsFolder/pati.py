@@ -37,7 +37,7 @@ class Pati(QWidget):
         self.textBubble.move(0.1*w, 0.75*h)
 
         self.textField.setText('''<p>- Què esta passant, què fa tanta gent al pati? Perdona, que m'he perdut alguna cosa? Què és tota aquesta gent? <br>
-        <b>Estudiant anònim de 8è: </b> No home no, tranquil, és que avui hi ha examen d'EDPS i hem quedat per fer NP i celebrar-ho. Apuntat-hi, a les 9:00 farem un comunicat i a les 9:30 toquen lectures de finals d'altres anys.<p>''')
+        <b>Estudiant anònim de 8è: </b> No home no, tranquil, és que avui hi ha examen d'EDE's i hem quedat per fer NP i celebrar-ho. Apuntat-hi, a les 9:00 farem un comunicat i a les 9:30 toquen lectures de finals d'altres anys.<p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -64,7 +64,7 @@ class Pati(QWidget):
         pixmap = QPixmap("./images/pati/covit.jpeg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText('''<p>- Home Covit! Com portes EDP's? Vergonyós lo d'aquesta gent eh, sembla una festa de dia això, haurien de venir els de Festes del 99 i tothom aniria directe a l'examen. Espera, no estaràs pas pensant en fer NP no?<br>
+        self.textField.setText('''<p>- Home Covit! Com portes EDE's? Vergonyós lo d'aquesta gent eh, sembla una festa de dia això. Haurien de venir els de Festes del 99 i tothom aniria directe a l'examen. Espera, no estaràs pas pensant en fer NP no?<br>
         <b>Covit:</b> Doncs mira, és que he tingut un problema...</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
@@ -85,8 +85,7 @@ class Pati(QWidget):
         pixmap = QPixmap("./images/pati/covit.jpeg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText('''<p><b>Covit:</b> Portava EDP's perfecte, fins i tot millor que Algorísmia en el seu moment, t'he explicat mai que vaig treure un (?) al final? Però resulta que m'he imprès aquest formulari que l'Iñaki va fer a l'ordinador del CFIS i no entenc res de res. Pel que es veu va tenir algun problema mentre el feia i no m'ha explicat com desxifrar-lo. Sense aquest formulari no puc assegurar el punt del teorema xinès del residu i així és impossible que aprobi. Si vols fes-li una ullada però t'asseguro que no en treuràs pas res.</p>''')
-        # self.textField.setText("Doncs sí, perquè no entenc res d'aquest formulari de l'Iñaki. Si almenys sapigués la resposta a una pregunta em presentaria")
+        self.textField.setText('''<p><b>Covit:</b> Portava EDE's perfecte, fins i tot millor que Algorísmia en el seu moment, t'he explicat mai que vaig treure un (?) al final? Però resulta que m'he imprès aquest formulari que l'Iñaki va fer a l'ordinador del CFIS i no entenc res de res. Pel que es veu va tenir algun problema mentre el feia i no m'ha explicat com desxifrar-lo. Sense aquest formulari no puc assegurar el punt del teorema xinès del residu i així és impossible que aprobi. Si vols fes-li una ullada però t'asseguro que no en treuràs pas res. Crec que només estan bé les majúscules...</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -107,6 +106,10 @@ class Pati(QWidget):
         self.textField.setText("")
         self.textBubble.hide()
 
+        self.inputAge.hide()
+        self.checkButton.hide()
+        self.nextButton.show()
+
         self.previousButton.disconnect()
         self.previousButton.clicked.connect(self.covit2)
 
@@ -117,7 +120,7 @@ class Pati(QWidget):
         pixmap = QPixmap("./images/pati/covit.jpeg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText("- Mira Civit, la resposta a totes les preguntes de l'examen, i en particular, a la pregunta més important de totes, la del teorema xinès del residu és:")
+        self.textField.setText("- Mira Covit, la resposta a totes les preguntes de l'examen, i en particular, a la pregunta més important de totes, la del teorema xinès del residu és:")
         self.textField.resize(400, 200)
         self.textField.move(0.167*w, 0.8*h)
         self.textBubble.show()
@@ -125,6 +128,9 @@ class Pati(QWidget):
         self.inputAge.show()
         self.checkButton.show()
         self.nextButton.hide()
+
+        self.previousButton.disconnect()
+        self.previousButton.clicked.connect(self.formulari)
         
         self.checkButton.show()
 
@@ -157,7 +163,6 @@ class Pati(QWidget):
     def senyorGrane(self):
         self.senyorGrane = SenyorGrane()
         self.close()
-
 
 class TextWithMaxSize2(QTextEdit):
     def __init__(self):

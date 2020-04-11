@@ -18,6 +18,8 @@ class Bar(QWidget):
         self.previousButton = QPushButton(self)
         self.nextButton = QPushButton(self)
         self.textField = QLabel(self)
+        self.checkButton = QPushButton('Comprova', self)
+        self.inputEuros = InputEuros()
         self.initWindow()
 
         self.show()
@@ -49,6 +51,14 @@ class Bar(QWidget):
         except:
             pass
         self.nextButton.clicked.connect(self.piratas)
+
+        self.checkButton.move(0.76*w, 0.83*h)
+        self.checkButton.clicked.connect(self.checkAnswer)
+        self.checkButton.hide()
+
+        self.inputEuros.setParent(self)
+        self.inputEuros.setGeometry(0.53*w,0.79*h,0.23*w,0.12*h)
+        self.inputEuros.hide()
 
     def piratas(self):
         pixmap = QPixmap("./images/bar/piratas.JPG").scaled(w,h)
@@ -107,19 +117,50 @@ class Bar(QWidget):
 
         self.textField.hide()
         self.textBubble.hide()
+        self.nextButton.show()
+
+        self.inputEuros.hide()
+        self.checkButton.hide()
 
         self.previousButton.clicked.disconnect()
         self.previousButton.clicked.connect(self.resposta)
 
         self.nextButton.clicked.disconnect()
-        self.nextButton.clicked.connect(self.luis)
+        self.nextButton.clicked.connect(self.answer)
+
+    def answer(self):
+        pixmap = QPixmap("./images/bar/piratas.JPG").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.textField.show()
+        self.textBubble.show()
+        self.nextButton.hide()
+
+        self.inputEuros.show()
+        self.checkButton.show()
+
+        self.textField.setText("- Tranquils bucaneros, és ben senzill, només heu de tornar:")
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(300, 200)
+
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.enigma)
+
+    def checkAnswer(self):
+        if self.inputEuros.euros.toPlainText() == "23" and self.inputEuros.cents.toPlainText() == "23":
+            self.inputEuros.hide()
+            self.checkButton.hide()
+            self.luis()
 
     def luis(self):
         pixmap = QPixmap("./images/bar/luis.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.show()
-        self.textBubble.show()
+        self.hide()
+        self.show()
+
+        self.nextButton.show()
         self.previousButton.hide()
 
         self.textField.setText("+ ¡Me cago en la puta, 21 lomoquesos! Luís SinBarbanegra, saca la espátula, vamos a pasear unos cuantos cerdos por la plancha. Aquí tienes, un croissant y un café con leche, serán 2,10 euros. ¿Te creías que te iba a invitar? En tus sueños xaval, venga paga, pa-ya-so.")
@@ -148,3 +189,40 @@ class Bar(QWidget):
         self.pati = Pati()
         self.close()
 
+class InputEuros(QLabel):
+    def __init__(self):
+        super(InputEuros, self).__init__()
+        self.setFont(QFont("Times",45))
+        hora = QWidget()
+        layout = QHBoxLayout()
+
+        self.euros = TextWithMaxSize2()
+        self.cents = TextWithMaxSize2()
+
+        coma = QLabel()
+        coma.setFont(QFont("Times",45))
+        coma.setText(",")
+        coma.setScaledContents(True)
+
+        euro = QLabel()
+        euro.setFont(QFont("Times",45))
+        euro.setText("€")
+        euro.setScaledContents(True)
+
+        layout.addWidget(self.euros)
+        layout.addWidget(coma)
+        layout.addWidget(self.cents)
+        layout.addWidget(euro)
+
+        self.setLayout(layout)
+
+class TextWithMaxSize2(QTextEdit):
+    def __init__(self):
+        super().__init__()
+        self.textChanged.connect(self.limit)
+        self.setFont(QFont("Times",45))
+
+    def limit(self):
+        s = self.toPlainText()
+        if len(s) > 2:
+            self.setPlainText("")

@@ -11,6 +11,9 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     #entrada = Entrada()
-    pati = Pati()
+    #bar = Bar()
+    #pati = Pati()
+    #senyorGrane = SenyorGrane()
+    cfis = Cfis()
 
     sys.exit(app.exec_())
