@@ -35,7 +35,7 @@ class Bar(QWidget):
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
-        self.textField.setText('''Carai, no m'esperava tenir un començament de dia tan atrafegat. De fet, ara que hi penso, podria haver tret el mòbil i el regle i podria haver-ho solucionat tot molt més ràpid. Bé, què hi farem, ara no és moment de penedir-se del passat, s'ha de mirar al futur, haig de ser fort. Hmmm, em demanaré un café amb llet i un croissant, que em sembla que fan oferta.''')
+        self.textField.setText('''<p>Carai, no m'esperava tenir un començament de dia tan atrafegat. De fet, ara que hi penso, podria haver tret el mòbil i el regle i podria haver-ho solucionat tot molt més ràpid. Bé, què hi farem, ara no és moment de penedir-se del passat, s'ha de mirar al futur, haig de ser fort. Hmmm, em demanaré un café amb llet i un croissant, que em sembla que fan oferta.</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -56,7 +56,8 @@ class Bar(QWidget):
         
         self.previousButton.show()
 
-        self.textField.setText('''ARRRRRRR! Què et passa a tu, mariner d'aigua UB? No et quedis com un estaquirot, digues el que vols tros de quòniam!''')
+        self.textField.setText('''<p>+ ARRRRRRR! ¿Qué conyo quieres, marinero de agua chucky? ¡Ojo al parche filibustero¡ Date prisa que hoy tenemos mucho trabajo, que sino no sé por qué retruécanos nos hemos quedado a dormir en el maldito barco y empezado a trabajar tan puto temprano. <br>
+        - Hola...? M'agradaria un café amb llet i un croissant amb l'oferta siusplau. </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -71,7 +72,7 @@ class Bar(QWidget):
         self.nextButton.clicked.connect(self.piratas2)
 
     def piratas2(self):
-        self.textField.setText("2 de piratas perquè suposo que va pa rato")
+        self.textField.setText('''<p>+ A ver, ¿tú eres tonto? ¿Crees que te voy a servir esta mierda? Yo sólo sirvo ron. Y además, ¿no ves que estamos ocupados con un pedido? Nos ha llegado este pergamino anónimo y no sabemos qué caralho nos está pidiendo, deben ser los truhanes de la UB, que siempre andan con sus bromitas de carrera. </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -86,7 +87,7 @@ class Bar(QWidget):
         pixmap = QPixmap("./images/bar/piratas.JPG").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText("A sobre ens ha portat un bitllet de 100 amb el pergamino, i vol el canvi abans d'aquesta tarda. Ens pots dir quant li hem de tornar al pringat aquest? Vull dir al pirata aquest?")
+        self.textField.setText('''<p> + Junto con el pergamino venía un billete de 100 euros y quieren el cambio antes de esta tarde, ¿se puede saber cómo voy a saber yo qué quiere esta gente? Mira zagal, qué te pareceria tener un croissant y un café con leche gratis (casi). Si nos dices cuanto le debemos a este tal anónimo te invitamos. Aquí tienes el pergamino.</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -121,8 +122,10 @@ class Bar(QWidget):
         self.textBubble.show()
         self.previousButton.hide()
 
-        self.textField.setText("superbé! has resolt l'enigma, ets tan bo com la nova comi menjar!")
-        self.textField.adjustSize()
+        self.textField.setText("+ ¡Me cago en la puta, 21 lomoquesos! Luís SinBarbanegra, saca la espátula, vamos a pasear unos cuantos cerdos por la plancha. Aquí tienes, un croissant y un café con leche, serán 2,10 euros. ¿Te creías que te iba a invitar? En tus sueños xaval, venga paga, pa-ya-so.")
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
 
         self.nextButton.clicked.disconnect()
         self.nextButton.clicked.connect(self.ruben)
@@ -131,8 +134,12 @@ class Bar(QWidget):
         pixmap = QPixmap("./images/bar/ruben.JPG").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText("surto al pati, aviam si em trobo algun Covit amb intencions de fer NP")
-        self.textField.adjustSize()
+        self.textField.setText('''<p>- 21 lomoquesos, qui carai vol 21 lomoquesos? Què farà, alimentar joves famèlics per les tardes? Ves a saber tu, un afortunat deu ser, no tothom paga amb bitllets de 100. Aniré a repassar una estona al pati, que ja s'apropa l'hora de l'examen, ara si que si, ja no em distreuré més i em posaré a estudiar.<br>
+        <b>Veu en off de Rubén:</b> ¿Ese desgraciao me está pisando la silla?<p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+        self.textField.move(0.167*w, 0.78*h)
 
         self.nextButton.clicked.disconnect()
         self.nextButton.clicked.connect(self.pati)
