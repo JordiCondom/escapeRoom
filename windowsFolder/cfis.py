@@ -21,6 +21,8 @@ class Cfis(QWidget):
         self.user = QLabel(self)
         self.password = QLabel(self)
         self.icon = QLabel(self)
+        self.inputPassword = QLineEdit(self)
+        self.error = QLabel(self)
         self.initWindow()
 
         self.show()
@@ -70,6 +72,16 @@ class Cfis(QWidget):
 
         self.icon.setGeometry(0.05*w, 0.05*h, 70, 70)
         self.icon.hide()
+
+        self.inputPassword.setGeometry(0.36*w, 0.48*h, 0.2*w, 0.04*h)
+        self.inputPassword.setMaxLength(20)
+        self.inputPassword.setEchoMode(QLineEdit.Password)
+        self.inputPassword.setFrame(False)
+        self.inputPassword.hide()
+
+        self.error.setGeometry(0.38*w, 0.48*h, 0.27*w, 0.2*h)
+        self.error.setStyleSheet("color: red;")
+        self.error.hide()
 
     def sistemaOperatiu(self):
         pixmap = QPixmap("./images/cfis/SO.jpg").scaled(w,h)
@@ -260,6 +272,13 @@ class Cfis(QWidget):
         self.password.hide()
         self.checkButton.hide()
         self.icon.hide()
+        self.inputPassword.hide()
+        self.error.hide()
+
+        try:
+            self.checkButton.clicked.disconnect()
+        except:
+            pass
 
         self.previousButton.clicked.disconnect()
         self.previousButton.clicked.connect(self.andreu2)
@@ -276,11 +295,44 @@ class Cfis(QWidget):
         self.password.show()
         self.checkButton.show()
         self.icon.show()
+        self.inputPassword.show()
+
+        try:
+            self.checkButton.clicked.disconnect()
+        except:
+            pass
+        self.checkButton.clicked.connect(self.checkAnswer)
 
         self.previousButton.clicked.disconnect()
         self.previousButton.clicked.connect(self.andreu3)
 
         self.nextButton.clicked.disconnect()
         self.nextButton.clicked.connect(self.resposta)
-        self.nextButton.show()
+        self.nextButton.hide()
+
+    def checkAnswer(self):
+        p = self.inputPassword.text()
+        if p == "417203":
+            self.solved()
+        elif len(p) != 6:
+            self.error.setText("La contrasenya ha de tenir 6 caràcters")
+            self.error.show()
+        else:
+            p = p.replace('0', 'a')
+            p = p.replace('1', '0')
+            p = p.replace('2', '1')
+            p = p.replace('3', '2')
+            p = p.replace('4', '3')
+            p = p.replace('5', '4')
+            p = p.replace('6', '5')
+            p = p.replace('7', '6')
+            p = p.replace('8', '7')
+            p = p.replace('9', '8')
+            p = p.replace('a', '9')
+            self.error.setText("La contrasenya " + p + " és incorrecta")
+            self.error.show()
+
+    def solved(self):
+        self.examen1 = Examen1()
+        self.close()
 
