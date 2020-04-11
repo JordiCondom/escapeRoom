@@ -20,6 +20,7 @@ class Cfis(QWidget):
         self.checkButton = QPushButton(self)
         self.user = QLabel(self)
         self.password = QLabel(self)
+        self.icon = QLabel(self)
         self.initWindow()
 
         self.show()
@@ -67,6 +68,9 @@ class Cfis(QWidget):
         self.password.move(0.36*w, 0.485*h)
         self.password.hide()
 
+        self.icon.setGeometry(0.05*w, 0.05*h, 70, 70)
+        self.icon.hide()
+
     def sistemaOperatiu(self):
         pixmap = QPixmap("./images/cfis/SO.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
@@ -100,18 +104,22 @@ class Cfis(QWidget):
         self.boto2.show()
 
         self.nextButton.hide()
+        self.icon.hide()
 
     def linux(self):
-        pixmap = QPixmap("./images/cfis/linux.jpg").scaled(w,h)
-        self.backgroundImage.setPixmap(pixmap)
+        linuxPixmap = QPixmap("./images/icons/ubuntu.png").scaled(70,70)
+        self.icon.setPixmap(linuxPixmap)
         self.inicio()
 
     def windows(self):
-        pixmap = QPixmap("./images/cfis/windows.jpg").scaled(w,h)
-        self.backgroundImage.setPixmap(pixmap)
+        windowsPixmap = QPixmap("./images/icons/windows.png").scaled(70,70)
+        self.icon.setPixmap(windowsPixmap)
         self.inicio()
 
     def inicio(self):
+        pixmap = QPixmap("./images/cfis/inicio.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
         self.textField.setText('''<p>- Bueno ara haig d'entrar, només cal que vagi en compte amb les tecles girades i tot anirà bé. Una llàstima que no sigui CFIS, però per sort crec que recordo la contrasenya d'algun dels meus companys...</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
@@ -126,6 +134,7 @@ class Cfis(QWidget):
         self.user.show()
         self.password.show()
         self.checkButton.show()
+        self.icon.show()
 
         self.previousButton.clicked.disconnect()
         self.previousButton.clicked.connect(self.sistemaOperatiu)
@@ -173,6 +182,9 @@ class Cfis(QWidget):
         self.nextButton.show()
 
     def marc(self):
+        pixmap = QPixmap("./images/cfis/inicio.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
         self.user.setText("marc.herault@cfis.com")
         self.user.adjustSize()
         self.password.setText("ecoolt")
@@ -184,9 +196,91 @@ class Cfis(QWidget):
         self.textField.resize(600, 200)
         self.textField.move(0.167*w, 0.8*h)
 
+        self.user.show()
+        self.password.show()
+        self.checkButton.show()
+        self.icon.show()
+
         self.previousButton.clicked.disconnect()
         self.previousButton.clicked.connect(self.rafah)
 
         self.nextButton.clicked.disconnect()
-        self.nextButton.clicked.connect(self.marc)
+        self.nextButton.clicked.connect(self.andreu1)
         self.nextButton.show()
+
+    def andreu1(self):
+        pixmap = QPixmap("./images/cfis/monedes.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.textField.setText('''<p>- Per algun motiu sempre que li pregunto per la contrasenya a l'Andreu, em recorda aquella partida de monedes que va jugar amb en Barrero i la Casanellas. Però no recordo tot el que va passar, només algunes propietats interessants. Les hauré d'anotar en un fullaviam si ho puc reconstriuir. </p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+        self.textField.move(0.167*w, 0.8*h)
+
+        self.user.hide()
+        self.password.hide()
+        self.checkButton.hide()
+        self.icon.hide()
+
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.marc)
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.andreu2)
+        self.nextButton.show()
+
+    def andreu2(self):
+        pixmap = QPixmap("./images/cfis/bingo.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.textField.setText('''<p>- I després em treu el tema del bingo aquell que va guanyar l'última festa de Nadal. Encara tinc a la motxilla el seu cartró, el meu, el de A, el de B, el de C i el de D, però no recordo quin era el seu. </p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+        self.textField.move(0.167*w, 0.8*h)
+
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.andreu1)
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.andreu3)
+        self.nextButton.show()
+
+    def andreu3(self):
+        pixmap = QPixmap("./images/cfis/tetris.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+        self.textField.setText('''<p>- Sempre em diu que entre tot allò juntament amb aquella partida de tetris que va jugar tan malament, s'hauria d'estar cec per veure la seva contrasenya. Suposo que vol dir per no veure-la, però em fa molta gràcia perquè sempre s'equivoca. Com quan va triar carrera. </p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+        self.textField.move(0.167*w, 0.8*h)
+
+        self.user.hide()
+        self.password.hide()
+        self.checkButton.hide()
+        self.icon.hide()
+
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.andreu2)
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.resposta)
+        self.nextButton.show()
+
+    def resposta(self):
+        pixmap = QPixmap("./images/cfis/inicio.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.user.show()
+        self.password.show()
+        self.checkButton.show()
+        self.icon.show()
+
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.andreu3)
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.resposta)
+        self.nextButton.show()
+
