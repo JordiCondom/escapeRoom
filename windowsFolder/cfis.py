@@ -292,10 +292,12 @@ class Cfis(QWidget):
         self.backgroundImage.setPixmap(pixmap)
 
         self.user.show()
-        self.password.show()
         self.checkButton.show()
         self.icon.show()
         self.inputPassword.show()
+
+        self.user.setText("andreu.huguet@cfis.com")
+        self.user.adjustSize()
 
         try:
             self.checkButton.clicked.disconnect()
