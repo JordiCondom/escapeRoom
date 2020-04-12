@@ -23,6 +23,8 @@ class Cfis(QWidget):
         self.icon = QLabel(self)
         self.inputPassword = QLineEdit(self)
         self.error = QLabel(self)
+        self.boto1 = QPushButton('Linux', self)
+        self.boto2 = QPushButton('Windows', self)
         self.initWindow()
 
         self.show()
@@ -83,6 +85,9 @@ class Cfis(QWidget):
         self.error.setStyleSheet("color: red;")
         self.error.hide()
 
+        self.boto1.hide()
+        self.boto2.hide()
+
     def sistemaOperatiu(self):
         pixmap = QPixmap("./images/cfis/SO.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
@@ -104,11 +109,9 @@ class Cfis(QWidget):
             pass
         self.previousButton.clicked.connect(self.initWindow)
 
-        self.boto1 = QPushButton('Linux', self)
         self.boto1.move(0.4*w, 0.85*h)
         self.boto1.clicked.connect(self.linux)
 
-        self.boto2 = QPushButton('Windows', self)
         self.boto2.move(0.54*w, 0.85*h)
         self.boto2.clicked.connect(self.windows)
         
