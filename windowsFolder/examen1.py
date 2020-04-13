@@ -11,9 +11,48 @@ class Examen1(QWidget):
         super().__init__()
 
         self.setGeometry(0,0,w,h)
+        self.backgroundImage = QLabel(self)
+        self.textBubble = QLabel(self)
+        self.previousButton = QPushButton(self)
+        self.nextButton = QPushButton(self)
+        self.textField = QLabel(self)
+        self.checkButton = QPushButton('Comprova', self)
+        self.initWindow()
 
-        textLabel = QLabel(self)
-        textLabel.setText("Examen1")
-        textLabel.setWordWrap(True)
-        textLabel.move(0.4*w, h/3)
-        textLabel.setAlignment(Qt.AlignCenter)
+        self.show()
+
+    def initWindow(self):
+        pixmap = QPixmap("./images/pati/pati1.jpeg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.previousButton.move(0.12*w, 0.83*h)
+        self.previousButton.setIcon(QIcon('./images/icons/previous.png'))
+        self.previousButton.setStyleSheet("QPushButton{background: transparent;}")
+        self.previousButton.hide()
+
+        bubblePM = QPixmap("./images/icons/textBubble.png")
+        self.textBubble.setPixmap(bubblePM)
+        self.textBubble.move(0.1*w, 0.75*h)
+
+        self.textField.setText('''<p>- Què esta passant, què fa tanta gent al pati? Perdona, que m'he perdut alguna cosa? Què és tota aquesta gent? <br>
+        <b>Estudiant anònim de 8è: </b> No home no, tranquil, és que avui hi ha examen d'EDE's i hem quedat per fer NP i celebrar-ho. Apuntat-hi, a les 9:00 farem un comunicat i a les 9:30 toquen lectures de finals d'altres anys.<p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+        self.textField.move(0.167*w, 0.78*h)
+
+        self.nextButton.move(0.85*w,0.83*h)
+        self.nextButton.setIcon(QIcon('./images/icons/next.png'))
+        self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
+        try:
+            self.nextButton.clicked.disconnect()
+        except:
+            pass
+        self.nextButton.clicked.connect(self.covit)
+
+        self.checkButton.move(0.75*w, 0.83*h)
+        self.checkButton.clicked.connect(self.checkAnswer)
+        self.checkButton.hide()
+
+    def covit(self):
+        pass

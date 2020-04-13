@@ -5,6 +5,7 @@ from windowsFolder.bar import *
 from windowsFolder.pati import *
 from windowsFolder.senyorGrane import *
 from windowsFolder.cfis import *
+from windowsFolder.examen1 import *
 
 
 if __name__ == '__main__':
@@ -15,5 +16,6 @@ if __name__ == '__main__':
     #pati = Pati()
     #senyorGrane = SenyorGrane()
     cfis = Cfis()
+    #examen1 = Examen1()
 
     sys.exit(app.exec_())

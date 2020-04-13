@@ -81,7 +81,7 @@ class Cfis(QWidget):
         self.inputPassword.setFrame(False)
         self.inputPassword.hide()
 
-        self.error.setGeometry(0.38*w, 0.48*h, 0.27*w, 0.2*h)
+        self.error.setGeometry(0.38*w, 0.53*h, 0.4*w, 0.1*h)
         self.error.setStyleSheet("color: red;")
         self.error.hide()
 
@@ -322,8 +322,11 @@ class Cfis(QWidget):
         elif len(p) != 6:
             self.error.setText("La contrasenya ha de tenir 6 caràcters")
             self.error.show()
+        elif not is_numeric(p):
+            self.error.setText("La contrasenya només ha de contenir xifres")
+            self.error.show()
         else:
-            p = p.replace('0', 'a')
+            p = p.replace('0', '*')
             p = p.replace('1', '0')
             p = p.replace('2', '1')
             p = p.replace('3', '2')
@@ -333,11 +336,35 @@ class Cfis(QWidget):
             p = p.replace('7', '6')
             p = p.replace('8', '7')
             p = p.replace('9', '8')
-            p = p.replace('a', '9')
+            p = p.replace('*', '9')
             self.error.setText("La contrasenya " + p + " és incorrecta")
             self.error.show()
 
     def solved(self):
         self.examen1 = Examen1()
         self.close()
+
+def is_number(c):
+    numeric = False
+    if c == "0": numeric = True
+    if c == "1": numeric = True
+    if c == "2": numeric = True
+    if c == "3": numeric = True
+    if c == "4": numeric = True
+    if c == "5": numeric = True
+    if c == "6": numeric = True
+    if c == "7": numeric = True
+    if c == "8": numeric = True
+    if c == "9": numeric = True
+    return numeric
+
+def is_numeric(s):
+    numeric = True
+    if not is_number(s[0]): numeric = False
+    if not is_number(s[1]): numeric = False
+    if not is_number(s[2]): numeric = False
+    if not is_number(s[3]): numeric = False
+    if not is_number(s[4]): numeric = False
+    if not is_number(s[5]): numeric = False
+    return numeric
 
