@@ -42,11 +42,11 @@ class Cfis(QWidget):
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
-        self.textField.setText('''<p>- Per fi al CFIS, crec que encara tinc temps de imprimir el formulari. <p>''')
+        self.textField.setText('''<p> - Per fi, ja hi som, després de tot el rebombori que hi ha hagut aquest matí per fi m'hi puc posar i imprimir el formulari. Ja semblo jo estudiant per finals, tant perdre el temps. Ara només falta entrar a l'ordinador, espero que avui funcioni la impresora que ja ens ho coneixem, que si Linux, que si Windows... No entenc perquè no hi posen el Windows<sup>xd</sup>, allò si que era un bon sistema operatiu.<p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
-        self.textField.move(0.167*w, 0.78*h)
+        self.textField.move(0.167*w, 0.79*h)
 
         self.nextButton.move(0.85*w,0.83*h)
         self.nextButton.setIcon(QIcon('./images/icons/next.png'))
@@ -92,7 +92,7 @@ class Cfis(QWidget):
         pixmap = QPixmap("./images/cfis/SO.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText('''<p>- Oh no amb quin sistema operatiu entro? Tothom sap que la impresora només funciona amb un dels dos, però va canviant cada dia el bo. Als programadors els hi devia semblar molt divertit, però no tinc temps d'equivocar-me. <p>''')
+        self.textField.setText('''<p> - Per fi, cinquè ordinador que obro, finalment algun funciona. Ara ve el gran dilema: "To Linux or not to Linux, this is the quesion". I ja són les 8:53, no tinc temps per equivocar-me de sistema operatiu, ves a saber si algun altre ordenador funcionarà. Haig de prendre una decisió, i l'haig de prendre ràpid. <p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -109,10 +109,10 @@ class Cfis(QWidget):
             pass
         self.previousButton.clicked.connect(self.initWindow)
 
-        self.boto1.move(0.4*w, 0.85*h)
+        self.boto1.move(0.4*w, 0.87*h)
         self.boto1.clicked.connect(self.linux)
 
-        self.boto2.move(0.54*w, 0.85*h)
+        self.boto2.move(0.54*w, 0.87*h)
         self.boto2.clicked.connect(self.windows)
         
         self.boto1.show()
@@ -135,7 +135,7 @@ class Cfis(QWidget):
         pixmap = QPixmap("./images/cfis/inicio.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText('''<p>- Bueno ara haig d'entrar, només cal que vagi en compte amb les tecles girades i tot anirà bé. Una llàstima que no sigui CFIS, però per sort crec que recordo la contrasenya d'algun dels meus companys...</p>''')
+        self.textField.setText('''<p> - Almenys per ara funciona... Merda, usuari i contrasenya, no me'n recordo. Crec que tocarà obrir el bloc de notes amb els usuaris i contrassenyes dels meus "amics" CFIS, tants mesos de carrera fent-lis la pilota han valgut la pena. Sort que en Covit m'ha dit que vigilés amb les tecles, que sinó això seria pitjor que el primer cop que vaig escriure el <i>Hello World</i>.</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -159,7 +159,7 @@ class Cfis(QWidget):
         self.nextButton.show()
 
     def ivet(self):
-        self.user.setText("ivet.acosta@cfis.com")
+        self.user.setText("ivet.acosta@estudiant.uvic.edu")
         self.user.adjustSize()
         self.password.setText("satisfye")
         self.password.adjustSize()
@@ -178,7 +178,7 @@ class Cfis(QWidget):
         self.nextButton.show()
 
     def rafah(self):
-        self.user.setText("rafah.hajjar@cfis.com")
+        self.user.setText("rafah.hajjar@estudiant.uvic.edu")
         self.user.adjustSize()
         self.password.setText("ab")
         self.password.adjustSize()
@@ -200,7 +200,7 @@ class Cfis(QWidget):
         pixmap = QPixmap("./images/cfis/inicio.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.user.setText("marc.herault@cfis.com")
+        self.user.setText("marc.herault@estudiant.uvic.edu")
         self.user.adjustSize()
         self.password.setText("ecoolt")
         self.password.adjustSize()

@@ -56,3 +56,6 @@ class Examen1(QWidget):
 
     def covit(self):
         pass
+
+    def checkAnswer(self):
+        pass
