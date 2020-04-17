@@ -20,7 +20,7 @@ class Entrada(QWidget):
         self.textField = QLabel(self)
         self.clockField = InputHora()
         self.checkButton = QPushButton('Comprova', self)
-        self.inputLength = TextWithMaxSize2()
+        self.inputLength = QLineEdit()
         self.hintButton = QPushButton(self)
         self.initWindowFirst()
 
@@ -53,11 +53,14 @@ class Entrada(QWidget):
         self.previousButton.hide()
 
         self.clockField.setParent(self)
-        self.clockField.setGeometry(0.3*w,0.775*h,0.4*w,0.15*h)
+        self.clockField.setGeometry(0.325*w,0.775*h,0.35*w,0.15*h)
         self.clockField.hide()
 
         self.inputLength.setParent(self)
         self.inputLength.setGeometry(0.48*w,0.79*h,0.08*w,0.12*h)
+        self.inputLength.setMaxLength(2)
+        self.inputLength.setFont(QFont("Times", 52))
+        self.inputLength.setAlignment(Qt.AlignCenter)
         self.inputLength.hide()
 
         self.hintButton.setIcon(QIcon('./images/icons/idea.png'))
@@ -169,10 +172,10 @@ class Entrada(QWidget):
         self.clockField.show()
 
     def checkAnswer(self):
-        num1 = self.clockField.slot1.toPlainText()
-        num2 = self.clockField.slot2.toPlainText()
-        num3 = self.clockField.slot3.toPlainText()
-        num4 = self.clockField.slot4.toPlainText()
+        num1 = self.clockField.slot1.text()
+        num2 = self.clockField.slot2.text()
+        num3 = self.clockField.slot3.text()
+        num4 = self.clockField.slot4.text()
         if num1 == '0' and num2 == '7' and num3 == '1' and num4 == '5':
             self.clockEnigmaSolvedFirst()
 
@@ -251,7 +254,7 @@ class Entrada(QWidget):
         self.hintButton.hide()
 
     def checkSecondAnswer(self):
-        if self.inputLength.toPlainText() == "69":
+        if self.inputLength.text() == "69":
             self.heEntrat()
 
     def heEntrat(self):
@@ -292,12 +295,28 @@ class InputHora(QLabel):
         hora = QWidget()
         layout = QHBoxLayout()
 
-        self.slot1 = TextWithMaxSize1()
-        self.slot2 = TextWithMaxSize1()
-        self.slot3 = TextWithMaxSize1()
-        self.slot4 = TextWithMaxSize1()
+        self.slot1 = QLineEdit()
+        self.slot1.setFont(QFont("Times", 52))
+        self.slot1.setMaxLength(1)
+        self.slot1.setAlignment(Qt.AlignCenter)
+
+        self.slot2 = QLineEdit()
+        self.slot2.setFont(QFont("Times", 52))
+        self.slot2.setMaxLength(1)
+        self.slot2.setAlignment(Qt.AlignCenter)
+
+        self.slot3 = QLineEdit()
+        self.slot3.setFont(QFont("Times", 52))
+        self.slot3.setMaxLength(1)
+        self.slot3.setAlignment(Qt.AlignCenter)
+
+        self.slot4 = QLineEdit()
+        self.slot4.setFont(QFont("Times", 52))
+        self.slot4.setMaxLength(1)
+        self.slot4.setAlignment(Qt.AlignCenter)
+
         points = QLabel()
-        points.setFont(QFont("Times",30))
+        points.setFont(QFont("Times",32))
         points.setText(":")
         points.setScaledContents(True)
 
@@ -308,24 +327,3 @@ class InputHora(QLabel):
         layout.addWidget(self.slot4)
 
         self.setLayout(layout)
-
-class TextWithMaxSize1(QTextEdit):
-    def __init__(self):
-        super().__init__()
-        self.textChanged.connect(self.limit)
-
-    def limit(self):
-        s = self.toPlainText()
-        if len(s) > 1:
-            self.setPlainText(s[0])
-
-class TextWithMaxSize2(QTextEdit):
-    def __init__(self):
-        super().__init__()
-        self.textChanged.connect(self.limit)
-        self.setFont(QFont("Times",52))
-
-    def limit(self):
-        s = self.toPlainText()
-        if len(s) > 2:
-            self.setPlainText("")

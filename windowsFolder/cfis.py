@@ -224,7 +224,7 @@ class Cfis(QWidget):
         self.nextButton.show()
 
     def andreu1(self):
-        pixmap = QPixmap("./images/cfis/monedes.jpg").scaled(w,h)
+        pixmap = QPixmap("./images/cfis/monedes.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p>- Per algun motiu sempre que li pregunto per la contrasenya a l'Andreu, em recorda aquella partida de monedes que va jugar amb en Barrero i la Casanellas. Però no recordo tot el que va passar, només algunes propietats interessants. Les hauré d'anotar en un fullaviam si ho puc reconstriuir. </p>''')
@@ -246,7 +246,7 @@ class Cfis(QWidget):
         self.nextButton.show()
 
     def andreu2(self):
-        pixmap = QPixmap("./images/cfis/bingo.jpg").scaled(w,h)
+        pixmap = QPixmap("./images/cfis/bingo.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p>- I després em treu el tema del bingo aquell que va guanyar l'última festa de Nadal. Encara tinc a la motxilla el seu cartró, el meu, el de A, el de B, el de C i el de D, però no recordo quin era el seu. </p>''')
@@ -263,7 +263,7 @@ class Cfis(QWidget):
         self.nextButton.show()
 
     def andreu3(self):
-        pixmap = QPixmap("./images/cfis/tetris.jpg").scaled(w,h)
+        pixmap = QPixmap("./images/cfis/tetris.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
         self.textField.setText('''<p>- Sempre em diu que entre tot allò juntament amb aquella partida de tetris que va jugar tan malament, s'hauria d'estar cec per veure la seva contrasenya. Suposo que vol dir per no veure-la, però em fa molta gràcia perquè sempre s'equivoca. Com quan va triar carrera. </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
