@@ -69,11 +69,11 @@ class SenyorGrane(QWidget):
         self.boto2.hide()
 
     def graneFirst(self):
-        self.textField.setText('''<p> <b>Senyor Grané: </b> Resulta que aquests dies farem unes proves de matemàtiques aquí a la facultat i necessito alimentar un exèrcit de joves famèlics. Ja he fet dues comandes, una d'11 i l'altre de 21. I et preguntaràs, de què són les comandes? De lomoquesos, ÒBVIAMENT. Ja tinc preparades dues comandes més, una de 1211 lomoquesos i una altra de 111221 lomoquesos. Encara em falta una comanda, però em fa bastanta mandra anar fins al bar a fer-la, així que hi aniràs tu, que ets ben jove. I si no vols, t'aguantes i hi vas igualment.</p>''')
+        self.textField.setText('''<p> <b>Senyor Grané: </b> Resulta que aquests dies farem unes proves de matemàtiques aquí a la facultat i necessito alimentar un exèrcit de joves famèlics. Ja he fet unes quantes comandes, una abans d'ahir d'1, una ahir d'11 i una altra avui de 21, de la qual encara no m'han tornat el canvi, suposo que el pergamí que els hi vaig enviar no era tan de la ESO com semblava. I et preguntaràs, de què són les comandes? De lomoquesos, ÒBVIAMENT. </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
-        self.textField.move(0.167*w, 0.77*h)
+        self.textField.move(0.167*w, 0.78*h)
 
         self.previousButton.show()
         try:
@@ -86,6 +86,24 @@ class SenyorGrane(QWidget):
         self.nextButton.clicked.connect(self.graneSecond)
 
     def graneSecond(self):
+        self.boto1.hide()
+        self.boto2.hide()
+
+        self.textField.setText('''<p> - De fet, ja n'he fet dues més, una de 1211 lomoquesos per demà i una altra de 111221 lomoquesos per demà passat. Encara em falta una comanda per demà passat no l'altre, però em fa bastanta mandra anar fins al bar a fer-la, així que hi aniràs tu, que ets ben jove. I si no vols, t'aguantes i hi vas igualment.</p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+        self.textField.move(0.167*w, 0.8*h)
+
+
+        self.previousButton.disconnect()
+        self.previousButton.clicked.connect(self.graneFirst)
+
+        self.nextButton.show()
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.graneThird)
+
+    def graneThird(self):
         self.boto1.hide()
         self.boto2.hide()
 
@@ -103,9 +121,9 @@ class SenyorGrane(QWidget):
 
         self.nextButton.show()
         self.nextButton.clicked.disconnect()
-        self.nextButton.clicked.connect(self.graneThird)
+        self.nextButton.clicked.connect(self.graneFourth)
 
-    def graneThird(self):
+    def graneFourth(self):
         pixmap = QPixmap("./images/senyorGrane/passadissensegrane.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
@@ -117,7 +135,7 @@ class SenyorGrane(QWidget):
         self.textField.move(0.167*w, 0.77*h)
 
         self.previousButton.disconnect()
-        self.previousButton.clicked.connect(self.graneSecond)
+        self.previousButton.clicked.connect(self.graneThird)
 
         
         self.boto1.move(0.34*w, 0.875*h)
@@ -159,7 +177,7 @@ class SenyorGrane(QWidget):
         self.checkButton.show()
 
         self.previousButton.disconnect()
-        self.previousButton.clicked.connect(self.graneThird)
+        self.previousButton.clicked.connect(self.graneFourth)
 
     def checkAnswer(self):
         if self.inputLomoquesos.toPlainText() == "312211":
