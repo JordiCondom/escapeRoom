@@ -18,6 +18,7 @@ class Examen1(QWidget):
         self.textField = QLabel(self)
         self.checkButton = QPushButton('Comprova', self)
         self.noteInput = NoteInput()
+        self.notesQuery = QLabel(self)
         self.initWindow()
 
         self.show()
@@ -58,6 +59,10 @@ class Examen1(QWidget):
         self.noteInput.setParent(self)
         self.noteInput.hide()
 
+        self.notesQuery.setPixmap(QPixmap("./images/examen1/notesQuery.png").scaled(350, 100))
+        self.notesQuery.move(0.07*w, 0.8*h)
+        self.notesQuery.hide()
+
     def criba(self):
         pixmap = QPixmap("./images/examen1/partitura.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
@@ -68,6 +73,7 @@ class Examen1(QWidget):
 
         self.noteInput.show()
         self.checkButton.show()
+        self.notesQuery.show()
 
     def checkAnswer(self):
         n1 = self.noteInput.note1.notes.currentIndex()

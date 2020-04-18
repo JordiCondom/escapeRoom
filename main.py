@@ -15,7 +15,7 @@ if __name__ == '__main__':
     #bar = Bar()
     #pati = Pati()
     #senyorGrane = SenyorGrane()
-    cfis = Cfis()
-    #examen1 = Examen1()
+    #cfis = Cfis()
+    examen1 = Examen1()
 
     sys.exit(app.exec_())
