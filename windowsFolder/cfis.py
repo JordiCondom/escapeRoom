@@ -25,6 +25,7 @@ class Cfis(QWidget):
         self.error = QLabel(self)
         self.boto1 = QPushButton('Linux', self)
         self.boto2 = QPushButton('Windows', self)
+        self.juanjo = QLabel(self)
         self.initWindow()
 
         self.show()
@@ -145,6 +146,8 @@ class Cfis(QWidget):
         self.show()
         self.boto1.hide()
         self.boto2.hide()
+        self.user.setText("Usuari CFIS")
+        self.password.setText("Contrasenya")
 
         self.user.show()
         self.password.show()
@@ -159,12 +162,14 @@ class Cfis(QWidget):
         self.nextButton.show()
 
     def ivet(self):
-        self.user.setText("ivet.acosta@estudiant.uvic.edu")
+        self.juanjo.hide()
+
+        self.user.setText("ivet.acosta@estudiant.uoc.edu")
         self.user.adjustSize()
         self.password.setText("satisfye")
         self.password.adjustSize()
 
-        self.textField.setText('''<p>- Merda, què li passa? No funciona la r! Ara què faig? Aviam si recordo la contrasenya d'algú altre...</p>''')
+        self.textField.setText('''<p> - Merda, m'estàs dient que no funciona la r? Només em faltava això. Haurien de portar algun Mates-Info que arreglés aquests ordinadors, perquè de veritat que això és intolerable. No sé perquè però, tinc la sensació que si la r hagúes funcionat aquesta contrasenya no me l'hauria acceptat igualment. Anem a provar amb la d'algú altre...</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -178,12 +183,17 @@ class Cfis(QWidget):
         self.nextButton.show()
 
     def rafah(self):
-        self.user.setText("rafah.hajjar@estudiant.uvic.edu")
+        pixmap = QPixmap("./images/cfis/juanjo.png").scaled(150,150)
+        self.juanjo.setPixmap(pixmap)
+        self.juanjo.move(0.42*w, 0.14*h)
+        self.juanjo.show()
+
+        self.user.setText("iñaki.garrido@estudiant.1rESO.edu")
         self.user.adjustSize()
-        self.password.setText("ab")
+        self.password.setText("juanjo")
         self.password.adjustSize()
 
-        self.textField.setText('''<p>- Vale tampoc, també havia de tenir una r... La del Condom ni la provo que en té dues. Ah espera, me'n sé una altra!</p>''')
+        self.textField.setText('''<p> - És veritat, "rué" també porta r. Llàstima, amb lo bé que l'imita. Se'm comencen a acabar les possibilitats, siusplau, que n'hi hagi alguna que no porti r.</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -197,6 +207,7 @@ class Cfis(QWidget):
         self.nextButton.show()
 
     def marc(self):
+        self.juanjo.hide()
         pixmap = QPixmap("./images/cfis/inicio.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
@@ -205,7 +216,7 @@ class Cfis(QWidget):
         self.password.setText("ecoolt")
         self.password.adjustSize()
 
-        self.textField.setText('''<p>- De veritat no hi ha ningú en tot el CFIS amb una contrasenya sense r!? Ostres! Ja ho tinc! Em sembla que la de l'Andreu té només Xifres, per algún motiu... El problema és que no recordo quines eren exactament. </p>''')
+        self.textField.setText('''<p> - Un altre cop!? No hi ha ningú en tot el CFIS amb una contrasenya sense r!? Ostres! Ja ho tinc! Em sembla que la de l'Andreu té només Xifres, per algún motiu... El problema és que no la tinc apuntada al bloc de notes, però l'Andreu em va dir alguns secrets molt senzills per recordar-la... </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
