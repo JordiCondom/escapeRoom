@@ -26,6 +26,9 @@ class Cfis(QWidget):
         self.boto1 = QPushButton('Linux', self)
         self.boto2 = QPushButton('Windows', self)
         self.juanjo = QLabel(self)
+        self.tigre = QLabel(self)
+        self.motorista = QLabel(self)
+        self.fotoAndreu = QLabel(self)
         self.initWindow()
 
         self.show()
@@ -146,6 +149,7 @@ class Cfis(QWidget):
         self.show()
         self.boto1.hide()
         self.boto2.hide()
+        self.tigre.hide()
         self.user.setText("Usuari CFIS")
         self.password.setText("Contrasenya")
 
@@ -164,12 +168,17 @@ class Cfis(QWidget):
     def ivet(self):
         self.juanjo.hide()
 
+        pixmap = QPixmap("./images/cfis/tigre.png").scaled(150,150)
+        self.tigre.setPixmap(pixmap)
+        self.tigre.move(0.42*w, 0.14*h)
+        self.tigre.show()
+
         self.user.setText("ivet.acosta@estudiant.uoc.edu")
         self.user.adjustSize()
         self.password.setText("satisfye")
         self.password.adjustSize()
 
-        self.textField.setText('''<p> - Merda, m'estàs dient que no funciona la r? Només em faltava això. Haurien de portar algun Mates-Info que arreglés aquests ordinadors, perquè de veritat que això és intolerable. No sé perquè però, tinc la sensació que si la r hagúes funcionat aquesta contrasenya no me l'hauria acceptat igualment. Anem a provar amb la d'algú altre...</p>''')
+        self.textField.setText('''<p> - Merda, m'estàs dient que no funciona la r? Només em faltava això. Haurien de portar algun Mates-Info que arreglés aquests ordinadors, perquè de veritat que això és intolerable. No sé perquè però, tinc la sensació de que encara que hagúes funcionat la r no m'hauria acceptat aquesta contrasenya. Anem a provar amb la d'algú altre...</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -183,6 +192,9 @@ class Cfis(QWidget):
         self.nextButton.show()
 
     def rafah(self):
+        self.tigre.hide()
+        self.motorista.hide()
+
         pixmap = QPixmap("./images/cfis/juanjo.png").scaled(150,150)
         self.juanjo.setPixmap(pixmap)
         self.juanjo.move(0.42*w, 0.14*h)
@@ -208,6 +220,12 @@ class Cfis(QWidget):
 
     def marc(self):
         self.juanjo.hide()
+
+        pixmap = QPixmap("./images/cfis/motorista.png").scaled(150,150)
+        self.motorista.setPixmap(pixmap)
+        self.motorista.move(0.42*w, 0.14*h)
+        self.motorista.show()
+
         pixmap = QPixmap("./images/cfis/inicio.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
@@ -216,7 +234,7 @@ class Cfis(QWidget):
         self.password.setText("ecoolt")
         self.password.adjustSize()
 
-        self.textField.setText('''<p> - Un altre cop!? No hi ha ningú en tot el CFIS amb una contrasenya sense r!? Ostres! Ja ho tinc! Em sembla que la de l'Andreu té només Xifres, per algún motiu... El problema és que no la tinc apuntada al bloc de notes, però l'Andreu em va dir alguns secrets molt senzills per recordar-la... </p>''')
+        self.textField.setText('''<p> - Un altre cop!? No hi ha ningú en tot el CFIS amb una contrasenya sense r!? Ostres! Ja ho tinc! Em sembla que la de l'Andreu té només Xifres, per algún motiu... El problema és que no la tinc apuntada al bloc de notes, però l'Andreu em va dir alguns trucs molt senzills per recordar-la... </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -235,14 +253,17 @@ class Cfis(QWidget):
         self.nextButton.show()
 
     def andreu1(self):
+        self.motorista.hide()
+
         pixmap = QPixmap("./images/cfis/monedes.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText('''<p>- Per algun motiu sempre que li pregunto per la contrasenya a l'Andreu, em recorda aquella partida de monedes que va jugar amb en Barrero i la Casanellas. Però no recordo tot el que va passar, només algunes propietats interessants. Les hauré d'anotar en un fullaviam si ho puc reconstriuir. </p>''')
+        self.textField.setText('''<p> - El primer d'aquests trucs és la partida clandestina de cara-o-creu que va tenir lloc el 14 de març de l'any passat al lavabo CFIS. En aquell llegendari esdeveniment es van enfrentar els tres campions nacionals de cara-o-creu: Andreu Huguet, Marta Casanellas i El Barrero. Tres eminències que han deixat una herència de jugades inversemblants i màgiques com no s'ha vist mai. No conec tots els detalls de la partida, però per sort recordo algunes jugades i propietats, vaig a apuntar-les a un paper.</p>''')
+        # self.textField.setText('''<p> - Per algun motiu sempre que li pregunto per la contrasenya a l'Andreu, em recorda aquella partida de monedes que va jugar amb en Barrero i la Casanellas. Però no recordo tot el que va passar, només algunes propietats interessants. Les hauré d'anotar en un fullaviam si ho puc reconstriuir. </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
-        self.textField.move(0.167*w, 0.8*h)
+        self.textField.move(0.167*w, 0.77*h)
 
         self.user.hide()
         self.password.hide()
@@ -260,11 +281,11 @@ class Cfis(QWidget):
         pixmap = QPixmap("./images/cfis/bingo.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText('''<p>- I després em treu el tema del bingo aquell que va guanyar l'última festa de Nadal. Encara tinc a la motxilla el seu cartró, el meu, el de A, el de B, el de C i el de D, però no recordo quin era el seu. </p>''')
+        self.textField.setText('''<p> - El segon truc per recordar la contrasenya de l'Andreu és la partida de bingo de l'última festa de Nadal. Quina partida, quina muntanya russa d'emocions, encara no me n'he recuperat. La victòria de l'Andreu on va treure l'última meitat del cartró tot seguit és tema de debat al Claustre de la UPC, l'anomenen el cartró del 5.0, l'Andreu se l'estima com un fill. Sort que tinc fotos dels cartrons de l'Andreu, el del Barja, el del Narciso, el d'en Jaume Franch, el del segurata i el meu. El problema és que no me'n recordo de qui era cada cadascun. </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
-        self.textField.move(0.167*w, 0.8*h)
+        self.textField.move(0.167*w, 0.77*h)
 
         self.previousButton.clicked.disconnect()
         self.previousButton.clicked.connect(self.andreu1)
@@ -274,13 +295,16 @@ class Cfis(QWidget):
         self.nextButton.show()
 
     def andreu3(self):
+        self.fotoAndreu.hide()
+
         pixmap = QPixmap("./images/cfis/tetris.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
-        self.textField.setText('''<p>- Sempre em diu que entre tot allò juntament amb aquella partida de tetris que va jugar tan malament, s'hauria d'estar cec per veure la seva contrasenya. Suposo que vol dir per no veure-la, però em fa molta gràcia perquè sempre s'equivoca. Com quan va triar carrera. </p>''')
+
+        self.textField.setText('''<p> - I finalment, la partida de tetris. Sempre comenta que el millor que pots fer quan surts a Apolo és posar-te a jugar al tetris al ritme de la música. Òbviament, els resultats són desastrosos, però qui recriminarà una mala partida de tetris quan l'has fet al mig d'Apolo i després de beure molta aigua. Ningú, però ell sempre diu que hi va haver una partida especial, ningú sap perquè encara. Si no recordo malament, la va passar per Piki-Piki, anem a veure-la...</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
-        self.textField.move(0.167*w, 0.8*h)
+        self.textField.move(0.167*w, 0.78*h)
 
         self.user.hide()
         self.password.hide()
@@ -305,10 +329,21 @@ class Cfis(QWidget):
         pixmap = QPixmap("./images/cfis/inicio.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
+        pixmap = QPixmap("./images/cfis/andreu.png").scaled(150,150)
+        self.fotoAndreu.setPixmap(pixmap)
+        self.fotoAndreu.move(0.42*w, 0.14*h)
+        self.fotoAndreu.show()
+
         self.user.show()
         self.checkButton.show()
         self.icon.show()
         self.inputPassword.show()
+
+        self.textField.setText('''<p> - Doncs esclar! Si casibé és més senzill recordar aquests tres trucs que no pas la contrasenya. S'hauria d'estar cec per no veure-la! No entenc com la falla tantes vegades, suposo que el tema machine-learning i Dades l'està afectant una miqueta.</p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+        self.textField.move(0.167*w, 0.8*h)
 
         self.user.setText("andreu.huguet@cfis.com")
         self.user.adjustSize()

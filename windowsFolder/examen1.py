@@ -1,4 +1,5 @@
 import sys
+import time
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -36,20 +37,27 @@ class Examen1(QWidget):
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
-        self.textField.setText('''-Examen de numèrica yuhuuuuu + Sisi, crec que aquest any ho hem acoseguit i hem posat un examen de 100% numèrica. ''')
+        self.textField.setText('''<p> - Ja hi som. Al final no he tingut temps de repassar res de res, se me n'ha anat tot el matí en orris. Almenys he pogut imprimir el formulari, serà el meu salvavides en aquest examen. <br>
+        <b> - Alumne random de N*mèr**a: </b> Què és aquest full que portes? És un formulari? <br>
+        - Sí, me l'acabo d'imprimir al CFIS. Ara mateix és l'única esperança que tinc per aquest examen. <br> 
+        <b> - Alumne random de N*mèr**a: </b> Vaja... No sé com dir-te això però... This is N*mèr**a! No es pot portar formulari...</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
-        self.textField.move(0.167*w, 0.78*h)
+        self.textField.move(0.167*w, 0.77*h)
+        self.textField.show()
 
         self.nextButton.move(0.85*w,0.83*h)
         self.nextButton.setIcon(QIcon('./images/icons/next.png'))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
         try:
             self.nextButton.clicked.disconnect()
+            self.textBubble.show()
+            self.textField.show()
+            self.nextButton.show()
         except:
             pass
-        self.nextButton.clicked.connect(self.criba)
+        self.nextButton.clicked.connect(self.firstExerciseFirst)
 
         self.checkButton.move(0.8*w, 0.86*h)
         self.checkButton.clicked.connect(self.checkAnswer)
@@ -63,7 +71,58 @@ class Examen1(QWidget):
         self.notesQuery.move(0.07*w, 0.8*h)
         self.notesQuery.hide()
 
-    def criba(self):
+        self.hide()
+        self.show()
+
+    def firstExerciseFirst(self):
+        pixmap = QPixmap("./images/examen1/dog.jpg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+        self.textBubble.hide()
+        self.textField.hide()
+
+        self.previousButton.show()
+        try:
+            self.previousButton.clicked.disconnect()
+        except:
+            pass
+        self.previousButton.setStyleSheet("QPushButton{}")
+        self.previousButton.clicked.connect(self.initWindow)
+
+        self.nextButton.setStyleSheet("QPushButton{}")
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.firstExerciseSecond)
+
+    def firstExerciseSecond(self):
+        pixmap = QPixmap("./images/examen1/padro.JPG").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.hide()
+        self.show()
+
+        self.textField.setText('''<p> - Em falta això :'( </p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+        self.textField.move(0.167*w, 0.8*h)
+
+        self.textBubble.show()
+        self.textField.show()
+        self.nextButton.show()
+        self.previousButton.move(0.12*w, 0.83*h)
+
+        self.noteInput.hide()
+        self.checkButton.hide()
+        self.notesQuery.hide()
+
+        self.previousButton.setStyleSheet("QPushButton{background: transparent;}")
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.firstExerciseFirst)
+
+        self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.firstExerciseCriba)
+
+    def firstExerciseCriba(self):
         pixmap = QPixmap("./images/examen1/partitura.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
@@ -74,6 +133,34 @@ class Examen1(QWidget):
         self.noteInput.show()
         self.checkButton.show()
         self.notesQuery.show()
+        self.previousButton.show()
+        self.previousButton.move(0.035*w, 0.87*h)
+
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.firstExerciseSecond)
+
+    def secondExerciseFirst(self):
+        pixmap = QPixmap("./images/examen1/padro.JPG").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.hide()
+        self.show()
+
+        self.textBubble.show()
+        self.textField.show()
+        self.nextButton.show()
+
+        self.previousButton.hide()
+        self.noteInput.hide()
+        self.checkButton.hide()
+        self.notesQuery.hide()
+
+        self.textField.setText('''<p> - Segon exercici</p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+        self.textField.move(0.167*w, 0.8*h)
+        
 
     def checkAnswer(self):
         n1 = self.noteInput.note1.notes.currentIndex()
@@ -81,14 +168,7 @@ class Examen1(QWidget):
         n3 = self.noteInput.note3.notes.currentIndex()
         n4 = self.noteInput.note4.notes.currentIndex()
         if n1 == 0 and n2 == 1 and n3 == 3 and n4 == 8:
-            self.solved()
-
-    def solved(self):
-        pixmap = QPixmap("./images/examen1/padro.JPG").scaled(w,h)
-        self.backgroundImage.setPixmap(pixmap)
-
-        self.hide()
-        self.show()
+            self.secondExerciseFirst()
 
 class NoteInput(QWidget):
     def __init__(self):
