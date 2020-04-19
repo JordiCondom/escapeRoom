@@ -258,7 +258,7 @@ class Cfis(QWidget):
         pixmap = QPixmap("./images/cfis/monedes.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText('''<p> - El primer d'aquests trucs és la partida clandestina de cara-o-creu que va tenir lloc el 14 de març de l'any passat al lavabo CFIS. En aquell llegendari esdeveniment es van enfrentar els tres campions nacionals de cara-o-creu: Andreu Huguet, Marta Casanellas i El Barrero. Tres eminències que han deixat una herència de jugades inversemblants i màgiques com no s'ha vist mai. No conec tots els detalls de la partida, però per sort recordo algunes jugades i propietats, vaig a apuntar-les a un paper.</p>''')
+        self.textField.setText('''<p> - El primer truc és la partida clandestina de cara-o-creu que va tenir lloc el 14 de març de l'any passat al lavabo CFIS. En aquell llegendari esdeveniment es van enfrentar els tres campions nacionals de cara-o-creu: Andreu Huguet, la Casanellas i El Barrero, d'on va sortir victoriosa Marta Casanellas, coneguda com Àlgebra amb diapositives. Tres eminències que han deixat una herència de jugades inversemblants i màgiques com no s'ha vist mai. No conec tots els detalls de la partida, però per sort recordo algunes jugades i propietats, vaig a apuntar-les a un paper.</p>''')
         # self.textField.setText('''<p> - Per algun motiu sempre que li pregunto per la contrasenya a l'Andreu, em recorda aquella partida de monedes que va jugar amb en Barrero i la Casanellas. Però no recordo tot el que va passar, només algunes propietats interessants. Les hauré d'anotar en un fullaviam si ho puc reconstriuir. </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
@@ -281,7 +281,7 @@ class Cfis(QWidget):
         pixmap = QPixmap("./images/cfis/bingo.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText('''<p> - El segon truc per recordar la contrasenya de l'Andreu és la partida de bingo de l'última festa de Nadal. Quina partida, quina muntanya russa d'emocions, encara no me n'he recuperat. La victòria de l'Andreu on va treure l'última meitat del cartró tot seguit és tema de debat al Claustre de la UPC, l'anomenen el cartró del 5.0, l'Andreu se l'estima com un fill. Sort que tinc fotos dels cartrons de l'Andreu, el del Barja, el del Narciso, el d'en Jaume Franch, el del segurata i el meu. El problema és que no me'n recordo de qui era cada cadascun. </p>''')
+        self.textField.setText('''<p> - El segon truc per recordar la contrasenya de l'Andreu és la partida de bingo de l'última festa de Nadal. Quina partida, quina muntanya russa d'emocions, encara no me n'he recuperat. La victòria de l'Andreu on va treure l'última meitat del cartró tot seguit és tema de debat al Claustre de la UPC, l'anomenen el cartró del 5.0. I no només va guanyar el bingo, sinó que també va cantar línia el primer, de 5 paraules. Sort que tinc fotos dels cartrons de l'Andreu, del Barja, del Narciso i del Jaume Franch. El problema és que no me'n recordo de qui era cada cadascun. </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
