@@ -93,7 +93,7 @@ class Examen1(QWidget):
         self.nextButton.clicked.connect(self.firstExerciseSecond)
 
     def firstExerciseSecond(self):
-        pixmap = QPixmap("./images/examen1/padro.JPG").scaled(w,h)
+        pixmap = QPixmap("./images/examen1/jordis.JPG").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.hide()
