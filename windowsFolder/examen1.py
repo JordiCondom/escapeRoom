@@ -3,6 +3,7 @@ import time
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
+from windowsFolder.examen2 import Examen2
 
 w = 900
 h = 600
@@ -25,7 +26,7 @@ class Examen1(QWidget):
         self.show()
 
     def initWindow(self):
-        pixmap = QPixmap("./images/examen1/padro.JPG").scaled(w,h)
+        pixmap = QPixmap("./images/examen1/classeSenseProfe.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.previousButton.move(0.12*w, 0.83*h)
@@ -60,7 +61,7 @@ class Examen1(QWidget):
         self.nextButton.clicked.connect(self.firstExerciseFirst)
 
         self.checkButton.move(0.8*w, 0.86*h)
-        self.checkButton.clicked.connect(self.checkAnswer)
+        self.checkButton.clicked.connect(self.checkAnswerFirstExercise)
         self.checkButton.hide()
 
         self.noteInput.move(0.45*w, 0.75*h)
@@ -93,17 +94,18 @@ class Examen1(QWidget):
         self.nextButton.clicked.connect(self.firstExerciseSecond)
 
     def firstExerciseSecond(self):
-        pixmap = QPixmap("./images/examen1/jordis.JPG").scaled(w,h)
+        pixmap = QPixmap("./images/examen1/padro.JPG").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.hide()
         self.show()
 
-        self.textField.setText('''<p> - Em falta això :'( </p>''')
+        self.textField.setText('''<p> - Oh no! Queden dos minuts per a l'examen, i ja ha arribat el Padró! Espera, què carai hi fa el Padró a aquí? Si avui tenim examen de Numèrica, el de Càlcul I és a principis de Juliol. Ja està començant a repartir els examens, mare meva... Això no podria anar  pitjor, almenys em sé el temari de N*mèr**a a la perfecció, més o menys. Tu no et preocupis, que tot anirà bé. <br>
+         - Ja està aquí, aquest és l'examen. A veure, primera pregunta.... </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
-        self.textField.move(0.167*w, 0.8*h)
+        self.textField.move(0.167*w, 0.78*h)
 
         self.textBubble.show()
         self.textField.show()
@@ -138,37 +140,16 @@ class Examen1(QWidget):
 
         self.previousButton.clicked.disconnect()
         self.previousButton.clicked.connect(self.firstExerciseSecond)
-
-    def secondExerciseFirst(self):
-        pixmap = QPixmap("./images/examen1/padro.JPG").scaled(w,h)
-        self.backgroundImage.setPixmap(pixmap)
-
-        self.hide()
-        self.show()
-
-        self.textBubble.show()
-        self.textField.show()
-        self.nextButton.show()
-
-        self.previousButton.hide()
-        self.noteInput.hide()
-        self.checkButton.hide()
-        self.notesQuery.hide()
-
-        self.textField.setText('''<p> - Segon exercici</p>''')
-        self.textField.setAlignment(Qt.AlignJustify)
-        self.textField.setWordWrap(True)
-        self.textField.resize(600, 200)
-        self.textField.move(0.167*w, 0.8*h)
         
 
-    def checkAnswer(self):
+    def checkAnswerFirstExercise(self):
         n1 = self.noteInput.note1.notes.currentIndex()
         n2 = self.noteInput.note2.notes.currentIndex()
         n3 = self.noteInput.note3.notes.currentIndex()
         n4 = self.noteInput.note4.notes.currentIndex()
         if n1 == 0 and n2 == 1 and n3 == 3 and n4 == 8:
-            self.secondExerciseFirst()
+            self.examen2 = Examen2()
+            self.close()
 
 class NoteInput(QWidget):
     def __init__(self):
