@@ -35,7 +35,7 @@ class Examen2(QWidget):
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
-        self.textField.setText('''<p> - Primer exercici acabat, tot i que té pinta que això serà com el qüestionari de topologia, un cop respons una pregunta, no pots tirar endarrere. No passa res, ara m'haig de centrar en dues coses: el cul del Padró i el segon exercici. Tot i que si m'haig de sincerar, diré que l'últim exercici no m'ha semblat gaire de N*mèr**a, algú ho havia de dir. Esperem que el següent s'adapti una mica més al que hem fet a classe.</p>''')
+        self.textField.setText('''<p> - Primer exercici acabat, tot i que té pinta que això serà com el qüestionari de topologia, un cop respons una pregunta, no pots tirar endarrere. No passa res, ara m'haig de centrar en dues coses: el cul del Padró i el segon exercici. Tot i que si m'haig de sincerar, diré que l'últim exercici no m'ha semblat gaire de N*mèr**a, perdoneu, però algú ho havia de dir. Esperem que el següent s'adapti una mica més al que hem fet a classe.</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)

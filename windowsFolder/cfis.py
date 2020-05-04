@@ -200,7 +200,7 @@ class Cfis(QWidget):
         self.juanjo.move(0.42*w, 0.14*h)
         self.juanjo.show()
 
-        self.user.setText("iñaki.garrido@estudiant.1rESO.edu")
+        self.user.setText("iñaki.gaido@estudiant.1ESO.edu")
         self.user.adjustSize()
         self.password.setText("juanjo")
         self.password.adjustSize()
@@ -229,7 +229,7 @@ class Cfis(QWidget):
         pixmap = QPixmap("./images/cfis/inicio.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.user.setText("marc.herault@estudiant.uvic.edu")
+        self.user.setText("mac.heault@estudiant.uvic.edu")
         self.user.adjustSize()
         self.password.setText("ecoolt")
         self.password.adjustSize()
@@ -345,7 +345,7 @@ class Cfis(QWidget):
         self.textField.resize(600, 200)
         self.textField.move(0.167*w, 0.8*h)
 
-        self.user.setText("andreu.huguet@cfis.com")
+        self.user.setText("delegat.huguet@cfis.com")
         self.user.adjustSize()
 
         try:
