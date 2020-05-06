@@ -60,16 +60,16 @@ class Examen1(QWidget):
             pass
         self.nextButton.clicked.connect(self.firstExerciseFirst)
 
-        self.checkButton.move(0.8*w, 0.86*h)
+        self.checkButton.move(0.8*w, 0.46*h)
         self.checkButton.clicked.connect(self.checkAnswerFirstExercise)
         self.checkButton.hide()
 
-        self.noteInput.move(0.45*w, 0.75*h)
+        self.noteInput.move(0.45*w, 0.35*h)
         self.noteInput.setParent(self)
         self.noteInput.hide()
 
         self.notesQuery.setPixmap(QPixmap("./images/examen1/notesQuery.png").scaled(350, 100))
-        self.notesQuery.move(0.07*w, 0.8*h)
+        self.notesQuery.move(0.07*w, 0.4*h)
         self.notesQuery.hide()
 
         self.hide()
@@ -112,10 +112,6 @@ class Examen1(QWidget):
         self.nextButton.show()
         self.previousButton.move(0.12*w, 0.83*h)
 
-        self.noteInput.hide()
-        self.checkButton.hide()
-        self.notesQuery.hide()
-
         self.previousButton.setStyleSheet("QPushButton{background: transparent;}")
         self.previousButton.clicked.disconnect()
         self.previousButton.clicked.connect(self.firstExerciseFirst)
@@ -128,7 +124,28 @@ class Examen1(QWidget):
         pixmap = QPixmap("./images/examen1/partitura.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textBubble.hide()
+        self.textField.setText('''<p> - Què és això? Esperava no entendre res dels enunciats d'aquest examen, però això és massa... Com no em preguntin quantes boletes amb pals hi ha a la imatge no crec que pugui saber molt més, creuem els dits.  </p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+        self.textField.move(0.167*w, 0.78*h)
+
+        self.noteInput.hide()
+        self.checkButton.hide()
+        self.notesQuery.hide()
+        self.nextButton.show()
+
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.firstExerciseSecond)
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.firstExerciseQuestion)
+
+    def firstExerciseQuestion(self):
+        pixmap = QPixmap("./images/examen1/enunciat.png").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        #self.textBubble.hide()
         self.textField.hide()
         self.nextButton.hide()
 
@@ -136,10 +153,9 @@ class Examen1(QWidget):
         self.checkButton.show()
         self.notesQuery.show()
         self.previousButton.show()
-        self.previousButton.move(0.035*w, 0.87*h)
 
         self.previousButton.clicked.disconnect()
-        self.previousButton.clicked.connect(self.firstExerciseSecond)
+        self.previousButton.clicked.connect(self.firstExerciseCriba)
         
 
     def checkAnswerFirstExercise(self):
