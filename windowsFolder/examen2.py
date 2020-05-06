@@ -65,6 +65,10 @@ class Examen2(QWidget):
         pixmap = QPixmap("./images/examen1/padro_cul.JPG").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
+        self.textBubble.show()
+        self.textField.show()
+        self.nextButton.show()
+
         self.previousButton.move(0.12*w, 0.83*h)
         self.previousButton.show()
 
@@ -80,6 +84,20 @@ class Examen2(QWidget):
             pass
         
         self.previousButton.clicked.connect(self.initWindow)
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.secondExerciseQuestion)
+
+    def secondExerciseQuestion(self):
+        pixmap = QPixmap("./images/examen2/enunciat2resposta.png").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.textBubble.hide()
+        self.textField.hide()
+        self.nextButton.hide()
+
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.secondExerciseSecond)
     
     def checkAnswerSecondExercise():
         pass
