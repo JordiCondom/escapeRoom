@@ -40,7 +40,7 @@ class Examen3(QWidget):
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
-        self.textField.setText('''<p> - </p>''')
+        self.textField.setText('''<p> - Tercer exercici de l'examen </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
