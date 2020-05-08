@@ -17,6 +17,7 @@ class Examen2(QWidget):
         self.previousButton = QPushButton(self)
         self.nextButton = QPushButton(self)
         self.textField = QLabel(self)
+        self.inputPassword = QLineEdit(self)
         self.checkButton = QPushButton('Comprova', self)
         self.initWindow()
 
@@ -42,6 +43,11 @@ class Examen2(QWidget):
         self.textField.move(0.167*w, 0.78*h)
         self.textField.show()
 
+        self.inputPassword.setGeometry(0.78*w, 0.848*h, 0.2*w, 0.04*h)
+        self.inputPassword.setMaxLength(20)
+        self.inputPassword.setFrame(False)
+        self.inputPassword.hide()
+
         self.nextButton.move(0.85*w,0.83*h)
         self.nextButton.setIcon(QIcon('./images/icons/next.png'))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
@@ -54,7 +60,7 @@ class Examen2(QWidget):
             pass
         self.nextButton.clicked.connect(self.secondExerciseSecond)
 
-        self.checkButton.move(0.8*w, 0.86*h)
+        self.checkButton.move(0.82*w, 0.89*h)
         self.checkButton.clicked.connect(self.checkAnswerSecondExercise)
         self.checkButton.hide()
 
@@ -96,8 +102,18 @@ class Examen2(QWidget):
         self.textField.hide()
         self.nextButton.hide()
 
+        self.inputPassword.show()
+        self.checkButton.show()
+
         self.previousButton.clicked.disconnect()
         self.previousButton.clicked.connect(self.secondExerciseSecond)
     
-    def checkAnswerSecondExercise():
-        pass
+    def checkAnswerSecondExercise(self):
+        p = self.inputPassword.text()
+        if p == "729":
+            self.solved()
+        
+        
+    def solved(self):
+        self.examen3 = Examen3()
+        self.close()
