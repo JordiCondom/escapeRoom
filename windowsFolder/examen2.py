@@ -18,7 +18,7 @@ class Examen2(QWidget):
         self.nextButton = QPushButton(self)
         self.textField = QLabel(self)
         self.inputPassword = QLineEdit(self)
-        self.checkButton = QPushButton('Comprova', self)
+        self.checkButton = QPushButton('QED', self)
         self.initWindow()
 
         self.show()

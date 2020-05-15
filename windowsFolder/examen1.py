@@ -18,7 +18,7 @@ class Examen1(QWidget):
         self.previousButton = QPushButton(self)
         self.nextButton = QPushButton(self)
         self.textField = QLabel(self)
-        self.checkButton = QPushButton('Comprova', self)
+        self.checkButton = QPushButton('QED', self)
         self.noteInput = NoteInput()
         self.notesQuery = QLabel(self)
         self.initWindow()

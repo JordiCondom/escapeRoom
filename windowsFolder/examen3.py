@@ -17,7 +17,7 @@ class Examen3(QWidget):
         self.nextButton = QPushButton(self)
         self.textField = QLabel(self)
         self.inputPassword = QLineEdit(self)
-        self.checkButton = QPushButton('Comprova', self)
+        self.checkButton = QPushButton('QED', self)
         self.caraMerce = QLabel(self)
         self.initWindow()
 
@@ -47,9 +47,8 @@ class Examen3(QWidget):
         self.textField.move(0.167*w, 0.78*h)
         self.textField.show()
 
-        self.inputPassword.setGeometry(0.78*w, 0.848*h, 0.2*w, 0.04*h)
-        self.inputPassword.setMaxLength(20)
-        self.inputPassword.setFrame(False)
+        self.inputPassword.setGeometry(0.67*w, 0.855*h, 0.06*w, 0.04*h)
+        self.inputPassword.setMaxLength(5)
         self.inputPassword.hide()
 
         self.nextButton.move(0.85*w,0.83*h)
@@ -64,7 +63,7 @@ class Examen3(QWidget):
             pass
         self.nextButton.clicked.connect(self.thirdExerciseFirst)
 
-        self.checkButton.move(0.82*w, 0.89*h)
+        self.checkButton.move(0.78*w, 0.85*h)
         self.checkButton.clicked.connect(self.checkAnswerThirdExercise)
         self.checkButton.hide()
 
@@ -96,7 +95,42 @@ class Examen3(QWidget):
         self.previousButton.clicked.connect(self.initWindow)
 
         self.nextButton.clicked.disconnect()
-        self.nextButton.clicked.connect(self.initWindow)
+        self.nextButton.clicked.connect(self.thirdExerciseQuestion)
+
+    def thirdExerciseQuestion(self):
+        pixmap = QPixmap("./images/examen3/enigma3.png").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.textBubble.hide()
+        self.textField.hide()
+        self.nextButton.hide()
+        self.caraMerce.hide()
+
+        self.inputPassword.show()
+        self.checkButton.show()
+
+        self.previousButton.move(0.12*w, 0.845*h)
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.thirdExerciseFirst)
+
+    def solved(self):
+        pixmap = QPixmap("./images/examen1/padro_cul.JPG").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.hide()
+        self.show()
+
+        self.inputPassword.hide()
+        self.checkButton.hide()
+
+        self.textBubble.show()
+        self.textField.show()
+        self.nextButton.show()
+        self.previousButton.hide()
+
+        self.nextButton.clicked.disconnect()
     
     def checkAnswerThirdExercise(self):
-        pass
+        p = self.inputPassword.text()
+        if p == "432":
+            self.solved()
