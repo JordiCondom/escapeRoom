@@ -41,7 +41,7 @@ class VideoPlayer(QWidget):
         layout.addWidget(self.statusBar)
 
         self.setLayout(layout)
-
+        
         self.mediaPlayer.setVideoOutput(videoWidget)
         self.mediaPlayer.stateChanged.connect(self.mediaStateChanged)
         self.mediaPlayer.positionChanged.connect(self.positionChanged)
