@@ -81,7 +81,6 @@ class Examen2(QWidget):
         self.show()
 
     def secondExerciseSecond(self):
-        print(path)
 
         pixmap = QPixmap("./images/examen1/padro_cul.JPG").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
@@ -126,7 +125,7 @@ class Examen2(QWidget):
         self.previousButton.move(0.12*w, 0.83*h)
         self.previousButton.show()
 
-        self.textField.setText('''<p> <b> Lázaro:</b> de hecho, justo ahora venían de resaca de la fiesta de Rosalia y Bad Bunny en Sant Esteve Sesrovires. Pero mirad lo increíbles que son, que aún con resaca han aceptado mi solicitud. Y óbviamente os preguntaréis, ¿qué nos importa a nosotros lo que les haya pedido este senyor a estas celebridades en medio de un final de N*mèr**a? Pues os importa, y mucho, porque será la única cosa interesante que os pasará hoy, el mejor espectáculo de vuestras vidas. Chicos y chicas, Carles Padró; hoy tengo la gran suerte y el gran honor de poder presentarles al gran dúo.... (redoble de tambores)... Hugana War!  </p>''')
+        self.textField.setText('''<p> <b> Lázaro:</b> de hecho, justo ahora venían de resaca de la fiesta de Rosalia y Bad Bunny en Sant Esteve Sesrovires. Pero mirad lo increíbles que son, que aún con resaca han aceptado mi solicitud. Y óbviamente os preguntaréis, ¿qué nos importa a nosotros lo que les haya pedido este senyor a estas celebridades en medio de un final de N*mèr**a? Pues os importa, y mucho, porque será la única cosa interesante que os pasará hoy, el mejor espectáculo de vuestras vidas. Chicos y chicas, Carles Padró; hoy tengo la gran suerte y el gran honor de poder presentaros al gran dúo.... (redoble de tambores)... Hugana War!  </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
