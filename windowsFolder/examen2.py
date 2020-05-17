@@ -220,26 +220,28 @@ class VideoPlayer(QWidget):
         self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(path)))
 
         if self.mediaPlayer.state() == QMediaPlayer.PlayingState:
-            videoAcabat = True
+            print(1)
             self.mediaPlayer.pause()
         else:
-            videoAcabat = True
+            print(2)
             self.mediaPlayer.play()
 
     def mediaStateChanged(self, state):
         if self.mediaPlayer.state() == QMediaPlayer.PlayingState:
-            videoAcabat = True
+            print(3)
             self.playButton.setIcon(
                     self.style().standardIcon(QStyle.SP_MediaPause))
         else:
-            videoAcabat = True
+            print(4)
             self.playButton.setIcon(
                     self.style().standardIcon(QStyle.SP_MediaPlay))
 
     def positionChanged(self, position):
+        print(5)
         self.positionSlider.setValue(position)
 
     def durationChanged(self, duration):
+        print(6)
         self.positionSlider.setRange(0, duration)
         
 

@@ -79,6 +79,8 @@ class Examen3(QWidget):
         self.previousButton.move(0.12*w, 0.83*h)
         self.previousButton.show()
 
+        self.caraMerce.hide()
+
         self.textField.setText('''<p> - Home! La Morse Oller! Que estrany, no me l'esperava, em pensava que havia dit que tenia un congrés de punts i ratlles a Colòmbia. <br> <b> Morse Oller: <b> ...- .- -.     -.. --- ...     ... . --- .-. . ...     .--. --- .-.     .-.. .-     -.-. .- .-.. .-.. .     -.--     ..- -. ---     .-.. .     .--. .-. . --. ..- -. - .-     .- .-..     --- - .-. --- ---···     .--. . .-. -.. --- -. . --··--     ..- ... - . -..     ... .- -... .     ... ..- -- .- .-. ··--··     -.--     . .-..     --- - .-. ---     .-. . ... .--. --- -. -.. . ---···     .... --- -- -... .-. .     .--. ..- . ...     -.-. .-.. .- .-. --- --··--     . .-..     -- . -.. .. - . .-. .-. .- -. . --- </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
