@@ -81,7 +81,7 @@ class Examen3(QWidget):
 
         self.caraMerce.hide()
 
-        self.textField.setText('''<p> - Home! La Morse Oller! Que estrany, no me l'esperava, em pensava que havia dit que tenia un congrés de punts i ratlles a Colòmbia. <br> <b> Morse Oller: <b> ...- .- -.     -.. --- ...     ... . --- .-. . ...     .--. --- .-.     .-.. .-     -.-. .- .-.. .-.. .     -.--     ..- -. ---     .-.. .     .--. .-. . --. ..- -. - .-     .- .-..     --- - .-. --- ---···     .--. . .-. -.. --- -. . --··--     ..- ... - . -..     ... .- -... .     ... ..- -- .- .-. ··--··     -.--     . .-..     --- - .-. ---     .-. . ... .--. --- -. -.. . ---···     .... --- -- -... .-. .     .--. ..- . ...     -.-. .-.. .- .-. --- --··--     . .-..     -- . -.. .. - . .-. .-. .- -. . --- </p>''')
+        self.textField.setText('''<p> - Home! La Morsè Oller! Que estrany, no me l'esperava, em pensava que havia dit que tenia un congrés de punts i ratlles a Colòmbia. <br> <b> Morsè Oller: <b> ...- .- -.  -.. --- ...  ... . --- .-. . ...  .--. --- .-.  .-.. .-  -.-. .- .-.. .-.. .  -.--  .- -. ---  .-.. .  .--. .-. . --. ..- -. - .-  .- .-..  --- - .-. --- ---···  .--. . .-. -.. --- -. . --··--     ..- ... - . -..  ... .- -... .  ... ..- -- .- .-. ··--··  -.--     . .-..  --- - .-. ---  .-. . ... .--. --- -. -.. . ---···  .... --- -- -... .-. .  .--. ..- . ...  -.-. .-.. .- .-. --- --··--  . .-..  -- . -.. .. - . .-. .-. .- -. . --- </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -101,7 +101,7 @@ class Examen3(QWidget):
         pixmap = QPixmap("./images/examen1/padro_cul.JPG").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText('''<p> - JAJAJAJAJA, tan de la broma com sempre la Morse, sort que vaig anar a la xerrada de morse de la franja cultural del mes passat, des d'aleshores he entès totes les classes de N*mèr**a. Vinga va, prou de perdre el temps i anem a centrar-nos en el tercer i últim exercici, que haig d'anar a estudiar per les recuperacions. </p>''')
+        self.textField.setText('''<p> - JAJAJAJAJA, tan de la broma com sempre la Morsè, sort que vaig anar a la xerrada de morse de la franja cultural del mes passat, des d'aleshores he entès totes les classes de N*mèr**a. Vinga va, prou de perdre el temps i anem a centrar-nos en el tercer i últim exercici, que haig d'anar a estudiar per les recuperacions. </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
