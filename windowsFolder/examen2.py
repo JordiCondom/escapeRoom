@@ -27,7 +27,7 @@ class Examen2(QWidget):
         self.textField = QLabel(self)
         self.inputPassword = QLineEdit(self)
         self.checkButton = QPushButton('QED', self)
-        self.video = VideoPlayer()
+        # self.video = VideoPlayer()
         self.initWindow()
 
         self.show()
@@ -73,9 +73,9 @@ class Examen2(QWidget):
         self.checkButton.clicked.connect(self.checkAnswerSecondExercise)
         self.checkButton.hide()
 
-        self.video.setParent(self)
-        self.video.resize(w, h)
-        self.video.hide()
+        # self.video.setParent(self)
+        # self.video.resize(w, h)
+        # self.video.hide()
 
         self.hide()
         self.show()
@@ -139,15 +139,34 @@ class Examen2(QWidget):
         self.nextButton.clicked.connect(self.videoScreen)
     
     def videoScreen(self):
-        self.video.show()
+
+        self.mediaPlayer = QMediaPlayer(None, QMediaPlayer.VideoSurface)
+
+        self.videoWidget = QVideoWidget()
+        self.mediaPlayer.setVideoOutput(self.videoWidget)
+        self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(path)))
+
+        self.layout = QVBoxLayout()
+        self.layout.addWidget(self.videoWidget)
+        self.layout.addWidget(self.backgroundImage)
+        self.layout.setSpacing(0)
+        self.setLayout(self.layout)
+
+        self.videoWidget.show()
+        self.mediaPlayer.play()
 
         self.backgroundImage.hide()
         self.textBubble.hide()
         self.textField.hide()
 
         # self.video.hide()
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.secondExerciseQuestion)
 
     def secondExerciseQuestion(self):
+        self.mediaPlayer.pause()
+        self.videoWidget.close()
+        
         pixmap = QPixmap("./images/examen2/enunciat2resposta.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
@@ -160,7 +179,7 @@ class Examen2(QWidget):
 
         self.previousButton.move(0.12*w, 0.845*h)
         self.previousButton.clicked.disconnect()
-        self.previousButton.clicked.connect(self.secondExerciseThird)
+        self.previousButton.clicked.connect(self.videoScreen)
     
     def checkAnswerSecondExercise(self):
         p = self.inputPassword.text()

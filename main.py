@@ -7,6 +7,7 @@ from windowsFolder.senyorGrane import *
 from windowsFolder.cfis import *
 from windowsFolder.examen1 import *
 from windowsFolder.examen2 import * 
+from windowsFolder.final import * 
 
 
 if __name__ == '__main__':
@@ -16,9 +17,10 @@ if __name__ == '__main__':
     #bar = Bar()
     #pati = Pati()
     #senyorGrane = SenyorGrane()
-    cfis = Cfis()
+    #cfis = Cfis()
     #examen1 = Examen1()
-    # examen2 = Examen2()
+    #examen2 = Examen2()
     #examen3 = Examen3()
+    final = Final()
 
     sys.exit(app.exec_())
