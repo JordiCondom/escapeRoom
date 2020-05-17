@@ -387,6 +387,37 @@ class Cfis(QWidget):
             self.error.show()
 
     def solved(self):
+        self.fotoAndreu.hide()
+
+        pixmap = QPixmap("./images/cfis/cfisFormulari.jpeg").scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.textField.setText('''<p> - Per fi el tinc! Espero que em serveixi per aprovar l'examen. Deuria revisar a veure que diu, però no tinc temps. No passa res, el Batet mai es deixa res, i aquest cop he portat la lupa de casa, així que no crec que hi hagi cap problema. Ostres, són les 08:59! Vull dir, les 08:59. Igualment, m'haig d'afanyar o no podré agafar lloc a primera fila!</p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+        self.textField.move(0.167*w, 0.78*h)
+
+        self.user.hide()
+        self.password.hide()
+        self.checkButton.hide()
+        self.icon.hide()
+        self.inputPassword.hide()
+        self.error.hide()
+
+        try:
+            self.checkButton.clicked.disconnect()
+        except:
+            pass
+
+        self.previousButton.hide()
+
+        self.nextButton.clicked.disconnect()
+        self.nextButton.clicked.connect(self.examen)
+        self.nextButton.show()
+
+
+    def examen(self):
         self.examen1 = Examen1()
         self.close()
 
