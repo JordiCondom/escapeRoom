@@ -82,7 +82,7 @@ class Examen2(QWidget):
 
     def secondExerciseSecond(self):
 
-        pixmap = QPixmap("./images/examen1/padro_cul.JPG").scaled(w,h)
+        pixmap = QPixmap("./images/examen2/lazaro.JPG").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textBubble.show()
@@ -112,7 +112,7 @@ class Examen2(QWidget):
         self.nextButton.clicked.connect(self.secondExerciseThird)
     
     def secondExerciseThird(self):
-        pixmap = QPixmap("./images/examen1/padro_cul.JPG").scaled(w,h)
+        pixmap = QPixmap("./images/examen2/lazaro.JPG").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textBubble.show()
