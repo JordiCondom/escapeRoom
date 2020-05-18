@@ -7,6 +7,35 @@ from windowsFolder.final import Final
 w = 900
 h = 600
 
+
+# def secondExerciseQuestion(self):
+#         self.videoWidget.hide()
+#         self.nextNewButton.hide()
+
+#         pixmap = QPixmap("./images/examen2/enunciat2resposta.png").scaled(w,h)
+#         self.backgroundImage.setPixmap(pixmap)
+
+#         self.textBubble.hide()
+#         self.textField.hide()
+#         self.nextButton.hide()
+
+#         self.inputPassword.show()
+#         self.checkButton.show()
+
+#         self.previousButton.move(0.12*w, 0.845*h)
+#         self.previousButton.clicked.disconnect()
+#         self.previousButton.clicked.connect(self.videoScreen)
+    
+#     def checkAnswerSecondExercise(self):
+#         p = self.inputPassword.text()
+#         if p == "729":
+#             self.solved()
+        
+        
+#     def solved(self):
+#         self.examen3 = Examen3()
+#         self.close()
+
 class Examen3(QWidget):
     def __init__(self):
         super().__init__()
@@ -18,6 +47,8 @@ class Examen3(QWidget):
         self.nextButton = QPushButton(self)
         self.textField = QLabel(self)
         self.inputPassword = QLineEdit(self)
+        self.inputPasswordExercici2 = QLineEdit(self)
+        self.checkButtonExercici2 = QPushButton('QED', self)
         self.checkButton = QPushButton('QED', self)
         self.caraMerce = QLabel(self)
         self.initWindow()
@@ -25,7 +56,7 @@ class Examen3(QWidget):
         self.show()
 
     def initWindow(self):
-        pixmap = QPixmap("./images/examen1/padro_cul.JPG").scaled(w,h)
+        pixmap = QPixmap("./images/examen2/enunciat2resposta.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         merce = QPixmap("./images/examen3/merce.jpg").scaled(135,135)
@@ -47,23 +78,31 @@ class Examen3(QWidget):
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
         self.textField.move(0.167*w, 0.78*h)
-        self.textField.show()
+        self.textField.hide()
 
         self.inputPassword.setGeometry(0.67*w, 0.855*h, 0.06*w, 0.04*h)
         self.inputPassword.setMaxLength(5)
         self.inputPassword.hide()
 
+        self.inputPasswordExercici2.setGeometry(0.78*w, 0.848*h, 0.2*w, 0.04*h)
+        self.inputPasswordExercici2.setMaxLength(20)
+        self.inputPasswordExercici2.setFrame(False)
+        self.inputPasswordExercici2.show()
+
+        self.checkButtonExercici2.move(0.82*w, 0.89*h)
+        self.checkButtonExercici2.clicked.connect(self.checkAnswerSecondExercise)
+        self.checkButtonExercici2.show()
+
         self.nextButton.move(0.85*w,0.83*h)
         self.nextButton.setIcon(QIcon('./images/icons/next.png'))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
         try:
-            self.nextButton.clicked.disconnect()
-            self.textBubble.show()
-            self.textField.show()
-            self.nextButton.show()
+            self.textBubble.hide()
+            self.textField.hide()
+            self.nextButton.hide()
         except:
             pass
-        self.nextButton.clicked.connect(self.thirdExerciseFirst)
+        self.nextButton.hide()
 
         self.checkButton.move(0.78*w, 0.85*h)
         self.checkButton.clicked.connect(self.checkAnswerThirdExercise)
@@ -73,11 +112,20 @@ class Examen3(QWidget):
         self.show()
     
     def thirdExerciseFirst(self):
+        self.hide()
+        self.show()
+        self.inputPasswordExercici2.hide()
+        self.checkButtonExercici2.hide()
+
+        self.textBubble.show()
+        self.textField.show()
+        self.nextButton.show()
+
         pixmap = QPixmap("./images/examen1/padro_cul.JPG").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.previousButton.move(0.12*w, 0.83*h)
-        self.previousButton.show()
+        self.previousButton.hide()
 
         self.caraMerce.hide()
 
@@ -88,13 +136,9 @@ class Examen3(QWidget):
         self.textField.move(0.167*w, 0.77*h)
 
         try:
-            self.previousButton.clicked.disconnect()
+            self.nextButton.clicked.disconnect()
         except:
             pass
-        
-        self.previousButton.clicked.connect(self.initWindow)
-
-        self.nextButton.clicked.disconnect()
         self.nextButton.clicked.connect(self.thirdExerciseSecond)
 
     def thirdExerciseSecond(self):
@@ -115,7 +159,11 @@ class Examen3(QWidget):
         self.nextButton.show()
         self.caraMerce.show()
 
-        self.previousButton.clicked.disconnect()
+        try:
+            self.previousButton.clicked.disconnect()
+        except:
+            pass
+        
         self.previousButton.clicked.connect(self.thirdExerciseFirst)
 
         self.nextButton.clicked.disconnect()
@@ -145,3 +193,8 @@ class Examen3(QWidget):
         p = self.inputPassword.text()
         if p == "432":
             self.solved()
+
+    def checkAnswerSecondExercise(self):
+        p = self.inputPasswordExercici2.text()
+        if p == "729":
+            self.thirdExerciseFirst()

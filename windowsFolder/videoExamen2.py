@@ -28,6 +28,7 @@ class videoFinal(QWidget):
     def initWindow(self):
         self.video.resize(w, h)
         self.video.show()
+        self.close()
 
 
 class VideoPlayer(QWidget):
@@ -86,8 +87,8 @@ class VideoPlayer(QWidget):
             self.playButton.setIcon(
                     self.style().standardIcon(QStyle.SP_MediaPause))
         else:
-            self.examen3 = Examen3()
             self.close()
+            self.examen3 = Examen3()
             self.playButton.setIcon(
                     self.style().standardIcon(QStyle.SP_MediaPlay))
 

@@ -26,9 +26,6 @@ class Examen2(QWidget):
         self.previousButton = QPushButton(self)
         self.nextButton = QPushButton(self)
         self.textField = QLabel(self)
-        self.inputPassword = QLineEdit(self)
-        self.checkButton = QPushButton('QED', self)
-        # self.video = VideoPlayer()
         self.initWindow()
 
         self.show()
@@ -53,11 +50,6 @@ class Examen2(QWidget):
         self.textField.move(0.167*w, 0.78*h)
         self.textField.show()
 
-        self.inputPassword.setGeometry(0.78*w, 0.848*h, 0.2*w, 0.04*h)
-        self.inputPassword.setMaxLength(20)
-        self.inputPassword.setFrame(False)
-        self.inputPassword.hide()
-
         self.nextButton.move(0.85*w,0.83*h)
         self.nextButton.setIcon(QIcon('./images/icons/next.png'))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
@@ -70,14 +62,6 @@ class Examen2(QWidget):
             pass
         self.nextButton.clicked.connect(self.secondExerciseSecond)
 
-        self.checkButton.move(0.82*w, 0.89*h)
-        self.checkButton.clicked.connect(self.checkAnswerSecondExercise)
-        self.checkButton.hide()
-
-        # self.video.setParent(self)
-        # self.video.resize(w, h)
-        # self.video.hide()
-
         self.hide()
         self.show()
 
@@ -89,9 +73,6 @@ class Examen2(QWidget):
         self.textBubble.show()
         self.textField.show()
         self.nextButton.show()
-
-        self.inputPassword.hide()
-        self.checkButton.hide()
 
         self.previousButton.move(0.12*w, 0.83*h)
         self.previousButton.show()
@@ -120,9 +101,6 @@ class Examen2(QWidget):
         self.textField.show()
         self.nextButton.show()
 
-        self.inputPassword.hide()
-        self.checkButton.hide()
-
         self.previousButton.move(0.12*w, 0.83*h)
         self.previousButton.show()
 
@@ -142,68 +120,6 @@ class Examen2(QWidget):
     def videoScreen(self):
 
         self.videoFinal = videoFinal()
-        self.close()
-
-        # self.nextButton.hide()
-        
-        # self.mediaPlayer = QMediaPlayer(self, QMediaPlayer.VideoSurface)
-
-        # self.videoWidget = QVideoWidget(self)
-        # self.mediaPlayer.setVideoOutput(self.videoWidget)
-        # self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(path)))
-
-        # self.videoWidget.show()
-        # self.videoWidget.resize(w, h)
-
-        # self.textField.hide()
-        # self.textBubble.hide()
-        # self.backgroundImage.hide()
-
-        # self.nextNewButton = QPushButton(self)
-        # self.nextNewButton.setStyleSheet("QPushButton{background-color: white;}")
-        # # self.nextNewButton.setStyleSheet("QPushButton{background: transparent;}")
-        # self.nextNewButton.move(0.85*w,0.83*h)
-        # self.nextNewButton.setIcon(QIcon('./images/icons/next.png'))
-        # self.nextNewButton.show()
-
-        # self.mediaPlayer.play()
-
-        # try:
-        #     self.nextNewButton.clicked.disconnect()
-        # except:
-        #     pass
-
-        # self.nextNewButton.clicked.connect(self.secondExerciseQuestion)
-
-
-
-
-    def secondExerciseQuestion(self):
-        self.videoWidget.hide()
-        self.nextNewButton.hide()
-
-        pixmap = QPixmap("./images/examen2/enunciat2resposta.png").scaled(w,h)
-        self.backgroundImage.setPixmap(pixmap)
-
-        self.textBubble.hide()
-        self.textField.hide()
-        self.nextButton.hide()
-
-        self.inputPassword.show()
-        self.checkButton.show()
-
-        self.previousButton.move(0.12*w, 0.845*h)
-        self.previousButton.clicked.disconnect()
-        self.previousButton.clicked.connect(self.videoScreen)
-    
-    def checkAnswerSecondExercise(self):
-        p = self.inputPassword.text()
-        if p == "729":
-            self.solved()
-        
-        
-    def solved(self):
-        self.examen3 = Examen3()
         self.close()
 
 
