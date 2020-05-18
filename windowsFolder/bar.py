@@ -25,7 +25,7 @@ class Bar(QWidget):
         self.show()
 
     def initWindow(self):
-        pixmap = QPixmap("./images/bar/sergio.JPG").scaled(w,h)
+        pixmap = QPixmap("./images/bar/preus.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.previousButton.move(0.12*w, 0.83*h)
@@ -148,7 +148,7 @@ class Bar(QWidget):
         self.previousButton.clicked.connect(self.enigma)
 
     def checkAnswer(self):
-        if self.inputEuros.euros.toPlainText() == "23" and self.inputEuros.cents.toPlainText() == "23":
+        if self.inputEuros.euros.toPlainText() == "17" and self.inputEuros.cents.toPlainText() == "89":
             self.inputEuros.hide()
             self.checkButton.hide()
             self.luis()
