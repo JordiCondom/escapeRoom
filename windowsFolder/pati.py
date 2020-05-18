@@ -1,4 +1,5 @@
 import sys
+import os
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -6,6 +7,16 @@ from windowsFolder.senyorGrane import SenyorGrane
 
 w = 900
 h = 600
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class Pati(QWidget):
     def __init__(self):
@@ -24,15 +35,15 @@ class Pati(QWidget):
         self.show()
 
     def initWindow(self):
-        pixmap = QPixmap("./images/pati/pati1.jpeg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/pati/pati1.jpeg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.previousButton.move(0.12*w, 0.83*h)
-        self.previousButton.setIcon(QIcon('./images/icons/previous.png'))
+        self.previousButton.setIcon(QIcon(resource_path('./images/icons/previous.png')))
         self.previousButton.setStyleSheet("QPushButton{background: transparent;}")
         self.previousButton.hide()
 
-        bubblePM = QPixmap("./images/icons/textBubble.png")
+        bubblePM = QPixmap(resource_path("./images/icons/textBubble.png"))
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
@@ -44,7 +55,7 @@ class Pati(QWidget):
         self.textField.move(0.167*w, 0.78*h)
 
         self.nextButton.move(0.85*w,0.83*h)
-        self.nextButton.setIcon(QIcon('./images/icons/next.png'))
+        self.nextButton.setIcon(QIcon(resource_path('./images/icons/next.png')))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
         try:
             self.nextButton.clicked.disconnect()
@@ -61,7 +72,7 @@ class Pati(QWidget):
         self.inputAge.hide()
 
     def covit(self):
-        pixmap = QPixmap("./images/pati/covit.jpeg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/pati/covit.jpeg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p>- Home Covit! Com portes EDE's? Vergonyós lo d'aquesta gent eh, sembla una festa de dia això. Haurien de venir els de Festes del 99 i tothom aniria directe a l'examen. Espera, no estaràs pas pensant en fer NP no?<br>
@@ -82,7 +93,7 @@ class Pati(QWidget):
         self.nextButton.clicked.connect(self.covit2)
 
     def covit2(self):
-        pixmap = QPixmap("./images/pati/covit.jpeg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/pati/covit.jpeg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p><b>Covit:</b> Portava EDE's perfecte, fins i tot millor que Algorísmia en el seu moment, t'he explicat mai que vaig treure un 8.25 al final del pràctic? Però resulta que m'he imprès aquest formulari que l'Iñaki va fer a l'ordinador del CFIS i no entenc res de res. Pel que es veu va tenir algun problema mentre el feia i no m'ha explicat com desxifrar-lo. Sense aquest formulari no puc assegurar el punt del teorema xinès del residu i així és impossible que aprobi. Si vols fes-li una ullada però t'asseguro que no en treuràs pas res. Crec que només estan bé les majúscules...</p>''')
@@ -100,7 +111,7 @@ class Pati(QWidget):
         self.nextButton.clicked.connect(self.formulari)
 
     def formulari(self):
-        pixmap = QPixmap("./images/pati/formulari.jpeg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/pati/formulari.jpeg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText("")
@@ -117,7 +128,7 @@ class Pati(QWidget):
         self.nextButton.clicked.connect(self.resposta)
 
     def resposta(self):
-        pixmap = QPixmap("./images/pati/covit.jpeg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/pati/covit.jpeg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText("- Mira Covit, la resposta a totes les preguntes de l'examen, i en particular, a la pregunta més important de totes, la del teorema xinès del residu és:")
@@ -141,7 +152,7 @@ class Pati(QWidget):
             self.gracies()
 
     def gracies(self):
-        pixmap = QPixmap("./images/pati/covit2.jpeg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/pati/covit2.jpeg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
         
         self.previousButton.hide()

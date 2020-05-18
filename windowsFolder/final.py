@@ -11,6 +11,16 @@ from PyQt5.QtMultimediaWidgets import QVideoWidget
 w = 900
 h = 600
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 path = str(os.getcwd()) + "/AGN.mp4"
 
 class Final(QWidget):

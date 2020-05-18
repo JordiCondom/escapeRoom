@@ -1,5 +1,6 @@
 from PyQt5 import QtGui, QtWidgets
 import sys
+import os
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -7,6 +8,16 @@ from windowsFolder.bar import Bar
 
 w = 900
 h = 600
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class Entrada(QWidget):
     def __init__(self):
@@ -27,10 +38,11 @@ class Entrada(QWidget):
         self.show()
 
     def initWindowFirst(self):
-        pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
+        print("hola")
+        pixmap = QPixmap(resource_path("images/entrada/black.png")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        bubblePM = QPixmap("./images/icons/textBubble.png")
+        bubblePM = QPixmap(resource_path("images/icons/textBubble.png"))
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
@@ -41,7 +53,7 @@ class Entrada(QWidget):
         self.textField.move(0.167*w, 0.8*h)
 
         self.nextButton.move(0.85*w,0.83*h)
-        self.nextButton.setIcon(QIcon('./images/icons/next.png'))
+        self.nextButton.setIcon(QIcon(resource_path('./images/icons/next.png')))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
         try:
             self.nextButton.clicked.disconnect()
@@ -63,7 +75,7 @@ class Entrada(QWidget):
         self.inputLength.setAlignment(Qt.AlignCenter)
         self.inputLength.hide()
 
-        self.hintButton.setIcon(QIcon('./images/icons/idea.png'))
+        self.hintButton.setIcon(QIcon(resource_path('./images/icons/idea.png')))
         self.hintButton.setStyleSheet("QPushButton{background: transparent;}")
         self.hintButton.move(0.9*w, 0.05*h)
         self.hintButton.setIconSize(QSize(50,50))
@@ -71,7 +83,7 @@ class Entrada(QWidget):
         self.hintButton.hide()
 
     def initWindowSecond(self):
-        pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/entrada/black.png")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p> I el més important de tot, ja és l'últim, un cop acabat ja podràs començar a pensar en tot el que disfrutaràs i suaràs (literalment) les recus. A més, has vingut aviat per a poder prendre el cafè tranquil·lament i fer l'última repassadeta de Doolittle i de la descomposició SVD. N*mèr**a és apassionant.</p>''')
@@ -83,13 +95,13 @@ class Entrada(QWidget):
         self.nextButton.clicked.connect(self.arribadaFme)
 
         self.previousButton.move(0.12*w, 0.83*h)
-        self.previousButton.setIcon(QIcon('./images/icons/previous.png'))
+        self.previousButton.setIcon(QIcon(resource_path('./images/icons/previous.png')))
         self.previousButton.setStyleSheet("QPushButton{background: transparent;}")
         self.previousButton.clicked.connect(self.initWindowFirst)
         self.previousButton.show()
 
     def arribadaFme(self):
-        pixmap = QPixmap("./images/entrada/entradafme3.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/entrada/entradafme3.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
         
         self.textField.setText('''<p> Mira, ja es veu l'entrada. Quina sensació més estranya però, quanta tranquil·litat. M'atreviria a dir que sembla com si la FME estigués tancada. T'imagines? Per una pandèmia mundial o algo així, segur que en sortirien bons memes.</p>''')
@@ -104,7 +116,7 @@ class Entrada(QWidget):
         self.nextButton.clicked.connect(self.entradaFmeFirst)
 
     def entradaFmeFirst(self):
-        pixmap = QPixmap("./images/entrada/segurata_dormido.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/entrada/segurata_dormido.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p><b>Veu en off:</b> et sorprens, a davant de l'FME hi ha una persona estirada mig inconscient, només mou el peu dret. Et pica la curiositat. Després de donar-hi moltes voltes, arribes a l'única conclusió possible, ha anat a Apolo. Decideixes ajudar ja que com bé diu la frase, <i>"Simio ayuda a simio"</i>.</p>''')
@@ -119,7 +131,7 @@ class Entrada(QWidget):
         self.nextButton.clicked.connect(self.entradaFmeSecond)
 
     def entradaFmeSecond(self):
-        pixmap = QPixmap("./images/entrada/segurata_dormido.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/entrada/segurata_dormido.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p>Es confirma la teoria, ve d'Apolo. Ara bé, no es tracta d'una persona qualsevol, és el segurata de la FME. Pel que es veu li va semblar bona idea sortir a Apolo quan l'endemà tenia responsabilitats. Com era d'esperar, la FME seguia tancada, ningú l'havia obert."</p>''')
@@ -134,7 +146,7 @@ class Entrada(QWidget):
         self.nextButton.clicked.connect(self.entradaFmeTercer)
 
     def entradaFmeTercer(self):
-        pixmap = QPixmap("./images/entrada/segurata.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/entrada/segurata.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.checkButton.hide()
@@ -155,7 +167,7 @@ class Entrada(QWidget):
         self.nextButton.clicked.connect(self.clock)
 
     def clock(self):
-        pixmap = QPixmap("./images/entrada/hora.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/entrada/hora.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.hide()
@@ -188,7 +200,7 @@ class Entrada(QWidget):
         self.hide()
         self.show()
         
-        pixmap = QPixmap("./images/entrada/segurata.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/entrada/segurata.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.show()
@@ -207,7 +219,7 @@ class Entrada(QWidget):
         self.textField.show()
         self.nextButton.show()
 
-        pixmap = QPixmap("./images/entrada/segurata.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/entrada/segurata.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.checkButton.hide()
@@ -227,7 +239,7 @@ class Entrada(QWidget):
         self.nextButton.clicked.connect(self.enigma)
 
     def enigma(self):
-        pixmap = QPixmap("./images/entrada/enigma.png").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/entrada/enigma.png")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
 
@@ -247,7 +259,7 @@ class Entrada(QWidget):
         self.checkButton.clicked.connect(self.checkSecondAnswer)
 
     def hint(self):
-        pixmap = QPixmap("./images/entrada/enigmaHint.png").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/entrada/enigmaHint.png")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.hintButton.hide()
@@ -257,7 +269,7 @@ class Entrada(QWidget):
             self.heEntrat()
 
     def heEntrat(self):
-        pixmap = QPixmap("./images/entrada/entrada.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/entrada/entrada.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.hide()

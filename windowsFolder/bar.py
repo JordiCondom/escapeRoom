@@ -1,4 +1,5 @@
 import sys
+import os
 from PyQt5 import QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
@@ -7,6 +8,16 @@ from windowsFolder.pati import Pati
 
 w = 900
 h = 600
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class Bar(QWidget):
     def __init__(self):
@@ -25,15 +36,15 @@ class Bar(QWidget):
         self.show()
 
     def initWindow(self):
-        pixmap = QPixmap("./images/bar/preus.png").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/bar/preus.png")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.previousButton.move(0.12*w, 0.83*h)
-        self.previousButton.setIcon(QIcon('./images/icons/previous.png'))
+        self.previousButton.setIcon(QIcon(resource_path('./images/icons/previous.png')))
         self.previousButton.setStyleSheet("QPushButton{background: transparent;}")
         self.previousButton.hide()
 
-        bubblePM = QPixmap("./images/icons/textBubble.png")
+        bubblePM = QPixmap(resource_path("./images/icons/textBubble.png"))
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
@@ -44,7 +55,7 @@ class Bar(QWidget):
         self.textField.move(0.167*w, 0.8*h)
 
         self.nextButton.move(0.85*w,0.83*h)
-        self.nextButton.setIcon(QIcon('./images/icons/next.png'))
+        self.nextButton.setIcon(QIcon(resource_path('./images/icons/next.png')))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
         try:
             self.nextButton.clicked.disconnect()
@@ -61,7 +72,7 @@ class Bar(QWidget):
         self.inputEuros.hide()
 
     def piratas(self):
-        pixmap = QPixmap("./images/bar/piratas.JPG").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/bar/piratas.JPG")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
         
         self.previousButton.show()
@@ -94,7 +105,7 @@ class Bar(QWidget):
         self.nextButton.clicked.connect(self.resposta)
 
     def resposta(self):
-        pixmap = QPixmap("./images/bar/piratas.JPG").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/bar/piratas.JPG")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p> + Junto con el pergamino venía un billete de 100 euros y quieren el cambio antes de esta tarde, ¿se puede saber cómo voy a saber yo qué quiere esta gente? Mira zagal, qué te pareceria tener un croissant y un café con leche gratis (casi). Si nos dices cuanto le debemos a este tal anónimo te invitamos. Aquí tienes el pergamino.</p>''')
@@ -112,7 +123,7 @@ class Bar(QWidget):
         self.nextButton.clicked.connect(self.enigma)
 
     def enigma(self):
-        pixmap = QPixmap("./images/bar/enigmaBar.png").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/bar/enigmaBar.png")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.hide()
@@ -129,7 +140,7 @@ class Bar(QWidget):
         self.nextButton.clicked.connect(self.answer)
 
     def answer(self):
-        pixmap = QPixmap("./images/bar/piratas.JPG").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/bar/piratas.JPG")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.show()
@@ -154,7 +165,7 @@ class Bar(QWidget):
             self.luis()
 
     def luis(self):
-        pixmap = QPixmap("./images/bar/luis.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/bar/luis.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.hide()
@@ -172,7 +183,7 @@ class Bar(QWidget):
         self.nextButton.clicked.connect(self.ruben)
 
     def ruben(self):
-        pixmap = QPixmap("./images/bar/ruben.JPG").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/bar/ruben.JPG")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p>- 21 lomoquesos, qui carai vol 21 lomoquesos? Què farà, alimentar joves famèlics per les tardes? Ves a saber tu, un afortunat deu ser, no tothom paga amb bitllets de 100. Aniré a repassar una estona al pati, que ja s'apropa l'hora de l'examen, ara si que si, ja no em distreuré més i em posaré a estudiar.<br>

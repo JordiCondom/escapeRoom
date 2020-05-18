@@ -1,4 +1,5 @@
 import sys
+import os
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -6,6 +7,16 @@ from windowsFolder.final import Final
 
 w = 900
 h = 600
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 
 # def secondExerciseQuestion(self):
@@ -56,20 +67,20 @@ class Examen3(QWidget):
         self.show()
 
     def initWindow(self):
-        pixmap = QPixmap("./images/examen2/enunciat2resposta.png").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/examen2/enunciat2resposta.png")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        merce = QPixmap("./images/examen3/merce.jpg").scaled(135,135)
+        merce = QPixmap(resource_path("./images/examen3/merce.jpg")).scaled(135,135)
         self.caraMerce.setPixmap(merce)
         self.caraMerce.move(0.68*w, 0.07*h)
         self.caraMerce.hide()
 
         self.previousButton.move(0.12*w, 0.83*h)
-        self.previousButton.setIcon(QIcon('./images/icons/previous.png'))
+        self.previousButton.setIcon(QIcon(resource_path('./images/icons/previous.png')))
         self.previousButton.setStyleSheet("QPushButton{background: transparent;}")
         self.previousButton.hide()
 
-        bubblePM = QPixmap("./images/icons/textBubble.png")
+        bubblePM = QPixmap(resource_path("./images/icons/textBubble.png"))
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
@@ -94,7 +105,7 @@ class Examen3(QWidget):
         self.checkButtonExercici2.show()
 
         self.nextButton.move(0.85*w,0.83*h)
-        self.nextButton.setIcon(QIcon('./images/icons/next.png'))
+        self.nextButton.setIcon(QIcon(resource_path('./images/icons/next.png')))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
         try:
             self.textBubble.hide()
@@ -122,7 +133,7 @@ class Examen3(QWidget):
         self.textField.show()
         self.nextButton.show()
 
-        pixmap = QPixmap("./images/examen1/padro_cul.JPG").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/examen1/padro_cul.JPG")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.previousButton.move(0.12*w, 0.83*h)
@@ -142,7 +153,7 @@ class Examen3(QWidget):
         self.nextButton.clicked.connect(self.thirdExerciseSecond)
 
     def thirdExerciseSecond(self):
-        pixmap = QPixmap("./images/examen1/padro_cul.JPG").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/examen1/padro_cul.JPG")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p> - JAJAJAJAJA, tan de la broma com sempre la Morsè, sort que vaig anar a la xerrada de morse de la franja cultural del mes passat, des d'aleshores he entès totes les classes de N*mèr**a. Vinga va, prou de perdre el temps i anem a centrar-nos en el tercer i últim exercici, que haig d'anar a estudiar per les recuperacions. </p>''')
@@ -171,7 +182,7 @@ class Examen3(QWidget):
         self.nextButton.clicked.connect(self.thirdExerciseQuestion)
 
     def thirdExerciseQuestion(self):
-        pixmap = QPixmap("./images/examen3/enigma3.png").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/examen3/enigma3.png")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textBubble.hide()

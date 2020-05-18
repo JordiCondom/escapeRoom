@@ -9,7 +9,6 @@ from windowsFolder.examen1 import *
 from windowsFolder.examen2 import * 
 from windowsFolder.final import * 
 
-
 if __name__ == '__main__':
     app = QApplication(sys.argv)
 

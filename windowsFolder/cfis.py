@@ -1,4 +1,5 @@
 import sys
+import os
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -6,6 +7,16 @@ from windowsFolder.examen1 import Examen1
 
 w = 900
 h = 600
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class Cfis(QWidget):
     def __init__(self):
@@ -34,15 +45,15 @@ class Cfis(QWidget):
         self.show()
 
     def initWindow(self):
-        pixmap = QPixmap("./images/cfis/salaCFIS.jpeg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/cfis/salaCFIS.jpeg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.previousButton.move(0.12*w, 0.83*h)
-        self.previousButton.setIcon(QIcon('./images/icons/previous.png'))
+        self.previousButton.setIcon(QIcon(resource_path('./images/icons/previous.png')))
         self.previousButton.setStyleSheet("QPushButton{background: transparent;}")
         self.previousButton.hide()
 
-        bubblePM = QPixmap("./images/icons/textBubble.png")
+        bubblePM = QPixmap(resource_path("./images/icons/textBubble.png"))
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
@@ -53,7 +64,7 @@ class Cfis(QWidget):
         self.textField.move(0.167*w, 0.79*h)
 
         self.nextButton.move(0.85*w,0.83*h)
-        self.nextButton.setIcon(QIcon('./images/icons/next.png'))
+        self.nextButton.setIcon(QIcon(resource_path('./images/icons/next.png')))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
         try:
             self.nextButton.clicked.disconnect()
@@ -62,7 +73,7 @@ class Cfis(QWidget):
         self.nextButton.clicked.connect(self.sistemaOperatiu)
         self.nextButton.show()
 
-        self.checkButton.setIcon(QIcon('./images/icons/next.png'))
+        self.checkButton.setIcon(QIcon(resource_path('./images/icons/next.png')))
         self.checkButton.setStyleSheet("QPushButton{background: transparent;}")
         self.checkButton.move(0.64*w, 0.48*h)
         #self.checkButton.clicked.connect(self.checkAnswer)
@@ -93,7 +104,7 @@ class Cfis(QWidget):
         self.boto2.hide()
 
     def sistemaOperatiu(self):
-        pixmap = QPixmap("./images/cfis/SO.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/cfis/SO.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p> - Per fi, cinquè ordinador que obro, finalment algun funciona. Ara ve el gran dilema: "To Linux or not to Linux, this is the quesion". I ja són les 8:53, no tinc temps per equivocar-me de sistema operatiu, ves a saber si algun altre ordenador funcionarà. Haig de prendre una decisió, i l'haig de prendre ràpid. <p>''')
@@ -126,17 +137,17 @@ class Cfis(QWidget):
         self.icon.hide()
 
     def linux(self):
-        linuxPixmap = QPixmap("./images/icons/ubuntu.png").scaled(70,70)
+        linuxPixmap = QPixmap(resource_path("./images/icons/ubuntu.png")).scaled(70,70)
         self.icon.setPixmap(linuxPixmap)
         self.inicio()
 
     def windows(self):
-        windowsPixmap = QPixmap("./images/icons/windows.png").scaled(70,70)
+        windowsPixmap = QPixmap(resource_path("./images/icons/windows.png")).scaled(70,70)
         self.icon.setPixmap(windowsPixmap)
         self.inicio()
 
     def inicio(self):
-        pixmap = QPixmap("./images/cfis/inicio.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/cfis/inicio.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p> - Almenys per ara funciona... Merda, usuari i contrasenya, no me'n recordo. Crec que tocarà obrir el bloc de notes amb els usuaris i contrassenyes dels meus "amics" CFIS, tants mesos de carrera fent-lis la pilota han valgut la pena. Sort que en Covit m'ha dit que vigilés amb les tecles, que sinó això seria pitjor que el primer cop que vaig escriure el <i>Hello World</i>.</p>''')
@@ -168,7 +179,7 @@ class Cfis(QWidget):
     def ivet(self):
         self.juanjo.hide()
 
-        pixmap = QPixmap("./images/cfis/tigre.png").scaled(150,150)
+        pixmap = QPixmap(resource_path("./images/cfis/tigre.png")).scaled(150,150)
         self.tigre.setPixmap(pixmap)
         self.tigre.move(0.42*w, 0.14*h)
         self.tigre.show()
@@ -195,7 +206,7 @@ class Cfis(QWidget):
         self.tigre.hide()
         self.motorista.hide()
 
-        pixmap = QPixmap("./images/cfis/juanjo.png").scaled(150,150)
+        pixmap = QPixmap(resource_path("./images/cfis/juanjo.png")).scaled(150,150)
         self.juanjo.setPixmap(pixmap)
         self.juanjo.move(0.42*w, 0.14*h)
         self.juanjo.show()
@@ -221,12 +232,12 @@ class Cfis(QWidget):
     def marc(self):
         self.juanjo.hide()
 
-        pixmap = QPixmap("./images/cfis/motorista.png").scaled(150,150)
+        pixmap = QPixmap(resource_path("./images/cfis/motorista.png")).scaled(150,150)
         self.motorista.setPixmap(pixmap)
         self.motorista.move(0.42*w, 0.14*h)
         self.motorista.show()
 
-        pixmap = QPixmap("./images/cfis/inicio.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/cfis/inicio.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.user.setText("mac.heault@estudiant.uvic.edu")
@@ -255,7 +266,7 @@ class Cfis(QWidget):
     def andreu1(self):
         self.motorista.hide()
 
-        pixmap = QPixmap("./images/cfis/monedes.png").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/cfis/monedes.png")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p> - El primer truc és la partida clandestina de cara-o-creu que va tenir lloc el 14 de març de l'any passat al lavabo CFIS. En aquell llegendari esdeveniment es van enfrentar els tres campions nacionals de cara-o-creu: Andreu Huguet, la Casanellas i El Barrero, d'on va sortir victoriosa Marta Casanellas, coneguda com Àlgebra amb diapositives. Tres eminències que han deixat una herència de jugades inversemblants i màgiques com no s'ha vist mai. No conec tots els detalls de la partida, però per sort recordo algunes jugades i propietats, vaig a apuntar-les a un paper.</p>''')
@@ -278,7 +289,7 @@ class Cfis(QWidget):
         self.nextButton.show()
 
     def andreu2(self):
-        pixmap = QPixmap("./images/cfis/bingo.png").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/cfis/bingo.png")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p> - El segon truc per recordar la contrasenya de l'Andreu és la partida de bingo de l'última festa de Nadal. Quina partida, quina muntanya russa d'emocions, encara no me n'he recuperat. La victòria de l'Andreu on va treure l'última meitat del cartró tot seguit és tema de debat al Claustre de la UPC, l'anomenen el cartró del 5.0. I no només va guanyar el bingo, sinó que també va cantar línia el primer, de 5 paraules. Sort que tinc fotos dels cartrons de l'Andreu, del Barja, del Narciso i del Jaume Franch. El problema és que no me'n recordo de qui era cada cadascun. </p>''')
@@ -297,7 +308,7 @@ class Cfis(QWidget):
     def andreu3(self):
         self.fotoAndreu.hide()
 
-        pixmap = QPixmap("./images/cfis/tetris.png").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/cfis/tetris.png")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p> - I finalment, la partida de tetris. Sempre comenta que el millor que pots fer quan surts a Apolo és posar-te a jugar al tetris al ritme de la música. Òbviament, els resultats són desastrosos, però qui recriminarà una mala partida de tetris quan l'has fet al mig d'Apolo i després de beure molta aigua. Ningú, però ell sempre diu que hi va haver una partida especial, ningú sap perquè encara. Si no recordo malament, la va passar per Piki-Piki, anem a veure-la...</p>''')
@@ -326,10 +337,10 @@ class Cfis(QWidget):
         self.nextButton.show()
 
     def resposta(self):
-        pixmap = QPixmap("./images/cfis/inicio.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/cfis/inicio.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        pixmap = QPixmap("./images/cfis/andreu.png").scaled(150,150)
+        pixmap = QPixmap(resource_path("./images/cfis/andreu.png")).scaled(150,150)
         self.fotoAndreu.setPixmap(pixmap)
         self.fotoAndreu.move(0.42*w, 0.14*h)
         self.fotoAndreu.show()
@@ -389,7 +400,7 @@ class Cfis(QWidget):
     def solved(self):
         self.fotoAndreu.hide()
 
-        pixmap = QPixmap("./images/cfis/cfisFormulari.jpeg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/cfis/cfisFormulari.jpeg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p> - Per fi el tinc! Espero que em serveixi per aprovar l'examen. Deuria revisar a veure que diu, però no tinc temps. No passa res, el Batet mai es deixa res, i aquest cop he portat la lupa de casa, així que no crec que hi hagi cap problema. Ostres, són les 08:59! Vull dir, les 08:59. Igualment, m'haig d'afanyar o no podré agafar lloc a primera fila!</p>''')
