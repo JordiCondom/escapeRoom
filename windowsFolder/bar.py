@@ -185,6 +185,10 @@ class Bar(QWidget):
         self.nextButton.clicked.disconnect()
         self.nextButton.clicked.connect(self.pati)
 
+        self.previousButton.show()
+        self.previousButton.clicked.disconnect()
+        self.previousButton.clicked.connect(self.luis)
+
     def pati(self):
         self.pati = Pati()
         self.close()

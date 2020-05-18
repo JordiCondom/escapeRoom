@@ -34,7 +34,7 @@ class Entrada(QWidget):
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
-        self.textField.setText('''<p>Mínims quadrats, P*A=L*U, error absolut, error relatiu,... va, no et preocupis, has estudiat molt per aquest examen, has anat cada dilluns i cada divendres a classe en comptes  d'anar a la bolera com els  irresponsables dels teus companys, és impossible que suspenguis.</p>''')
+        self.textField.setText('''<p> - Mínims quadrats, P*A=L*U, error absolut, error relatiu,... va, no et preocupis, has estudiat molt per aquest examen, has anat cada dilluns i cada divendres a classe en comptes  d'anar a la bolera com els  irresponsables dels teus companys, és impossible que suspenguis.</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -74,7 +74,7 @@ class Entrada(QWidget):
         pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText('''<p> I el més important de tot, ja és l'últim, un cop acabat ja podràs començar a pensar en tot el que disfrutaràs i suaràs (literalment) les recus. A més, has vingut aviat per a poder prendre el cafè tranquil·lament i fer l'última repassadeta de Doolittle i de la descomposició SVD. N*mèr**a és apassionant.</p>''')
+        self.textField.setText('''<p> - I el més important de tot, ja és l'últim, un cop acabat ja podràs començar a pensar en tot el que disfrutaràs i suaràs (literalment) les recus. A més, has vingut aviat per a poder prendre el cafè tranquil·lament i fer l'última repassadeta de Doolittle i de la descomposició SVD. N*mèr**a és apassionant.</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -92,7 +92,7 @@ class Entrada(QWidget):
         pixmap = QPixmap("./images/entrada/entradafme3.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
         
-        self.textField.setText('''<p> Mira, ja es veu l'entrada. Quina sensació més estranya però, quanta tranquil·litat. M'atreviria a dir que sembla com si la FME estigués tancada. T'imagines? Per una pandèmia mundial o algo així, segur que en sortirien bons memes.</p>''')
+        self.textField.setText('''<p> - Mira, ja es veu l'entrada. Quina sensació més estranya però, quanta tranquil·litat. M'atreviria a dir que sembla com si la FME estigués tancada. T'imagines? Per una pandèmia mundial o algo així, segur que en sortirien bons memes.</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -122,7 +122,7 @@ class Entrada(QWidget):
         pixmap = QPixmap("./images/entrada/segurata_dormido.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText('''<p>Es confirma la teoria, ve d'Apolo. Ara bé, no es tracta d'una persona qualsevol, és el segurata de la FME. Pel que es veu li va semblar bona idea sortir a Apolo quan l'endemà tenia responsabilitats. Com era d'esperar, la FME seguia tancada, ningú l'havia obert."</p>''')
+        self.textField.setText('''<p><b>Veu en off:</b> Es confirma la teoria, ve d'Apolo. Ara bé, no es tracta d'una persona qualsevol, és el segurata de la FME. Pel que es veu li va semblar bona idea sortir a Apolo quan l'endemà tenia responsabilitats. Com era d'esperar, la FME seguia tancada, ningú l'havia obert."</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -143,7 +143,7 @@ class Entrada(QWidget):
         self.textField.show()
         self.nextButton.show()
 
-        self.textField.setText('''<p>El segurata s'explica: si t'haig de ser sincer, ho vaig petar bastant. Va sonar <i>Yo Perreo Sola</i> 10 cops i 10 van ser els cops que el meu cul va fregar el terra d'Apolo. Ara bé, tota acció té les seves conseqüències, el "perreo" va ser tan intens que vaig trencar el rellotge. Ara no sé quina hora és i no sé si haig d'obrir la FME o no, em podries ajudar? </p>''')
+        self.textField.setText('''<p><b>Veu en off:</b> El segurata s'explica: si t'haig de ser sincer, ho vaig petar bastant. Va sonar <i>Yo Perreo Sola</i> 10 cops i 10 van ser els cops que el meu cul va fregar el terra d'Apolo. Ara bé, tota acció té les seves conseqüències, el "perreo" va ser tan intens que vaig trencar el rellotge. Ara no sé quina hora és i no sé si haig d'obrir la FME o no, em podries ajudar? </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -194,7 +194,7 @@ class Entrada(QWidget):
         self.textField.show()
         self.nextButton.show()
 
-        self.textField.setText('''<p>Verge Santa dels set dolors! Són les 07:15! Ja hauria d'haver obert la FME fa quinze minuts! Moltes gràcies, has sigut de gran ajuda. Ara només queda obrir la FME... Oh no!  Durant el "perreo" intens no només se m'ha trencat el rellotge, també se m'ha trencat el regle i ara no puc obrir la FME!</p>''')
+        self.textField.setText('''<p> <b> Segurata: </b> Verge Santa dels set dolors! Són les 07:15! Ja hauria d'haver obert la FME fa quinze minuts! Moltes gràcies, has sigut de gran ajuda. Ara només queda obrir la FME... Oh no!  Durant el "perreo" intens no només se m'ha trencat el rellotge, també se m'ha trencat el regle i ara no puc obrir la FME!</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -213,7 +213,7 @@ class Entrada(QWidget):
         self.checkButton.hide()
         self.hintButton.hide()
 
-        self.textField.setText('''<p>I ara et preguntaràs, per a què carai necessita el segurata de la FME un regle per obrir-la? Doncs la resposta és molt senzilla, veus aquest dibuix de la porta? La contrasenya per entrar a la FME correspon a la longitud del <i>segment blau</i> en mil·límetres. Normalment puc mesurar-ho amb el regle, però avui ho veig complicat, per un tema. Tu que en saps tant de números, no em donaries un cop de mà? Jo no en sé gaire d'aquestes coses, només et puc dir que l'àrea d'un cercle és 1587*pi.</p>''')
+        self.textField.setText('''<p> <b> Segurata: </b> I ara et preguntaràs, per a què carai necessita el segurata de la FME un regle per obrir-la? Doncs la resposta és molt senzilla, veus aquest dibuix de la porta? La contrasenya per entrar a la FME correspon a la longitud del <i>segment blau</i> en mil·límetres. Normalment puc mesurar-ho amb el regle, però avui ho veig complicat, per un tema. Tu que en saps tant de números, no em donaries un cop de mà? Jo no en sé gaire d'aquestes coses, només et puc dir que l'àrea d'un cercle és 1587*pi.</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)

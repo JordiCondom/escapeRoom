@@ -8,12 +8,13 @@ from windowsFolder.cfis import *
 from windowsFolder.examen1 import *
 from windowsFolder.examen2 import * 
 from windowsFolder.final import * 
+from windowsFolder.finalFinal import * 
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
 
-    entrada = Entrada()
+    #entrada = Entrada()
     #bar = Bar()
     #pati = Pati()
     #senyorGrane = SenyorGrane()
@@ -22,5 +23,6 @@ if __name__ == '__main__':
     #examen2 = Examen2()
     #examen3 = Examen3()
     #final = Final()
+    finalfinal = FinalFinal()
 
     sys.exit(app.exec_())

@@ -135,6 +135,9 @@ class Examen1(QWidget):
         self.notesQuery.hide()
         self.nextButton.show()
 
+        self.textField.show()
+        self.textBubble.show()
+
         self.previousButton.clicked.disconnect()
         self.previousButton.clicked.connect(self.firstExerciseSecond)
 
@@ -148,6 +151,7 @@ class Examen1(QWidget):
         #self.textBubble.hide()
         self.textField.hide()
         self.nextButton.hide()
+        self.textBubble.hide()
 
         self.noteInput.show()
         self.checkButton.show()

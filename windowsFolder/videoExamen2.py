@@ -13,7 +13,7 @@ from windowsFolder.examen3 import Examen3
 w = 900
 h = 600
 
-path = str(os.getcwd()) + "/test.mp4"
+path = str(os.getcwd()) + "/images/videos/test.mp4"
 
 class videoFinal(QWidget):
     def __init__(self):
@@ -75,6 +75,8 @@ class VideoPlayer(QWidget):
         self.statusBar.showMessage("Ready")
 
     def play(self):
+        self.playButton.setEnabled(False)
+        
         self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(path)))
 
         if self.mediaPlayer.state() == QMediaPlayer.PlayingState:

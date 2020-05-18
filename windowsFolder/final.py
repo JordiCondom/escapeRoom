@@ -7,11 +7,12 @@ from PyQt5.QtWidgets import *
 from PyQt5 import QtCore, QtWidgets, QtMultimedia, QtMultimediaWidgets
 from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
 from PyQt5.QtMultimediaWidgets import QVideoWidget
+from windowsFolder.finalFinal import FinalFinal
 
 w = 900
 h = 600
 
-path = str(os.getcwd()) + "/AGN.mp4"
+path = str(os.getcwd()) + "/images/videos/AGN.mp4"
 
 class Final(QWidget):
     def __init__(self):
@@ -152,6 +153,7 @@ class Final(QWidget):
         self.textBubble.show()
 
     def checkAnswerSecondExercise(self):
+        self.finalFinal = FinalFinal()
         self.close()
 
 
