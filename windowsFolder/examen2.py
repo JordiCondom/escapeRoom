@@ -23,8 +23,7 @@ def resource_path(relative_path):
 
     return os.path.join(base_path, relative_path)
 
-path = str(os.getcwd()) + "/test.mp4"
-videoAcabat = False
+path = resource_path("./images/videos/test.mp4")
 
 class Examen2(QWidget):
     def __init__(self):

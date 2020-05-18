@@ -13,9 +13,6 @@ from windowsFolder.examen3 import Examen3
 w = 900
 h = 600
 
-
-path = str(os.getcwd()) + "/images/videos/test.mp4"
-
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
     try:
@@ -25,6 +22,8 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
 
     return os.path.join(base_path, relative_path)
+
+path = resource_path("./images/videos/test.mp4")
 
 class videoFinal(QWidget):
     def __init__(self):

@@ -25,6 +25,8 @@ def resource_path(relative_path):
 
     return os.path.join(base_path, relative_path)
 
+path = resource_path("./images/videos/AGN.mp4")
+
 
 class Final(QWidget):
     def __init__(self):
