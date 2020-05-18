@@ -8,6 +8,7 @@ from PyQt5 import QtCore, QtWidgets, QtMultimedia, QtMultimediaWidgets
 from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
 from PyQt5.QtMultimediaWidgets import QVideoWidget
 from windowsFolder.examen3 import Examen3
+from windowsFolder.videoExamen2 import videoFinal
 
 w = 900
 h = 600
@@ -140,33 +141,47 @@ class Examen2(QWidget):
     
     def videoScreen(self):
 
-        self.mediaPlayer = QMediaPlayer(None, QMediaPlayer.VideoSurface)
+        self.videoFinal = videoFinal()
+        self.close()
 
-        self.videoWidget = QVideoWidget()
-        self.mediaPlayer.setVideoOutput(self.videoWidget)
-        self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(path)))
+        # self.nextButton.hide()
+        
+        # self.mediaPlayer = QMediaPlayer(self, QMediaPlayer.VideoSurface)
 
-        self.layout = QVBoxLayout()
-        self.layout.addWidget(self.videoWidget)
-        self.layout.addWidget(self.backgroundImage)
-        self.layout.setSpacing(0)
-        self.setLayout(self.layout)
+        # self.videoWidget = QVideoWidget(self)
+        # self.mediaPlayer.setVideoOutput(self.videoWidget)
+        # self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(path)))
 
-        self.videoWidget.show()
-        self.mediaPlayer.play()
+        # self.videoWidget.show()
+        # self.videoWidget.resize(w, h)
 
-        self.backgroundImage.hide()
-        self.textBubble.hide()
-        self.textField.hide()
+        # self.textField.hide()
+        # self.textBubble.hide()
+        # self.backgroundImage.hide()
 
-        # self.video.hide()
-        self.nextButton.clicked.disconnect()
-        self.nextButton.clicked.connect(self.secondExerciseQuestion)
+        # self.nextNewButton = QPushButton(self)
+        # self.nextNewButton.setStyleSheet("QPushButton{background-color: white;}")
+        # # self.nextNewButton.setStyleSheet("QPushButton{background: transparent;}")
+        # self.nextNewButton.move(0.85*w,0.83*h)
+        # self.nextNewButton.setIcon(QIcon('./images/icons/next.png'))
+        # self.nextNewButton.show()
+
+        # self.mediaPlayer.play()
+
+        # try:
+        #     self.nextNewButton.clicked.disconnect()
+        # except:
+        #     pass
+
+        # self.nextNewButton.clicked.connect(self.secondExerciseQuestion)
+
+
+
 
     def secondExerciseQuestion(self):
-        self.mediaPlayer.pause()
-        self.videoWidget.close()
-        
+        self.videoWidget.hide()
+        self.nextNewButton.hide()
+
         pixmap = QPixmap("./images/examen2/enunciat2resposta.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
