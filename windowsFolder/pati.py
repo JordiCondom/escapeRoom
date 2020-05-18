@@ -149,7 +149,7 @@ class Pati(QWidget):
         self.show()
 
         self.textField.setText('''<p> <b>Covit:</b> Ostres, moltes gràcies! És veritat, ara me'n recordo que el professor va dir que la resposta seria sempre l'edat del segurata! M'has salvat, si algun dia vaig a Barrokos et convido a un cubata! <br>
-        - Si no ha sigut res home, et deixo que he recordat que també haig d'imprimir el formulari de N*mèr**a, molta sort amb EDP's! <br>
+        - Si no ha sigut res home, et deixo que he recordat que també haig d'imprimir el formulari de N*mèr**a, molta sort amb EDE's! <br>
         <b>Covit: </b> Igualment amb N*mèr**a! I per cert, recorda vigilar amb les tecles, no ensopeguem dos cops amb la mateixa pedra!</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)

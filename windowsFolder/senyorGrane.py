@@ -127,7 +127,7 @@ class SenyorGrane(QWidget):
         pixmap = QPixmap("./images/senyorGrane/passadissensegrane.jpg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText('''<p> <b>Senyor Grané: </b>No et preocupis, jo confio en tu. Segueix el teu cor, quan trobis el nombre correcte de lomoquesos sabràs que és el correcte, confia en els teus instints i en la FME jove. Diga'ls-hi que ja passaré a pagar en algun moment posterior a la realització de la comanda. Molta sort. I vols fer el favor d'estudiar'? Que només et veig marejant la perdiu! <br>
+        self.textField.setText('''<p> <b>Senyor Grané: </b>No et preocupis, jo confio en tu. Segueix el teu cor, quan trobis el nombre correcte de lomoquesos sabràs que és el correcte, confia en els teus instints i en la FME jove. Diga'ls-hi que ja passaré a pagar <b>en algun moment </b>posterior a la realització de la comanda. Molta sort. I vols fer el favor d'estudiar'? Que només et veig marejant la perdiu! <br>
         </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
