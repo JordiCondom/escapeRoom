@@ -71,7 +71,6 @@ class Entrada(QWidget):
         self.hintButton.hide()
 
     def initWindowSecond(self):
-        print("hola")
         pixmap = QPixmap("./images/entrada/black.png").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
