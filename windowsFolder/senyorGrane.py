@@ -1,4 +1,5 @@
 import sys
+import os
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -6,6 +7,16 @@ from windowsFolder.cfis import Cfis
 
 w = 900
 h = 600
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class SenyorGrane(QWidget):
     def __init__(self):
@@ -28,15 +39,15 @@ class SenyorGrane(QWidget):
         self.show()
 
     def initWindow(self):
-        pixmap = QPixmap("./images/senyorGrane/passadissensegrane.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/senyorGrane/passadissensegrane.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.previousButton.move(0.12*w, 0.83*h)
-        self.previousButton.setIcon(QIcon('./images/icons/previous.png'))
+        self.previousButton.setIcon(QIcon(resource_path('./images/icons/previous.png')))
         self.previousButton.setStyleSheet("QPushButton{background: transparent;}")
         self.previousButton.hide()
 
-        bubblePM = QPixmap("./images/icons/textBubble.png")
+        bubblePM = QPixmap(resource_path("./images/icons/textBubble.png"))
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
@@ -49,7 +60,7 @@ class SenyorGrane(QWidget):
         self.textField.move(0.167*w, 0.77*h)
 
         self.nextButton.move(0.85*w,0.83*h)
-        self.nextButton.setIcon(QIcon('./images/icons/next.png'))
+        self.nextButton.setIcon(QIcon(resource_path('./images/icons/next.png')))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
         try:
             self.nextButton.disconnect()
@@ -124,7 +135,7 @@ class SenyorGrane(QWidget):
         self.nextButton.clicked.connect(self.graneFourth)
 
     def graneFourth(self):
-        pixmap = QPixmap("./images/senyorGrane/passadissensegrane.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/senyorGrane/passadissensegrane.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p> <b>Senyor Grané: </b>No et preocupis, jo confio en tu. Segueix el teu cor, quan trobis el nombre correcte de lomoquesos sabràs que és el correcte, confia en els teus instints i en la FME jove. Diga'ls-hi que ja passaré a pagar <b>en algun moment </b>posterior a la realització de la comanda. Molta sort. I vols fer el favor d'estudiar'? Que només et veig marejant la perdiu! <br>
@@ -152,7 +163,7 @@ class SenyorGrane(QWidget):
         self.X.hide()
 
     def graneBar(self):
-        pixmap = QPixmap("./images/bar/piratas.jpg").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/bar/piratas.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.boto1.hide()

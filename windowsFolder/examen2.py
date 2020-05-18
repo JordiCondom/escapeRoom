@@ -13,6 +13,16 @@ from windowsFolder.videoExamen2 import videoFinal
 w = 900
 h = 600
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 path = str(os.getcwd()) + "/test.mp4"
 videoAcabat = False
 
@@ -31,15 +41,15 @@ class Examen2(QWidget):
         self.show()
 
     def initWindow(self):
-        pixmap = QPixmap("./images/examen1/padro_cul.JPG").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/examen1/padro_cul.JPG")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.previousButton.move(0.12*w, 0.83*h)
-        self.previousButton.setIcon(QIcon('./images/icons/previous.png'))
+        self.previousButton.setIcon(QIcon(resource_path('./images/icons/previous.png')))
         self.previousButton.setStyleSheet("QPushButton{background: transparent;}")
         self.previousButton.hide()
 
-        bubblePM = QPixmap("./images/icons/textBubble.png")
+        bubblePM = QPixmap(resource_path("./images/icons/textBubble.png"))
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
@@ -51,7 +61,7 @@ class Examen2(QWidget):
         self.textField.show()
 
         self.nextButton.move(0.85*w,0.83*h)
-        self.nextButton.setIcon(QIcon('./images/icons/next.png'))
+        self.nextButton.setIcon(QIcon(resource_path('./images/icons/next.png')))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
         try:
             self.nextButton.clicked.disconnect()
@@ -67,7 +77,7 @@ class Examen2(QWidget):
 
     def secondExerciseSecond(self):
 
-        pixmap = QPixmap("./images/examen2/lazaro.JPG").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/examen2/lazaro.JPG")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textBubble.show()
@@ -94,7 +104,7 @@ class Examen2(QWidget):
         self.nextButton.clicked.connect(self.secondExerciseThird)
     
     def secondExerciseThird(self):
-        pixmap = QPixmap("./images/examen2/lazaro.JPG").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/examen2/lazaro.JPG")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textBubble.show()
