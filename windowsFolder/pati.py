@@ -85,7 +85,7 @@ class Pati(QWidget):
         pixmap = QPixmap("./images/pati/covit.jpeg").scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        self.textField.setText('''<p><b>Covit:</b> Portava EDE's perfecte, fins i tot millor que Algorísmia en el seu moment, t'he explicat mai que vaig treure un (?) al final? Però resulta que m'he imprès aquest formulari que l'Iñaki va fer a l'ordinador del CFIS i no entenc res de res. Pel que es veu va tenir algun problema mentre el feia i no m'ha explicat com desxifrar-lo. Sense aquest formulari no puc assegurar el punt del teorema xinès del residu i així és impossible que aprobi. Si vols fes-li una ullada però t'asseguro que no en treuràs pas res. Crec que només estan bé les majúscules...</p>''')
+        self.textField.setText('''<p><b>Covit:</b> Portava EDE's perfecte, fins i tot millor que Algorísmia en el seu moment, t'he explicat mai que vaig treure un 8.25 al final del pràctic? Però resulta que m'he imprès aquest formulari que l'Iñaki va fer a l'ordinador del CFIS i no entenc res de res. Pel que es veu va tenir algun problema mentre el feia i no m'ha explicat com desxifrar-lo. Sense aquest formulari no puc assegurar el punt del teorema xinès del residu i així és impossible que aprobi. Si vols fes-li una ullada però t'asseguro que no en treuràs pas res. Crec que només estan bé les majúscules...</p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)

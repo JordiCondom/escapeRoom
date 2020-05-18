@@ -116,6 +116,7 @@ class Examen3(QWidget):
         self.show()
         self.inputPasswordExercici2.hide()
         self.checkButtonExercici2.hide()
+        self.previousButton.hide()
 
         self.textBubble.show()
         self.textField.show()
@@ -125,7 +126,6 @@ class Examen3(QWidget):
         self.backgroundImage.setPixmap(pixmap)
 
         self.previousButton.move(0.12*w, 0.83*h)
-        self.previousButton.hide()
 
         self.caraMerce.hide()
 
@@ -158,6 +158,7 @@ class Examen3(QWidget):
         self.textField.show()
         self.nextButton.show()
         self.caraMerce.show()
+        self.previousButton.show()
 
         try:
             self.previousButton.clicked.disconnect()
