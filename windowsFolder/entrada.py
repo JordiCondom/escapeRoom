@@ -38,7 +38,6 @@ class Entrada(QWidget):
         self.show()
 
     def initWindowFirst(self):
-        print("hola")
         pixmap = QPixmap(resource_path("images/entrada/black.png")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 

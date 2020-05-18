@@ -61,7 +61,6 @@ class Examen3(QWidget):
         self.inputPasswordExercici2 = QLineEdit(self)
         self.checkButtonExercici2 = QPushButton('QED', self)
         self.checkButton = QPushButton('QED', self)
-        self.caraMerce = QLabel(self)
         self.initWindow()
 
         self.show()
@@ -69,11 +68,6 @@ class Examen3(QWidget):
     def initWindow(self):
         pixmap = QPixmap(resource_path("./images/examen2/enunciat2resposta.png")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
-
-        merce = QPixmap(resource_path("./images/examen3/merce.jpg")).scaled(135,135)
-        self.caraMerce.setPixmap(merce)
-        self.caraMerce.move(0.68*w, 0.07*h)
-        self.caraMerce.hide()
 
         self.previousButton.move(0.12*w, 0.83*h)
         self.previousButton.setIcon(QIcon(resource_path('./images/icons/previous.png')))
@@ -133,12 +127,10 @@ class Examen3(QWidget):
         self.textField.show()
         self.nextButton.show()
 
-        pixmap = QPixmap(resource_path("./images/examen1/padro_cul.JPG")).scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/examen3/merceClasse.JPG")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.previousButton.move(0.12*w, 0.83*h)
-
-        self.caraMerce.hide()
 
         self.textField.setText('''<p> - Home! La Morsè Oller! Que estrany, no me l'esperava, em pensava que havia dit que tenia un congrés de punts i ratlles a Colòmbia. <br> <b> Morsè Oller: <b> ...- .- -.  -.. --- ...  ... . --- .-. . ...  .--. --- .-.  .-.. .-  -.-. .- .-.. .-.. .  -.--  .- -. ---  .-.. .  .--. .-. . --. ..- -. - .-  .- .-..  --- - .-. --- ---···  .--. . .-. -.. --- -. . --··--     ..- ... - . -..  ... .- -... .  ... ..- -- .- .-. ··--··  -.--     . .-..  --- - .-. ---  .-. . ... .--. --- -. -.. . ---···  .... --- -- -... .-. .  .--. ..- . ...  -.-. .-.. .- .-. --- --··--  . .-..  -- . -.. .. - . .-. .-. .- -. . --- </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
@@ -153,7 +145,7 @@ class Examen3(QWidget):
         self.nextButton.clicked.connect(self.thirdExerciseSecond)
 
     def thirdExerciseSecond(self):
-        pixmap = QPixmap(resource_path("./images/examen1/padro_cul.JPG")).scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/examen3/merceClasse.JPG")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.textField.setText('''<p> - JAJAJAJAJA, tan de la broma com sempre la Morsè, sort que vaig anar a la xerrada de morse de la franja cultural del mes passat, des d'aleshores he entès totes les classes de N*mèr**a. Vinga va, prou de perdre el temps i anem a centrar-nos en el tercer i últim exercici, que haig d'anar a estudiar per les recuperacions. </p>''')
@@ -168,7 +160,6 @@ class Examen3(QWidget):
         self.textBubble.show()
         self.textField.show()
         self.nextButton.show()
-        self.caraMerce.show()
         self.previousButton.show()
 
         try:
@@ -188,7 +179,6 @@ class Examen3(QWidget):
         self.textBubble.hide()
         self.textField.hide()
         self.nextButton.hide()
-        self.caraMerce.hide()
 
         self.inputPassword.show()
         self.checkButton.show()

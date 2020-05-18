@@ -38,7 +38,6 @@ class Final(QWidget):
         self.previousButton = QPushButton(self)
         self.nextButton = QPushButton(self)
         self.textField = QLabel(self)
-        self.caraMerce = QLabel(self)
         # self.video = VideoPlayer(self)
         self.inputPassword = QLineEdit(self)
         self.checkButton = QPushButton('QED', self)
@@ -47,15 +46,15 @@ class Final(QWidget):
         self.show()
 
     def initWindow(self):
-        pixmap = QPixmap("./images/examen1/padro_cul.JPG").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/examen3/merceClasse2.JPG")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.previousButton.move(0.12*w, 0.83*h)
-        self.previousButton.setIcon(QIcon('./images/icons/previous.png'))
+        self.previousButton.setIcon(QIcon(resource_path('./images/icons/previous.png')))
         self.previousButton.setStyleSheet("QPushButton{background: transparent;}")
         self.previousButton.hide()
 
-        bubblePM = QPixmap("./images/icons/textBubble.png")
+        bubblePM = QPixmap(resource_path("./images/icons/textBubble.png"))
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
 
@@ -75,13 +74,8 @@ class Final(QWidget):
         self.checkButton.clicked.connect(self.checkAnswerSecondExercise)
         self.checkButton.hide()
 
-        merce = QPixmap("./images/examen3/merce.jpg").scaled(135,135)
-        self.caraMerce.setPixmap(merce)
-        self.caraMerce.move(0.68*w, 0.07*h)
-        self.caraMerce.show()
-
         self.nextButton.move(0.85*w,0.83*h)
-        self.nextButton.setIcon(QIcon('./images/icons/next.png'))
+        self.nextButton.setIcon(QIcon(resource_path('./images/icons/next.png')))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
         try:
             self.nextButton.clicked.disconnect()
@@ -131,13 +125,12 @@ class Final(QWidget):
         self.textField.hide()
         self.textBubble.hide()
         self.backgroundImage.hide()
-        self.caraMerce.hide()
 
         self.nextNewButton = QPushButton(self)
         self.nextNewButton.setStyleSheet("QPushButton{background-color: white;}")
         # self.nextNewButton.setStyleSheet("QPushButton{background: transparent;}")
         self.nextNewButton.move(0.85*w,0.83*h)
-        self.nextNewButton.setIcon(QIcon('./images/icons/next.png'))
+        self.nextNewButton.setIcon(QIcon(resource_path('./images/icons/next.png')))
         self.nextNewButton.show()
 
         self.mediaPlayer.play()

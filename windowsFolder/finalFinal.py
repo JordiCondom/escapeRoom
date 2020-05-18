@@ -11,6 +11,16 @@ from PyQt5.QtMultimediaWidgets import QVideoWidget
 w = 900
 h = 600
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 class FinalFinal(QWidget):
     def __init__(self):
         super().__init__()
@@ -25,10 +35,10 @@ class FinalFinal(QWidget):
         self.show()
 
     def initWindow(self):
-        pixmap = QPixmap("./images/examen1/padro_cul.JPG").scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/examen3/examen.JPG")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
-        bubblePM = QPixmap("./images/icons/textBubble.png")
+        bubblePM = QPixmap(resource_path("./images/icons/textBubble.png"))
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.78*h)
 
