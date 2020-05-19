@@ -66,7 +66,7 @@ class Examen3(QWidget):
         self.show()
 
     def initWindow(self):
-        pixmap = QPixmap(resource_path("./images/examen2/enunciat2resposta.png")).scaled(w,h)
+        pixmap = QPixmap(resource_path("./images/examen2/huganawar.jpg")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.previousButton.move(0.12*w, 0.83*h)
@@ -77,37 +77,33 @@ class Examen3(QWidget):
         bubblePM = QPixmap(resource_path("./images/icons/textBubble.png"))
         self.textBubble.setPixmap(bubblePM)
         self.textBubble.move(0.1*w, 0.75*h)
+        self.textBubble.show()
 
-        self.textField.setText('''<p> -  Quin espectacle, quin show, quina exhibició de talent! I jo fent un examen de N*mèr**a... Tot i que haig de reconèixer que fins ara tot està anant prou bé, tinc una sensació estranya que no havia sentit mai...  una sensació com de... que m'estan sortint els exercicis. I tampoc em puc queixar, al cap i a la fi, està sent un examen de N*mèr**a. Tret del toc musical del primer exercici, la resta és prou coherent, de fet, ha sortit una matriu i tot. Mira, sembla que està entrant algú a la classe. </p>''')
+        self.textField.setText('''<p> <b> Lázaro:</b> BRAVO! Espectacular! Qué luego digan que las clases de N*mèr**a son aburridas. Que opinas tu Carles? Qué? Como que hoy no hay clase? Que hoy es el examen!? Y yo sin enterarme... Entonces les has puesto un examen tuyo? Menos mal porque yo no tenia nada preparado. Bueno, pues lo que iba deciendo, que ya podeis seguir con vuestros problemas, no os molesto más. </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
         self.textField.move(0.167*w, 0.78*h)
-        self.textField.hide()
+        self.textField.show()
 
         self.inputPassword.setGeometry(0.67*w, 0.855*h, 0.06*w, 0.04*h)
         self.inputPassword.setMaxLength(5)
         self.inputPassword.hide()
 
-        self.inputPasswordExercici2.setGeometry(0.78*w, 0.848*h, 0.2*w, 0.04*h)
-        self.inputPasswordExercici2.setMaxLength(20)
+        self.inputPasswordExercici2.setGeometry(0.78*w, 0.848*h, 0.06*w, 0.04*h)
+        self.inputPasswordExercici2.setMaxLength(5)
         self.inputPasswordExercici2.setFrame(False)
-        self.inputPasswordExercici2.show()
+        self.inputPasswordExercici2.hide()
 
-        self.checkButtonExercici2.move(0.82*w, 0.89*h)
+        self.checkButtonExercici2.move(0.85*w, 0.843*h)
         self.checkButtonExercici2.clicked.connect(self.checkAnswerSecondExercise)
-        self.checkButtonExercici2.show()
+        self.checkButtonExercici2.hide()
 
         self.nextButton.move(0.85*w,0.83*h)
         self.nextButton.setIcon(QIcon(resource_path('./images/icons/next.png')))
         self.nextButton.setStyleSheet("QPushButton{background: transparent;}")
-        try:
-            self.textBubble.hide()
-            self.textField.hide()
-            self.nextButton.hide()
-        except:
-            pass
-        self.nextButton.hide()
+        self.nextButton.clicked.connect(self.thirdExerciseZero)
+        self.nextButton.show()
 
         self.checkButton.move(0.78*w, 0.85*h)
         self.checkButton.clicked.connect(self.checkAnswerThirdExercise)
@@ -115,6 +111,29 @@ class Examen3(QWidget):
 
         self.hide()
         self.show()
+
+    def thirdExerciseZero(self):
+        self.hide()
+        self.show()
+        self.inputPasswordExercici2.show()
+        self.checkButtonExercici2.show()
+        self.previousButton.show()
+
+        self.textBubble.hide()
+        self.textField.hide()
+        self.nextButton.hide()
+
+        pixmap = QPixmap(resource_path("./images/examen2/enunciat2resposta.png")).scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.previousButton.move(0.12*w, 0.83*h)
+        self.previousButton.show()
+
+        try:
+            self.previousButton.clicked.disconnect()
+        except:
+            pass
+        self.previousButton.clicked.connect(self.initWindow)
     
     def thirdExerciseFirst(self):
         self.hide()
@@ -127,16 +146,42 @@ class Examen3(QWidget):
         self.textField.show()
         self.nextButton.show()
 
+        pixmap = QPixmap(resource_path("./images/examen2/lazaro.JPG")).scaled(w,h)
+        self.backgroundImage.setPixmap(pixmap)
+
+        self.previousButton.move(0.12*w, 0.83*h)
+
+        self.textField.setText('''<p> -  Quin espectacle, quin show, quina exhibició de talent! I jo fent un examen de N*mèr**a... Tot i que haig de reconèixer que fins ara tot està anant prou bé, tinc una sensació estranya que no havia sentit mai...  una sensació com de... que m'estan sortint els exercicis. I tampoc em puc queixar, al cap i a la fi, està sent un examen de N*mèr**a. Tret del toc musical del primer exercici, la resta és prou coherent, de fet, ha sortit una matriu i tot. Mira, sembla que està entrant algú a la classe. </p>''')
+        self.textField.setAlignment(Qt.AlignJustify)
+        self.textField.setWordWrap(True)
+        self.textField.resize(600, 200)
+        self.textField.move(0.167*w, 0.77*h)
+
+        try:
+            self.nextButton.clicked.disconnect()
+        except:
+            pass
+        self.nextButton.clicked.connect(self.thirdExercisePi)
+
+    def thirdExercisePi(self):
         pixmap = QPixmap(resource_path("./images/examen3/merceClasse.JPG")).scaled(w,h)
         self.backgroundImage.setPixmap(pixmap)
 
         self.previousButton.move(0.12*w, 0.83*h)
+        self.previousButton.show()
 
         self.textField.setText('''<p> - Home! La Morsè Oller! Que estrany, no me l'esperava, em pensava que havia dit que tenia un congrés de punts i ratlles a Colòmbia. <br> <b> Morsè Oller: <b> ...- .- -.  -.. --- ...  ... . --- .-. . ...  .--. --- .-.  .-.. .-  -.-. .- .-.. .-.. .  -.--  .- -. ---  .-.. .  .--. .-. . --. ..- -. - .-  .- .-..  --- - .-. --- ---···  .--. . .-. -.. --- -. . --··--     ..- ... - . -..  ... .- -... .  ... ..- -- .- .-. ··--··  -.--     . .-..  --- - .-. ---  .-. . ... .--. --- -. -.. . ---···  .... --- -- -... .-. .  .--. ..- . ...  -.-. .-.. .- .-. --- --··--  . .-..  -- . -.. .. - . .-. .-. .- -. . --- </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
         self.textField.move(0.167*w, 0.77*h)
+
+        try:
+            self.previousButton.clicked.disconnect()
+        except:
+            pass
+        
+        self.previousButton.clicked.connect(self.thirdExerciseFirst)
 
         try:
             self.nextButton.clicked.disconnect()
@@ -167,7 +212,7 @@ class Examen3(QWidget):
         except:
             pass
         
-        self.previousButton.clicked.connect(self.thirdExerciseFirst)
+        self.previousButton.clicked.connect(self.thirdExercisePi)
 
         self.nextButton.clicked.disconnect()
         self.nextButton.clicked.connect(self.thirdExerciseQuestion)

@@ -86,7 +86,7 @@ class Examen2(QWidget):
         self.previousButton.move(0.12*w, 0.83*h)
         self.previousButton.show()
 
-        self.textField.setText('''<p> <b> Lázaro:</b> vale ya estoy aquí, perdón por el retraso. Es que uno se lia... y al final acaba pues, mirando vídeos de focas tirandose pedos a las 3 de la mañana, los pedos de las focas, no mios. Aunque tengo que decir que no he llegado tarde por esto, sería patético. Mirad, como sé que os interesa, os lo explico. Resulta que estaba viniendo al examen y me he encontrado con dos personas que todos conocéis muy bien. No solo porque hagan mates, sinó por las millones de visitas que tienen en Youtube, menudo temazo que sacaron el año pasado, madre mía. </p>''')
+        self.textField.setText('''<p> <b> Lázaro:</b> vale ya estoy aquí, perdón por el retraso. Es que uno se lia... y al final acaba pues, mirando vídeos de focas tirandose pedos a las 3 de la mañana, los pedos de las focas, no mios. Aunque tengo que decir que no he llegado tarde por esto, sería patético. Mirad, como sé que os interesa, os lo explico. Resulta que estaba viniendo a clase y me he encontrado con dos personas que todos conocéis muy bien. No solo porque hagan mates, sinó por las millones de visitas que tienen en Youtube, menudo temazo que sacaron el año pasado, madre mía. </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
@@ -113,7 +113,7 @@ class Examen2(QWidget):
         self.previousButton.move(0.12*w, 0.83*h)
         self.previousButton.show()
 
-        self.textField.setText('''<p> <b> Lázaro:</b> de hecho, justo ahora venían de resaca de la fiesta de Rosalia y Bad Bunny en Sant Esteve Sesrovires. Pero mirad lo increíbles que son, que aún con resaca han aceptado mi solicitud. Y óbviamente os preguntaréis, ¿qué nos importa a nosotros lo que les haya pedido este señor a estas celebridades en medio de un final de N*mèr**a? Pues os importa, y mucho, porque será la única cosa interesante que os pasará hoy, el mejor espectáculo de vuestras vidas. Chicos y chicas, Carles Padró; hoy tengo la gran suerte y el gran honor de poder presentaros al gran dúo.... (redoble de tambores)... Hugana War!  </p>''')
+        self.textField.setText('''<p> <b> Lázaro:</b> de hecho, justo ahora venían de resaca de la fiesta de Rosalia y Bad Bunny en Sant Esteve Sesrovires. Pero mirad lo increíbles que son, que aún con resaca han aceptado mi solicitud. Y óbviamente os preguntaréis, ¿qué nos importa a nosotros lo que les haya pedido este señor a estas celebridades en medio de una clase de N*mèr**a? Pues os importa, y mucho, porque será la única cosa interesante que os pasará hoy, el mejor espectáculo de vuestras vidas. Chicos y chicas, Carles Padró; hoy tengo la gran suerte y el gran honor de poder presentaros al gran dúo.... (redoble de tambores)... Hugana War!  </p>''')
         self.textField.setAlignment(Qt.AlignJustify)
         self.textField.setWordWrap(True)
         self.textField.resize(600, 200)
